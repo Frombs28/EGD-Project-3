@@ -8,15 +8,17 @@ public class Hand : MonoBehaviour
 
     public SteamVR_Action_Boolean m_GrabAction = null;
     private SteamVR_Behaviour_Pose m_Pose = null;
-    private FixedJoint m_Joint = null;
+    //private FixedJoint m_Joint = null;
     private Interact m_CurrentInteract = null;
     private List<Interact> m_ContactInteracts = new List<Interact>();
     private bool held;
+    public Vector3 snapPositionOffset;
+    public Vector3 snapRotationOffset;
 
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
-        m_Joint = GetComponent<FixedJoint>();
+        //m_Joint = GetComponent<FixedJoint>();
         held = false;
     }
 
@@ -92,8 +94,20 @@ public class Hand : MonoBehaviour
         m_CurrentInteract.transform.position = transform.position;
 
         // Attach
+        Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
         Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
-        m_Joint.connectedBody = targetBody;
+        targetTrans.SetParent(transform);
+        targetTrans.rotation = transform.rotation;
+        targetTrans.Rotate(snapRotationOffset);
+        targetTrans.position = transform.position;
+        targetTrans.Translate(snapPositionOffset, Space.Self);
+        targetBody.useGravity = false;
+        targetBody.isKinematic = true;
+
+        //-------------------------------------------------------------------
+        //Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        //m_Joint.connectedBody = targetBody;
+
 
         // Set active hand
         m_CurrentInteract.m_ActiveHand = this;
@@ -111,9 +125,16 @@ public class Hand : MonoBehaviour
         Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
         targetBody.velocity = m_Pose.GetVelocity();
         targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+        targetBody.useGravity = true;
+        targetBody.isKinematic = false;
 
         // Detach
-        m_Joint.connectedBody = null;
+        Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
+        targetTrans.SetParent(null);
+
+        //-----------------------------------------------------------------------
+        //m_Joint.connectedBody = null;
+
 
         // Clear
         m_CurrentInteract.m_ActiveHand = null;
@@ -138,4 +159,7 @@ public class Hand : MonoBehaviour
         }
         return nearest;
     }
+
+
+
 }

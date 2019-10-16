@@ -18,10 +18,16 @@ public class Interact : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        int index = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
-        aud.clip = AudioMaster.staticMatSounds[index];
-        aud.Play();
+        if (collision.gameObject.GetComponent<AudioMaterial>() != null)
+        {
+            int index = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
+            aud.clip = AudioMaster.staticMatSounds[index];
+            //aud.pitch = Random.Range(0.8f, 1.2f);
+            aud.Play();
+        }
     }
+
+
 }
 
 
