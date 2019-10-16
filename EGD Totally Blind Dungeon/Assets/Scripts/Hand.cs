@@ -11,11 +11,13 @@ public class Hand : MonoBehaviour
     private FixedJoint m_Joint = null;
     private Interact m_CurrentInteract = null;
     private List<Interact> m_ContactInteracts = new List<Interact>();
+    private bool held;
 
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
         m_Joint = GetComponent<FixedJoint>();
+        held = false;
     }
 
     // Start is called before the first frame update
@@ -31,34 +33,109 @@ public class Hand : MonoBehaviour
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
             print(m_Pose.inputSource + " Trigger Down");
-            Pickup();
+            if (!held)
+            {
+                Pickup();
+                held = true;
+            }
+            else
+            {
+                Drop();
+                held = false;
+            }
         }
 
-        // Up
-        if (m_GrabAction.GetStateDown(m_Pose.inputSource))
-        {
-            print(m_Pose.inputSource + " Trigger Down");
-            Pickup();
-        }
+        //// Up
+        //if (m_GrabAction.GetStateUp(m_Pose.inputSource))
+        //{
+        //    print(m_Pose.inputSource + " Trigger Up");
+        //    Drop();
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (!other.gameObject.CompareTag("Interact"))
+        {
+            return;
+        }
+        m_ContactInteracts.Add(other.gameObject.GetComponent<Interact>());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Interact"))
+        {
+            return;
+        }
+        m_ContactInteracts.Remove(other.gameObject.GetComponent<Interact>());
     }
 
     public void Pickup()
     {
+        // Get nearest
+        m_CurrentInteract = GetNearestInteract();
 
+        // Null check
+        if (m_CurrentInteract == null)
+        {
+            return;
+        }
+
+        // Already held check; if something is held, drop it
+        if (m_CurrentInteract.m_ActiveHand)
+        {
+            m_CurrentInteract.m_ActiveHand.Drop();
+        }
+
+        // Position
+        m_CurrentInteract.transform.position = transform.position;
+
+        // Attach
+        Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        m_Joint.connectedBody = targetBody;
+
+        // Set active hand
+        m_CurrentInteract.m_ActiveHand = this;
     }
 
     public void Drop()
     {
+        // Null check
+        if (!m_CurrentInteract)
+        {
+            return;
+        }
+
+        // Apply velocity
+        Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        targetBody.velocity = m_Pose.GetVelocity();
+        targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+
+        // Detach
+        m_Joint.connectedBody = null;
+
+        // Clear
+        m_CurrentInteract.m_ActiveHand = null;
+        m_CurrentInteract = null;
+
 
     }
 
     private Interact GetNearestInteract()
     {
-        return null;
+        Interact nearest = null;
+        float minDist = float.MaxValue;
+        float distance = 0.0f;
+        foreach(Interact interactable in m_ContactInteracts)
+        {
+            distance = (interactable.transform.position - transform.position).sqrMagnitude;
+            if(distance < minDist)
+            {
+                minDist = distance;
+                nearest = interactable;
+            }
+        }
+        return nearest;
     }
 }

@@ -35,6 +35,10 @@ public class StickManipulation : MonoBehaviour
     {
         HandleHead();
         HandleHeight();
+    }
+
+    private void FixedUpdate()
+    {
         CalculateMovement();
     }
 
@@ -58,7 +62,8 @@ public class StickManipulation : MonoBehaviour
         // Orient Movement
         Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
-        Vector3 movement = Vector3.zero;
+        Vector3 movement = Physics.gravity * Time.deltaTime;
+        Debug.Log("Zero");
 
         
 
