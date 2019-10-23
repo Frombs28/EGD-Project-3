@@ -5,6 +5,7 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     public float health;
+    public float damage;
     public float velocity;
     public float angular;
 
@@ -14,20 +15,12 @@ public class AIController : MonoBehaviour
 
     public GameObject player;
 
-    public float targetRadiusA = .5f;
-    public float slowRadiusA = 1f;
-    public float maxRotation = 5f;
-    public float timeToTarget = 2f;
-    public float maxAngularAcceleration = 3f;
-
     public float angle = 10f;
     public float timeCounter = 0;
 
     public int startFrame;
     public int endFrame;
-
-    bool parryable;
-
+    //public bool parry;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +28,7 @@ public class AIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = gameObject.GetComponent<Rigidbody>();
         velocity = 5;
-        parryable = false;
+        //parry = gameObject.GetComponent<EnemyAttack>().parryable;
     }
 
     // Update is called once per frame
@@ -51,19 +44,9 @@ public class AIController : MonoBehaviour
         health -= sub;
     }
 
-    public void SetParryable()
-    {
-        parryable = true;
-    }
-
-    public void SetNotParryable()
-    {
-        parryable = false;
-    }
-
     public bool IsParryable()
     {
-        return parryable;
+        return gameObject.GetComponent<EnemyAttack>().parryable;
     }
 
     public void MoveCircular()
@@ -73,23 +56,11 @@ public class AIController : MonoBehaviour
 
         float x = Mathf.Sin(Mathf.Deg2Rad * angle * timeCounter) * 3;
         float z = Mathf.Cos(Mathf.Deg2Rad * angle * timeCounter) * 3;
-        //float x = Mathf.Cos(timeCounter) * 3;
-        //float z = Mathf.Sin(timeCounter) * 3;
 
         Vector3 newPos = new Vector3(x, 0f, z);
         newPos += player.transform.position;
 
         transform.position = newPos;
-
-        //Vector3 center = player.transform.position;
-        //var offset = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle)) * 4;
-        //transform.position = center + offset;
-        //Vector3 direction = transform.right - transform.position;
-        //direction = new Vector3(direction.x, 0f, direction.z);
-        //direction.Normalize();
-        //direction *= velocity * Time.deltaTime;
-        //rb.AddForce(direction);
-        //transform.position += (transform.right / 10);
         Face();
     }
 

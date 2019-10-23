@@ -27,13 +27,23 @@ public class VerticalSwingAttack : EnemyAttack
     }
 
     IEnumerator SwingSword(){
-        attackCompleted = true;
+        frameCount = 0;
+        parryFrame = 4;
+        parryable = false;
+        attackCompleted = false;
         float currentAngle = 2*angle;
         while(currentAngle > 0){
+            frameCount++;
+            Debug.Log(frameCount);
+            if (frameCount >= parryFrame && !parryable)
+            {
+                parryable = true;
+            }
             weapon.transform.RotateAround(transform.position, transform.right, attackSpeed*direction*Time.deltaTime);
             currentAngle-=attackSpeed*Time.deltaTime;
             yield return null;
         }
+        parryable = false;
         attackCompleted = true;
     }
 
