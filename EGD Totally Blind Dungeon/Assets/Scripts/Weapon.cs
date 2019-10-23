@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     float velocity;
     public float minAngle;
     public float maxAngle;
+    public float damage;
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class Weapon : MonoBehaviour
         GameObject other = collision.gameObject;
         if (other.tag == "Enemy" && velocity > 5.0f)
         {
-            // Do damage
+            other.GetComponent<AIController>().SubtractHealth(damage);
         }
     }
 

@@ -26,6 +26,8 @@ public class AIController : MonoBehaviour
     public int startFrame;
     public int endFrame;
 
+    bool parryable;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class AIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = gameObject.GetComponent<Rigidbody>();
         velocity = 5;
+        parryable = false;
     }
 
     // Update is called once per frame
@@ -43,9 +46,24 @@ public class AIController : MonoBehaviour
         MoveCircular();
     }
 
-    void SubtractHealth(float sub)
+    public void SubtractHealth(float sub)
     {
         health -= sub;
+    }
+
+    public void SetParryable()
+    {
+        parryable = true;
+    }
+
+    public void SetNotParryable()
+    {
+        parryable = false;
+    }
+
+    public bool IsParryable()
+    {
+        return parryable;
     }
 
     public void MoveCircular()
