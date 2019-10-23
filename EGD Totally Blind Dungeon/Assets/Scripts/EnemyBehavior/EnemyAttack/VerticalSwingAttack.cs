@@ -10,8 +10,10 @@ public class VerticalSwingAttack : EnemyAttack
     int direction = 1;
     public bool startInFront = false;
     Vector3 originalOffset;
+    Vector3 originalRotation;
     private void Start() {
         originalOffset = weapon.transform.localPosition;
+        originalRotation = weapon.transform.eulerAngles;
     }
     public override void StartAttack(){
         attackCompleted = false;
@@ -23,7 +25,7 @@ public class VerticalSwingAttack : EnemyAttack
         }
         weapon.transform.rotation = transform.rotation;
         weapon.transform.localPosition = originalOffset;
-        if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
+        //if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
         StartCoroutine("SwingSword");
     }
     public override void InterruptAttack(){
@@ -44,12 +46,14 @@ public class VerticalSwingAttack : EnemyAttack
             {
                 parryable = true;
             }
-            weapon.transform.RotateAround(transform.position, transform.right, attackSpeed*direction*Time.deltaTime);
+            weapon.transform.RotateAround(transform.position, transform.forward * -1, attackSpeed*direction*Time.deltaTime);
             currentAngle-=attackSpeed*Time.deltaTime;
             yield return null;
         }
         parryable = false;
         attackCompleted = true;
+        weapon.transform.localPosition = originalOffset;
+        weapon.transform.eulerAngles = originalRotation;
     }
 
 }

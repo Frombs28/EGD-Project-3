@@ -16,7 +16,7 @@ public class AIFlow : MonoBehaviour
     {
         ai = GetComponent<AIController>();
         player = GameObject.FindWithTag("Player");
-        ai.verticalSwing.weapon.SetActive(false);
+        //ai.verticalSwing.weapon.SetActive(false);
 
     }
 
@@ -36,7 +36,7 @@ public class AIFlow : MonoBehaviour
             }
             else if(walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<=minDistToPlayer){
                 Debug.Log("starting attack!");
-                ai.verticalSwing.weapon.SetActive(true);
+                //ai.verticalSwing.weapon.SetActive(true);
                 ai.verticalSwing.StartAttack();
                 walkingTowards = false;
                 ai.rb.velocity = Vector3.zero;
@@ -49,7 +49,7 @@ public class AIFlow : MonoBehaviour
             else if(isAttacking&&ai.verticalSwing.IsAttackDone()){
                 Debug.Log("done attacking!");
                 isAttacking = false;
-                ai.verticalSwing.weapon.SetActive(false);
+                //ai.verticalSwing.weapon.SetActive(false);
             }
             else if(!walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<maxDistToPlayer){
                 Debug.Log("Moving away!");
