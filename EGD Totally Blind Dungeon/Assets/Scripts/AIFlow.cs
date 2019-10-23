@@ -29,6 +29,8 @@ public class AIFlow : MonoBehaviour
         if(true) //i'll change 2 the damage shit later
         {
             if(walkingTowards&&Vector3.Distance(player.transform.position, transform.position)>minDistToPlayer){
+                //ai.rb.velocity = Vector3.zero;
+                //ai.rb.angularVelocity = Vector3.zero;
                 ai.MoveTowardPlayer();
                 Debug.Log("Moving towards!");
             }
@@ -37,6 +39,8 @@ public class AIFlow : MonoBehaviour
                 ai.verticalSwing.weapon.SetActive(true);
                 ai.verticalSwing.StartAttack();
                 walkingTowards = false;
+                ai.rb.velocity = Vector3.zero;
+                ai.rb.angularVelocity = Vector3.zero;
                 isAttacking = true;
             }
             else if(isAttacking&&!ai.verticalSwing.IsAttackDone()){
@@ -53,6 +57,8 @@ public class AIFlow : MonoBehaviour
             }
             else{
                 Debug.Log("starting 2 walk towards xd!");
+                ai.rb.velocity = Vector3.zero;
+                ai.rb.angularVelocity = Vector3.zero;
                 walkingTowards = true;
             }
         }
