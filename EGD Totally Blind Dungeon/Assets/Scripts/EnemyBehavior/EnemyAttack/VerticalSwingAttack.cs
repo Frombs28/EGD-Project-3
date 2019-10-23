@@ -23,6 +23,7 @@ public class VerticalSwingAttack : EnemyAttack
         //weapon.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
     public override void StartAttack(){
+        weapon.GetComponent<AudioSource>().Play();
         attackCompleted = false;
         if(startOnBottom){
             direction = 1;
@@ -49,8 +50,11 @@ public class VerticalSwingAttack : EnemyAttack
         attackCompleted = false;
         objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         float currentAngle = angle;
+        float startTime = Time.realtimeSinceStartup;
         while(currentAngle > 0){
             frameCount++;
+            float curTime = Time.realtimeSinceStartup;
+            //Debug.Log(curTime-startTime);
             //Debug.Log(frameCount);
             if (frameCount >= parryFrame && !parryable)
             {
