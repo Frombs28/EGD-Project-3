@@ -23,6 +23,7 @@ public class BasicSwingAttack : EnemyAttack
     }
     public override void InterruptAttack(){
         StopAllCoroutines();
+        attackCompleted = true;
     }
 
     IEnumerator SwingSword(){
