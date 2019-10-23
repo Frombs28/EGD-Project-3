@@ -26,6 +26,8 @@ public class AIController : MonoBehaviour
     public float maxRotation = 2f;
     public float timeToTarget = 2f;
     public float maxAngularAcceleration = 2f;
+    bool following;
+    bool fleeing;
 
     //public bool parry;
 
@@ -38,6 +40,8 @@ public class AIController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         //velocity = 5;
         if(verticalSwing == null) verticalSwing = gameObject.GetComponent<EnemyAttack>();
+        following = false;
+        fleeing = false;
     }
 
     // Update is called once per frame
@@ -60,7 +64,7 @@ public class AIController : MonoBehaviour
 
     public void Stun()
     {
-        gameObject.GetComponent<EnemyAttack>().InterruptAttack();
+        verticalSwing.InterruptAttack();
     }
 
     public void MoveCircular()
@@ -78,6 +82,21 @@ public class AIController : MonoBehaviour
         //Face();
     }
 
+    //public void StopMoving()
+    //{
+    //    if (rb.velocity.magnitude > 0.1f)
+    //    {
+    //        if (following)
+    //        {
+
+    //        }
+    //        else if (fleeing)
+    //        {
+
+    //        }
+    //    }
+    //}
+
     public void MoveTowardPlayer()
     {
         //transform.LookAt(player.transform);
@@ -86,6 +105,8 @@ public class AIController : MonoBehaviour
         direction.Normalize();
         direction *= velocity * Time.deltaTime;
         rb.AddForce(direction);
+        following = true;
+        fleeing = false;
 
     }
 
@@ -98,7 +119,9 @@ public class AIController : MonoBehaviour
         direction = new Vector3(direction.x, 0f, direction.z);
         direction *= velocity * Time.deltaTime * -1;
         rb.AddForce(direction);
-//        Face();
+        following = false;
+        fleeing = true;
+        //        Face();
     }
 
     /* void Face()
