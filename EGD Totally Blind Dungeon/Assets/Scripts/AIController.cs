@@ -20,6 +20,13 @@ public class AIController : MonoBehaviour
 
     public int startFrame;
     public int endFrame;
+
+    public float targetRadiusA = 2f;
+    public float slowRadiusA = 2f;
+    public float maxRotation = 2f;
+    public float timeToTarget = 2f;
+    public float maxAngularAcceleration = 2f;
+
     //public bool parry;
 
     // Start is called before the first frame update
@@ -36,7 +43,8 @@ public class AIController : MonoBehaviour
     {
         //MoveAwayFromPlayer();
         //Face();
-        MoveCircular();
+        //MoveCircular();
+        MoveTowardPlayer();
     }
 
     public void SubtractHealth(float sub)
@@ -49,6 +57,11 @@ public class AIController : MonoBehaviour
         return gameObject.GetComponent<EnemyAttack>().parryable;
     }
 
+    public void Stun()
+    {
+        gameObject.GetComponent<EnemyAttack>().InterruptAttack();
+    }
+
     public void MoveCircular()
     {
         //Vector3 yeah = transform.position + new Vector3(Mathf.Sin(transform.rotation.x), 0, Mathf.Cos(gameObject.transform.rotation.z));
@@ -57,7 +70,7 @@ public class AIController : MonoBehaviour
         float x = Mathf.Sin(Mathf.Deg2Rad * angle * timeCounter) * 3;
         float z = Mathf.Cos(Mathf.Deg2Rad * angle * timeCounter) * 3;
 
-        Vector3 newPos = new Vector3(x, 0f, z);
+        Vector3 newPos = new Vector3(x, 1, z);
         newPos += player.transform.position;
 
         transform.position = newPos;
@@ -81,7 +94,6 @@ public class AIController : MonoBehaviour
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
         direction.Normalize();
-        Debug.Log(direction);
         direction = new Vector3(direction.x, 0f, direction.z);
         direction *= velocity * Time.deltaTime * -1;
         rb.AddForce(direction);
@@ -90,7 +102,6 @@ public class AIController : MonoBehaviour
 
     void Face()
     {
-        Debug.Log("Face");
         float orientation;
         float targetRotation;
 
