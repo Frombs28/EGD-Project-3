@@ -8,10 +8,11 @@ public class AudioRaycast : MonoBehaviour
     private GameObject player;
 
     //change this if we need to ignore some layers or something like that
-    private int layerMask = LayerMask.GetMask("Wall");
+    private int layerMask;
     // Start is called before the first frame update
     void Start()
     {
+        layerMask = LayerMask.GetMask("Wall");
         aud = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -25,7 +26,15 @@ public class AudioRaycast : MonoBehaviour
             if (Physics.Raycast(transform.position, player.transform.position, out hit,
                 Vector3.Distance(transform.position, player.transform.position), layerMask))
             {
+                //print(hit.collider.gameObject.layer);
                 float dampening = hit.transform.gameObject.GetComponent<AudioMaterial>().dampening;
+                //print(dampening);
+
+                //get audio mixer and dampen by using low passes and such
+                aud.outputAudioMixerGroup.audioMixer.SetFloat("BGMLowpass", 22000 * Mathf.Pow(dampening, 2));
+                /*float temp;
+                print(aud.outputAudioMixerGroup.audioMixer.GetFloat("BGMLowpass", out temp));
+                print(temp);*/
             }
         }
         
