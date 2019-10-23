@@ -104,6 +104,10 @@ public class AIController : MonoBehaviour
         direction = new Vector3(direction.x, 0f, direction.z);
         direction.Normalize();
         direction *= velocity * Time.deltaTime;
+        //if (!following && fleeing)
+        //{
+        //    rb
+        //}
         rb.AddForce(direction);
         following = true;
         fleeing = false;
@@ -118,6 +122,10 @@ public class AIController : MonoBehaviour
         direction.Normalize();
         direction = new Vector3(direction.x, 0f, direction.z);
         direction *= velocity * Time.deltaTime * -1;
+        //if (following && !fleeing)
+        //{
+        //    direction *= velocity;
+        //}
         rb.AddForce(direction);
         following = false;
         fleeing = true;
