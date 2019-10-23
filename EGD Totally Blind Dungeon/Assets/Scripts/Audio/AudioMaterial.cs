@@ -18,6 +18,9 @@ public class AudioMaterial : MonoBehaviour
     };
     public AudioMat mat = AudioMat.Wood;
 
+    [Range(0, 1)]
+    public float dampening;
+
     public int compareMats(AudioMat other)
     {
         int x = 0;
