@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AIFlow : MonoBehaviour
 {
-    public EnemyAttack verticalSwing;
     AIController ai;
     public float maxDistToPlayer = 20f;
     public float minDistToPlayer = 7f;
@@ -16,6 +15,8 @@ public class AIFlow : MonoBehaviour
     void Start()
     {
         ai = GetComponent<AIController>();
+        player = GameObject.FindWithTag("Player");
+        ai.verticalSwing.weapon.SetActive(false);
 
     }
 
@@ -27,8 +28,32 @@ public class AIFlow : MonoBehaviour
     void DecideAction(){
         if(true) //i'll change 2 the damage shit later
         {
-            if(walkingTowards){
-                
+            if(walkingTowards&&Vector3.Distance(player.transform.position, transform.position)>minDistToPlayer){
+                ai.MoveTowardPlayer();
+                Debug.Log("Moving towards!");
+            }
+            else if(walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<=minDistToPlayer){
+                Debug.Log("starting attack!");
+                ai.verticalSwing.weapon.SetActive(true);
+                ai.verticalSwing.StartAttack();
+                walkingTowards = false;
+                isAttacking = true;
+            }
+            else if(isAttacking&&!ai.verticalSwing.IsAttackDone()){
+                Debug.Log("attacking!");
+            }
+            else if(isAttacking&&ai.verticalSwing.IsAttackDone()){
+                Debug.Log("done attacking!");
+                isAttacking = false;
+                ai.verticalSwing.weapon.SetActive(false);
+            }
+            else if(!walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<maxDistToPlayer){
+                Debug.Log("Moving away!");
+                ai.MoveAwayFromPlayer();
+            }
+            else{
+                Debug.Log("starting 2 walk towards xd!");
+                walkingTowards = true;
             }
         }
     }

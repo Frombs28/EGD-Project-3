@@ -22,13 +22,15 @@ public class AIController : MonoBehaviour
     public int endFrame;
     //public bool parry;
 
+    public EnemyAttack verticalSwing = null;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = gameObject.GetComponent<Rigidbody>();
-        velocity = 5;
-        //parry = gameObject.GetComponent<EnemyAttack>().parryable;
+        //velocity = 5;
+        if(verticalSwing == null) verticalSwing = gameObject.GetComponent<EnemyAttack>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class AIController : MonoBehaviour
     {
         //MoveAwayFromPlayer();
         //Face();
-        MoveCircular();
+        //MoveCircular();
     }
 
     public void SubtractHealth(float sub)
@@ -46,7 +48,7 @@ public class AIController : MonoBehaviour
 
     public bool IsParryable()
     {
-        return gameObject.GetComponent<EnemyAttack>().parryable;
+        return verticalSwing.parryable;
     }
 
     public void MoveCircular()
@@ -61,10 +63,10 @@ public class AIController : MonoBehaviour
         newPos += player.transform.position;
 
         transform.position = newPos;
-        Face();
+        //Face();
     }
 
-    void MoveTowardPlayer()
+    public void MoveTowardPlayer()
     {
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
@@ -75,20 +77,20 @@ public class AIController : MonoBehaviour
 
     }
 
-    void MoveAwayFromPlayer()
+    public void MoveAwayFromPlayer()
     {
         //Debug.Log("Away");
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
         direction.Normalize();
-        Debug.Log(direction);
+//        Debug.Log(direction);
         direction = new Vector3(direction.x, 0f, direction.z);
         direction *= velocity * Time.deltaTime * -1;
         rb.AddForce(direction);
-        Face();
+//        Face();
     }
 
-    void Face()
+    /* void Face()
     {
         Debug.Log("Face");
         float orientation;
@@ -135,7 +137,7 @@ public class AIController : MonoBehaviour
         }
         orientation = angular;
         rb.MoveRotation(Quaternion.Euler(new Vector3(0, Mathf.Rad2Deg * orientation, 0)));
-    }
+    } */
     public float turnToAngle(float f)
     {
         //Is used in multiple functions, helps turn to the angle to something the agent can spin to
