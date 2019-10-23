@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interact
   - Hilt
+  - Enemy Weapon
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Player
   - Interactable
-  - 
-  - 
+  - Enemy
+  - EnemyWeapon
   - 
   - 
   - 

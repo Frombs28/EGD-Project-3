@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BasicSwingAttack : EnemyAttack
 {
-    private void Start() {
-        StartAttack();
-    }
     public float angle = 45f;
     public float attackSpeed = 100f;
     public bool isClockwise = false;
@@ -26,6 +23,7 @@ public class BasicSwingAttack : EnemyAttack
     }
     public override void InterruptAttack(){
         StopAllCoroutines();
+        attackCompleted = true;
     }
 
     IEnumerator SwingSword(){

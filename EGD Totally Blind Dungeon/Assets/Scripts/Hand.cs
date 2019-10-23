@@ -14,6 +14,8 @@ public class Hand : MonoBehaviour
     private bool held;
     public Vector3 snapPositionOffset;
     public Vector3 snapRotationOffset;
+    public GameObject swordWrist;
+    GameObject currentWrist;
 
     private void Awake()
     {
@@ -94,15 +96,19 @@ public class Hand : MonoBehaviour
         m_CurrentInteract.transform.position = transform.position;
 
         // Attach
-        Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
+        //Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
         Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        currentWrist = Instantiate(swordWrist);
+        ConfigurableJoint cj = currentWrist.GetComponent<ConfigurableJoint>();
+        cj.connectedBody = targetBody;
+        Transform targetTrans = currentWrist.GetComponent<Transform>();
         targetTrans.SetParent(transform);
         targetTrans.rotation = transform.rotation;
         targetTrans.Rotate(snapRotationOffset);
         targetTrans.position = transform.position;
         targetTrans.Translate(snapPositionOffset, Space.Self);
-        targetBody.useGravity = false;
-        targetBody.isKinematic = true;
+        //targetBody.useGravity = false;
+        //targetBody.isKinematic = true;
 
         //-------------------------------------------------------------------
         //Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
@@ -125,12 +131,13 @@ public class Hand : MonoBehaviour
         Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
         targetBody.velocity = m_Pose.GetVelocity();
         targetBody.angularVelocity = m_Pose.GetAngularVelocity();
-        targetBody.useGravity = true;
-        targetBody.isKinematic = false;
+        //targetBody.useGravity = true;
+        //targetBody.isKinematic = false;
 
         // Detach
-        Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
-        targetTrans.SetParent(null);
+        //Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
+        //targetTrans.SetParent(null);
+        Destroy(currentWrist);
 
         //-----------------------------------------------------------------------
         //m_Joint.connectedBody = null;
