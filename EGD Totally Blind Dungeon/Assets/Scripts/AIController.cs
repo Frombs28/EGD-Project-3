@@ -20,15 +20,24 @@ public class AIController : MonoBehaviour
 
     public int startFrame;
     public int endFrame;
+
+    public float targetRadiusA = 2f;
+    public float slowRadiusA = 2f;
+    public float maxRotation = 2f;
+    public float timeToTarget = 2f;
+    public float maxAngularAcceleration = 2f;
+
     //public bool parry;
+
+    public EnemyAttack verticalSwing = null;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = gameObject.GetComponent<Rigidbody>();
-        velocity = 5;
-        //parry = gameObject.GetComponent<EnemyAttack>().parryable;
+        //velocity = 5;
+        if(verticalSwing == null) verticalSwing = gameObject.GetComponent<EnemyAttack>();
     }
 
     // Update is called once per frame
@@ -36,7 +45,7 @@ public class AIController : MonoBehaviour
     {
         //MoveAwayFromPlayer();
         //Face();
-        MoveCircular();
+        //MoveCircular();
     }
 
     public void SubtractHealth(float sub)
@@ -46,7 +55,12 @@ public class AIController : MonoBehaviour
 
     public bool IsParryable()
     {
-        return gameObject.GetComponent<EnemyAttack>().parryable;
+        return verticalSwing.parryable;
+    }
+
+    public void Stun()
+    {
+        gameObject.GetComponent<EnemyAttack>().InterruptAttack();
     }
 
     public void MoveCircular()
@@ -57,14 +71,14 @@ public class AIController : MonoBehaviour
         float x = Mathf.Sin(Mathf.Deg2Rad * angle * timeCounter) * 3;
         float z = Mathf.Cos(Mathf.Deg2Rad * angle * timeCounter) * 3;
 
-        Vector3 newPos = new Vector3(x, 0f, z);
+        Vector3 newPos = new Vector3(x, 1, z);
         newPos += player.transform.position;
 
         transform.position = newPos;
-        Face();
+        //Face();
     }
 
-    void MoveTowardPlayer()
+    public void MoveTowardPlayer()
     {
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
@@ -75,22 +89,20 @@ public class AIController : MonoBehaviour
 
     }
 
-    void MoveAwayFromPlayer()
+    public void MoveAwayFromPlayer()
     {
         //Debug.Log("Away");
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
         direction.Normalize();
-        Debug.Log(direction);
         direction = new Vector3(direction.x, 0f, direction.z);
         direction *= velocity * Time.deltaTime * -1;
         rb.AddForce(direction);
-        Face();
+//        Face();
     }
 
-    void Face()
+    /* void Face()
     {
-        Debug.Log("Face");
         float orientation;
         float targetRotation;
 
@@ -135,7 +147,7 @@ public class AIController : MonoBehaviour
         }
         orientation = angular;
         rb.MoveRotation(Quaternion.Euler(new Vector3(0, Mathf.Rad2Deg * orientation, 0)));
-    }
+    } */
     public float turnToAngle(float f)
     {
         //Is used in multiple functions, helps turn to the angle to something the agent can spin to
