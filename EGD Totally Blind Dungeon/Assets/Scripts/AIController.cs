@@ -52,9 +52,17 @@ public class AIController : MonoBehaviour
         //MoveCircular();
     }
 
+    void ColorChangeBack()
+    {
+        GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+    }
+
     public void SubtractHealth(float sub)
     {
         health -= sub;
+        Debug.Log("Hit!");
+        GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        Invoke("ColorChangeBack", 0.5f);
     }
 
     public bool IsParryable()

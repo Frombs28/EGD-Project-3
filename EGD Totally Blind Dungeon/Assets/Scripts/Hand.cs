@@ -92,6 +92,9 @@ public class Hand : MonoBehaviour
             m_CurrentInteract.m_ActiveHand.Drop();
         }
 
+        // Rotation
+        m_CurrentInteract.transform.eulerAngles = new Vector3(0, 0, 0);
+
         // Position
         m_CurrentInteract.transform.position = transform.position;
 
@@ -103,10 +106,12 @@ public class Hand : MonoBehaviour
         cj.connectedBody = targetBody;
         Transform targetTrans = currentWrist.GetComponent<Transform>();
         targetTrans.SetParent(transform);
-        targetTrans.rotation = transform.rotation;
-        targetTrans.Rotate(snapRotationOffset);
-        targetTrans.position = transform.position;
-        targetTrans.Translate(snapPositionOffset, Space.Self);
+        
+        targetTrans.localRotation = Quaternion.Euler(90f,360f,90f);
+        //targetTrans.Rotate(snapRotationOffset);
+        targetTrans.localPosition = new Vector3(0.037f,0,0.05f);
+        //targetTrans.Translate(snapPositionOffset, Space.Self);
+
         //targetBody.useGravity = false;
         //targetBody.isKinematic = true;
 

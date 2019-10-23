@@ -22,7 +22,7 @@ public class StickManipulation : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        Time.captureFramerate = 60;
         m_CharacterController = GetComponent<CharacterController>();
     }
 
