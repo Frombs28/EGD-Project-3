@@ -41,12 +41,12 @@ public class Weapon : MonoBehaviour
         if (other.tag == "Enemy Weapon" && velocity > 3.0f)
         {
             // Parry
-            /*
-            if (other.GetComponent<NPCController>().parryable == true)
+            
+            if (other.GetComponent<AIController>().IsParryable())
             {
-                // Do the parry
+                other.GetComponent<AIController>().Stun();
             }
-            */
+            
 
         }
         else if (other.tag == "Enemy Weapon" && velocity <= 3.0f)
