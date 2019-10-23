@@ -41,10 +41,11 @@ public class Weapon : MonoBehaviour
         if (other.tag == "Enemy Weapon" && velocity > 3.0f)
         {
             // Parry
-            
-            if (other.GetComponent<AIController>().IsParryable())
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            if (enemy.GetComponent<AIController>().IsParryable())
             {
-                other.GetComponent<AIController>().Stun();
+                enemy.GetComponent<AIController>().Stun();
+                Debug.Log("Parry the platypus?!");
             }
             
 

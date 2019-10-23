@@ -32,10 +32,10 @@ public class AIFlow : MonoBehaviour
                 //ai.rb.velocity = Vector3.zero;
                 //ai.rb.angularVelocity = Vector3.zero;
                 ai.MoveTowardPlayer();
-                Debug.Log("Moving towards!");
+                //Debug.Log("Moving towards!");
             }
             else if(walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<=minDistToPlayer){
-                Debug.Log("starting attack!");
+                //Debug.Log("starting attack!");
                 //ai.verticalSwing.weapon.SetActive(true);
                 ai.verticalSwing.StartAttack();
                 walkingTowards = false;
@@ -44,19 +44,19 @@ public class AIFlow : MonoBehaviour
                 isAttacking = true;
             }
             else if(isAttacking&&!ai.verticalSwing.IsAttackDone()){
-                Debug.Log("attacking!");
+                //Debug.Log("attacking!");
             }
             else if(isAttacking&&ai.verticalSwing.IsAttackDone()){
-                Debug.Log("done attacking!");
+                //Debug.Log("done attacking!");
                 isAttacking = false;
                 //ai.verticalSwing.weapon.SetActive(false);
             }
             else if(!walkingTowards&&Vector3.Distance(player.transform.position, transform.position)<maxDistToPlayer){
-                Debug.Log("Moving away!");
+                //Debug.Log("Moving away!");
                 ai.MoveAwayFromPlayer();
             }
             else{
-                Debug.Log("starting 2 walk towards xd!");
+                //Debug.Log("starting 2 walk towards xd!");
                 ai.rb.velocity = Vector3.zero;
                 ai.rb.angularVelocity = Vector3.zero;
                 walkingTowards = true;
