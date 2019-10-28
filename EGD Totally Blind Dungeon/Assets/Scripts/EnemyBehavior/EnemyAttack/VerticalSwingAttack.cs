@@ -21,6 +21,7 @@ public class VerticalSwingAttack : EnemyAttack
     private void Update()
     {
         //weapon.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
         weapon.GetComponent<AudioSource>().Play();
