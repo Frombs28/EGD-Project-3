@@ -6,6 +6,8 @@ public class FiniteStateMachine : MonoBehaviour
 {
     public List<State> states;
 
+    public AIController ai = null;
+
     public State initialState = null;
 
     State currentState;
@@ -20,7 +22,7 @@ public class FiniteStateMachine : MonoBehaviour
         Transition triggeredTransition = null;
 
         foreach(Transition transition in currentState.GetTransitions()){
-            if(transition.IsTriggered()){
+            if(transition.IsTriggered(ai)){
                 triggeredTransition = transition;
                 break;
             }
@@ -30,15 +32,15 @@ public class FiniteStateMachine : MonoBehaviour
             State targetState = triggeredTransition.GetTargetState();
         
 
-            currentState.DoExitAction();
-            triggeredTransition.DoAction();
-            targetState.DoEntryAction();
+            currentState.DoExitAction(ai);
+            triggeredTransition.DoAction(ai);
+            targetState.DoEntryAction(ai);
 
             currentState = targetState;
             return;
 
         }
-        currentState.DoAction();
+        currentState.DoAction(ai);
 
     }
 }

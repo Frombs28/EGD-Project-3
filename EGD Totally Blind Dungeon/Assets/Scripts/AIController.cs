@@ -33,6 +33,8 @@ public class AIController : MonoBehaviour
 
     public EnemyAttack verticalSwing = null;
 
+    public EnemyAttack currentAttack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class AIController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         //velocity = 5;
         if(verticalSwing == null) verticalSwing = gameObject.GetComponent<EnemyAttack>();
+        currentAttack = verticalSwing;
         following = false;
         fleeing = false;
     }

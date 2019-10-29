@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class EnemyAttackTransition : Transition
 {
-    public EnemyAttack ea;
-    public override bool IsTriggered(){
-        return ea.IsAttackDone();
+    public override bool IsTriggered(AIController ai){
+        return ai.currentAttack==null||ai.currentAttack.IsAttackDone();
     }
-    public override void DoAction(){
-        
+    public override void DoAction(AIController ai){
+
     }
 }
