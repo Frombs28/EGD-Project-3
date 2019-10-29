@@ -34,18 +34,22 @@ public class Interact : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        int scrapeDex = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
-        scrapeyScrape.clip = AudioMaster.staticScrapeSounds[scrapeDex];
-        if (Vector3.Distance(transform.position, startPos) > offset)
+        if (collision.gameObject.GetComponent<AudioMaterial>() != null)
         {
-            if(!scrapeyScrape.isPlaying)
+            int scrapeDex = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
+            scrapeyScrape.clip = AudioMaster.staticScrapeSounds[scrapeDex];
+            if (Vector3.Distance(transform.position, startPos) > offset)
             {
-                scrapeyScrape.Play();
+                startPos = transform.position;
+                if (!scrapeyScrape.isPlaying)
+                {
+                    scrapeyScrape.Play();
+                }
             }
-        }
-        else
-        {
-            scrapeyScrape.Stop();
+            else
+            {
+                scrapeyScrape.Stop();
+            }
         }
     }
 
