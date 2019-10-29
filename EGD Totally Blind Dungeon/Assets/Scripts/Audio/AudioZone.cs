@@ -17,7 +17,7 @@ public class AudioZone : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other)
-    {
+    { 
         if (other.tag == "Player")
         {
             aud.Stop();
