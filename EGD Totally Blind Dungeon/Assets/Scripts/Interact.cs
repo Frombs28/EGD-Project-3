@@ -28,6 +28,7 @@ public class Interact : MonoBehaviour
             aud.clip = AudioMaster.staticMatSounds[index];
             //aud.pitch = Random.Range(0.8f, 1.2f);
             aud.Play();
+            Debug.Log("Playing Touch");
             startPos = transform.position;
         }
     }
@@ -38,17 +39,19 @@ public class Interact : MonoBehaviour
         {
             int scrapeDex = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
             scrapeyScrape.clip = AudioMaster.staticScrapeSounds[scrapeDex];
-            if (Vector3.Distance(transform.position, startPos) > offset)
+            if (Vector3.Distance(transform.position, startPos) > offset /*&& gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1.0f*/)
             {
                 startPos = transform.position;
                 if (!scrapeyScrape.isPlaying)
                 {
                     scrapeyScrape.Play();
+                    Debug.Log("Playing Scrape");
                 }
             }
             else
             {
                 scrapeyScrape.Stop();
+                Debug.Log("Stopping Scrape1");
             }
         }
     }
@@ -56,6 +59,7 @@ public class Interact : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         scrapeyScrape.Stop();
+        Debug.Log("Stopping Scrape2");
     }
 }
 
