@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 220323b043a0b93439993f1e686e0a2c
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+guid: 220323b043a0b93439993f1e686e0a2c
+=======
+guid: 522fa47c7ce63184c80aa127c68e77e3
+>>>>>>> Stashed changes
+=======
+guid: b617ee976139243e593fa6574ea0c8e7
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
@@ -86,7 +98,11 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< Updated upstream
   animationType: 2
+=======
+  animationType: 0
+>>>>>>> Stashed changes
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
