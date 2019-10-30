@@ -11,7 +11,7 @@ public class VerticalSwingAttack : EnemyAttack
     public bool startInFront = false;
     Vector3 originalOffset;
     Vector3 originalRotation;
-    public GameObject objectWithMaterial;
+    public GameObject objectWithMaterial = null;
     //Vector3 originalScale;
     private void Start() {
         originalOffset = weapon.transform.localPosition;
@@ -24,7 +24,8 @@ public class VerticalSwingAttack : EnemyAttack
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
-        weapon.GetComponent<AudioSource>().Play();
+        AudioSource audio = weapon.GetComponent<AudioSource>();
+        if(audio!=null)audio.Play();
         attackCompleted = false;
         if(startOnBottom){
             direction = 1;
@@ -49,7 +50,7 @@ public class VerticalSwingAttack : EnemyAttack
         parryFrame = 45;
         parryable = false;
         attackCompleted = false;
-        objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         float currentAngle = angle;
         float startTime = Time.realtimeSinceStartup;
         while(currentAngle > 0){
@@ -61,7 +62,7 @@ public class VerticalSwingAttack : EnemyAttack
             {
                 parryable = true;
                 //Debug.Log("Parryable!!");
-                objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             }
             weapon.transform.RotateAround(transform.position, transform.right * -1, attackSpeed*direction*Time.deltaTime);
             currentAngle-=attackSpeed*Time.deltaTime;
@@ -69,7 +70,9 @@ public class VerticalSwingAttack : EnemyAttack
             yield return null;
         }
         parryable = false;
-        objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if(objectWithMaterial!=null){
+            objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        }
         StartCoroutine("UnSwingSword");
     }
 
@@ -87,7 +90,7 @@ public class VerticalSwingAttack : EnemyAttack
         weapon.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         weapon.transform.localPosition = originalOffset;
         weapon.transform.eulerAngles = originalRotation;
-        objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
     }
 
 }
