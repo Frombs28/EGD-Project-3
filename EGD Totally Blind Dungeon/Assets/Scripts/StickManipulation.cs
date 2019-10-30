@@ -22,7 +22,6 @@ public class StickManipulation : MonoBehaviour
 
     private void Awake()
     {
-        Time.captureFramerate = 60;
         m_CharacterController = GetComponent<CharacterController>();
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     Rigidbody rb;
+    Interact interact;
     float velocity;
     public float minAngle;
     public float maxAngle;
@@ -14,6 +15,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        interact = GetComponent<Interact>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Weapon : MonoBehaviour
         if (other.tag == "Enemy Weapon" && velocity > 3.0f)
         {
             // Parry
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            GameObject enemy = other.gameObject.transform.parent.gameObject;
             if (enemy.GetComponent<AIController>().IsParryable())
             {
                 enemy.GetComponent<AIController>().Stun();

@@ -7,6 +7,7 @@ public class Hand : MonoBehaviour
 {
 
     public SteamVR_Action_Boolean m_GrabAction = null;
+    public SteamVR_Action_Vibration m_VibrateAction = null;
     private SteamVR_Behaviour_Pose m_Pose = null;
     //private FixedJoint m_Joint = null;
     private Interact m_CurrentInteract = null;
@@ -16,10 +17,13 @@ public class Hand : MonoBehaviour
     public Vector3 snapRotationOffset;
     public GameObject swordWrist;
     GameObject currentWrist;
+    public SteamVR_Input_Sources source;
+    //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
+        //source = gameObject.GetComponent<SteamVR_Input_Sources>();
         //m_Joint = GetComponent<FixedJoint>();
         held = false;
     }
