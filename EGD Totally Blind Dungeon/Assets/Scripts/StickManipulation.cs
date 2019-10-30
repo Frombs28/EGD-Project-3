@@ -64,7 +64,7 @@ public class StickManipulation : MonoBehaviour
         Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
         Vector3 movement = Physics.gravity * Time.deltaTime;
-        Debug.Log("Zero");
+        //Debug.Log("Zero");
 
         
 
