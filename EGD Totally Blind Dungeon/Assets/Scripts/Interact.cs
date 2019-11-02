@@ -15,6 +15,12 @@ public class Interact : MonoBehaviour
     private AudioSource aud;
     private Vector3 startPos;
     bool first_time = true;
+    public float amplitude1 = 0.08f;
+    public float frequency1 = 500f;
+    public float amplitude2 = 0.02f;
+    public float frequency2 = 20f;
+    public int TAP_HAPTIC;
+    int firstTime;
 
     private void Start()
     {
@@ -32,7 +38,8 @@ public class Interact : MonoBehaviour
             aud.Play();
             //Debug.Log("Playing Touch");
             startPos = transform.position;
-            m_ActiveHand.m_VibrateAction.Execute(0f,0.5f,150f,1.0f,m_ActiveHand.source);
+            m_ActiveHand.m_VibrateAction.Execute(0f,0.025f,frequency1,amplitude1,m_ActiveHand.source);
+            firstTime = TAP_HAPTIC;
             //m_ActiveHand.vibrate.
         }
     }
@@ -41,7 +48,14 @@ public class Interact : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<AudioMaterial>() != null && m_ActiveHand != null)
         {
-            m_ActiveHand.m_VibrateAction.Execute(0f, 0.1f, 150f, 1.0f, m_ActiveHand.source);
+            if (firstTime>0)
+            {
+                firstTime--;
+            }
+            else
+            {
+                m_ActiveHand.m_VibrateAction.Execute(0f, 0.1f, frequency2, amplitude2, m_ActiveHand.source);
+            }
             int scrapeDex = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
             scrapeyScrape.clip = AudioMaster.staticScrapeSounds[scrapeDex];
             if (Vector3.Distance(transform.position, startPos) > offset /*&& gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1.0f*/)

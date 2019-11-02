@@ -19,6 +19,8 @@ public class Hand : MonoBehaviour
     GameObject currentWrist;
     public SteamVR_Input_Sources source;
     private bool touching_interactable_haptic;
+    public float amplitude = 0.1f;
+    public float frequency = 20f;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -45,12 +47,10 @@ public class Hand : MonoBehaviour
             if (!held)
             {
                 Pickup();
-                held = true;
             }
             else
             {
                 Drop();
-                held = false;
             }
         }
 
@@ -90,7 +90,11 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        m_VibrateAction.Execute(0f, 0.1f, 150f, 0.5f, source);
+        if (other.gameObject.GetComponent<Interact>().m_ActiveHand != null)
+        {
+            return;
+        }
+        m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude, source);
     }
 
     public void Pickup()
@@ -140,6 +144,9 @@ public class Hand : MonoBehaviour
 
         // Set active hand
         m_CurrentInteract.m_ActiveHand = this;
+
+        // Set held equal to true
+        held = true;
     }
 
     public void Drop()
@@ -169,6 +176,9 @@ public class Hand : MonoBehaviour
         // Clear
         m_CurrentInteract.m_ActiveHand = null;
         m_CurrentInteract = null;
+
+        // Set held to false
+        held = false;
 
 
     }
