@@ -139,6 +139,12 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 915b153281355f840b8429de5950b429
     name: BGMLowpass
+  - guid: c7efc8f2c3831e0448bfbc9453c018fa
+    name: VerbVolume
+  - guid: 60cc41e5fab094b43a920bbda5c056d4
+    name: VerbRoom
+  - guid: e5509bd55e5dd3b4cbe2e4d33abfa749
+    name: VerbDecay
   m_AudioMixerGroupViews:
   - guids:
     - 2bc931cf474d9f144a8001fce47918aa
