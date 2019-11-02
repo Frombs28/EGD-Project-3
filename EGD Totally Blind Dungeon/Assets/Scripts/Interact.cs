@@ -38,7 +38,7 @@ public class Interact : MonoBehaviour
             aud.Play();
             //Debug.Log("Playing Touch");
             startPos = transform.position;
-            m_ActiveHand.m_VibrateAction.Execute(0f,0.05f,frequency1,amplitude1,m_ActiveHand.source);
+            m_ActiveHand.m_VibrateAction.Execute(0f,0.025f,frequency1,amplitude1,m_ActiveHand.source);
             firstTime = TAP_HAPTIC;
             //m_ActiveHand.vibrate.
         }
