@@ -11,6 +11,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     Vector3 originalOffset;
     Vector3 originalRotation;
     public GameObject objectWithMaterial = null;
+    public GameObject jointPrefab;
     Rigidbody rb;
     Rigidbody enemyrb;
     HingeJoint joint;
@@ -19,7 +20,6 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         originalOffset = weapon.transform.localPosition;
         originalRotation = weapon.transform.eulerAngles;
         rb = weapon.GetComponent<Rigidbody>();
-        joint = weapon.GetComponent<HingeJoint>();
         enemyrb = GetComponent<Rigidbody>();
         //originalScale = weapon.transform.localScale;
         StartAttack();
@@ -30,6 +30,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
+        weapon.transform.parent = null;
         AudioSource audio = weapon.GetComponent<AudioSource>();
         joint.axis = new Vector3(0,0,1);
         if(audio!=null)audio.Play();
@@ -102,6 +103,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         weapon.transform.eulerAngles = originalRotation;
         enemyrb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
         if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        weapon.transform.parent = transform;
     }
 
 }
