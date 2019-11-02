@@ -37,28 +37,22 @@ public class BetterReverbZone : MonoBehaviour
     IEnumerator FadeIn()
     {
         mixer.GetFloat("VerbVolume", out verbVolume);
-        if (verbVolume < 0)
+        while (verbVolume < 0)
         {
             mixer.SetFloat("VerbVolume", verbVolume + 5f);
             yield return new WaitForSeconds(.05f);
         }
-        else
-        {
-            mixer.SetFloat("VerbVolume", 0);
-        }
+        mixer.SetFloat("VerbVolume", 0);
     }
 
     IEnumerator FadeOut()
     {
         mixer.GetFloat("VerbVolume", out verbVolume);
-        if (verbVolume > -80)
+        while (verbVolume > -80)
         {
             mixer.SetFloat("VerbVolume", verbVolume - 5f);
             yield return new WaitForSeconds(.05f);
         }
-        else
-        {
-            mixer.SetFloat("VerbVolume", -80);
-        }
+        mixer.SetFloat("VerbVolume", -80);
     }
 }
