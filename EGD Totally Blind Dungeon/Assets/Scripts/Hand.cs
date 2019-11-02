@@ -18,6 +18,7 @@ public class Hand : MonoBehaviour
     public GameObject swordWrist;
     GameObject currentWrist;
     public SteamVR_Input_Sources source;
+    private bool touching_interactable_haptic;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -77,6 +78,15 @@ public class Hand : MonoBehaviour
             return;
         }
         m_ContactInteracts.Remove(other.gameObject.GetComponent<Interact>());
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Interact"))
+        {
+            return;
+        }
+        m_VibrateAction.Execute(0f, 0.1f, 150f, 10f, source);
     }
 
     public void Pickup()
