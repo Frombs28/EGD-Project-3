@@ -28,6 +28,7 @@ public class AIController : MonoBehaviour
     public float maxAngularAcceleration = 2f;
     bool following;
     bool fleeing;
+    public bool active = true;
 
     //public bool parry;
 
@@ -65,7 +66,14 @@ public class AIController : MonoBehaviour
         health -= sub;
         Debug.Log("Hit!");
         GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        Invoke("ColorChangeBack", 0.5f);
+        if(health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Invoke("ColorChangeBack", 0.5f);
+        }
     }
 
     public bool IsParryable()
