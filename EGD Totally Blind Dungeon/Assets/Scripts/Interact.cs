@@ -32,7 +32,7 @@ public class Interact : MonoBehaviour
             aud.Play();
             //Debug.Log("Playing Touch");
             startPos = transform.position;
-            m_ActiveHand.m_VibrateAction.Execute(0f,0.5f,150f,25f,m_ActiveHand.source);
+            m_ActiveHand.m_VibrateAction.Execute(0f,0.5f,150f,1.0f,m_ActiveHand.source);
             //m_ActiveHand.vibrate.
         }
     }
@@ -41,7 +41,7 @@ public class Interact : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<AudioMaterial>() != null && m_ActiveHand != null)
         {
-            m_ActiveHand.m_VibrateAction.Execute(0f, 0.1f, 150f, 25f, m_ActiveHand.source);
+            m_ActiveHand.m_VibrateAction.Execute(0f, 0.1f, 150f, 1.0f, m_ActiveHand.source);
             int scrapeDex = mat.compareMats(collision.gameObject.GetComponent<AudioMaterial>().mat);
             scrapeyScrape.clip = AudioMaster.staticScrapeSounds[scrapeDex];
             if (Vector3.Distance(transform.position, startPos) > offset /*&& gameObject.GetComponent<Rigidbody>().velocity.magnitude > 1.0f*/)

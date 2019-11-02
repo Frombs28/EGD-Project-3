@@ -51,14 +51,13 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoveAwayFromPlayer();
-        //Face();
-        //MoveCircular();
+
     }
 
     void ColorChangeBack()
     {
         GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        MoveTowardPlayer();
     }
 
     public void SubtractHealth(float sub)
@@ -94,7 +93,7 @@ public class AIController : MonoBehaviour
         float x = Mathf.Sin(Mathf.Deg2Rad * angle * timeCounter) * 3;
         float z = Mathf.Cos(Mathf.Deg2Rad * angle * timeCounter) * 3;
 
-        Vector3 newPos = new Vector3(x, 1, z);
+        Vector3 newPos = new Vector3(x, gameObject.transform.position.y, z);
         newPos += player.transform.position;
 
         transform.position = newPos;
@@ -148,70 +147,5 @@ public class AIController : MonoBehaviour
         rb.AddForce(direction);
         following = false;
         fleeing = true;
-        //        Face();
     }
-
-    /* void Face()
-    {
-        float orientation;
-        float targetRotation;
-
-        //Sets the direction you need to face based upon the target
-        Vector3 direction = player.transform.position - gameObject.transform.position;
-        if (direction.magnitude == 0)
-        {
-            orientation = 0;
-        }
-
-        //Subtracts the agent's current orientation from the place it needs to go
-        float orient = Mathf.Atan2(direction.x, direction.z);
-        orient -= gameObject.transform.rotation.y;
-        orient = turnToAngle(orient);
-
-        //Finds if the acceleration needs to slow down or if the agent is in the right direction
-        float absoluteOrient = Mathf.Abs(orient);
-        if (absoluteOrient < (targetRadiusA))
-        {
-            orientation = 0;
-        }
-        if (absoluteOrient > (slowRadiusA))
-        {
-            targetRotation = maxRotation;
-        }
-        else
-        {
-            targetRotation = maxRotation * absoluteOrient / slowRadiusA;
-        }
-
-
-        targetRotation *= orient / absoluteOrient;
-        float angular = targetRotation - gameObject.transform.rotation.y;
-        angular /= timeToTarget;
-
-        //Checks if the acceleration is too great, fixes it to match if it is not
-        float angularAcceleration = Mathf.Abs(angular);
-        if (angularAcceleration > maxAngularAcceleration)
-        {
-            angular /= angularAcceleration;
-            angular *= maxAngularAcceleration;
-        }
-        orientation = angular;
-        rb.MoveRotation(Quaternion.Euler(new Vector3(0, Mathf.Rad2Deg * orientation, 0)));
-    } */
-    public float turnToAngle(float f)
-    {
-        //Is used in multiple functions, helps turn to the angle to something the agent can spin to
-        //without spinning in circles
-        float turn = Mathf.PI * 2;
-        while (f > Mathf.PI)
-        {
-            f -= turn;
-        }
-        while (f < -Mathf.PI)
-        {
-            f += turn;
-        }
-        return f;
-    }
-
 }
