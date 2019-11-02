@@ -7,6 +7,7 @@ public class BetterReverbZone : MonoBehaviour
 {
     public AudioMixer mixer;
     private float verbVolume = 0f;
+    public float fadeTime 1f;
 
     //vars to change
     [Range(-10000,0)]
@@ -21,7 +22,7 @@ public class BetterReverbZone : MonoBehaviour
         {
             mixer.SetFloat("VerbRoom", room);
             mixer.SetFloat("VerbDecay", decayTime);
-            StartCoroutine("FadeIn", 1);
+            StartCoroutine("FadeIn", fadeTime);
         }
     }
 
@@ -30,7 +31,7 @@ public class BetterReverbZone : MonoBehaviour
         if (other.tag == "Player")
         {
             StopAllCoroutines();
-            StartCoroutine("FadeOut", 1);
+            StartCoroutine("FadeOut", fadeTime);
         }
     }
 
