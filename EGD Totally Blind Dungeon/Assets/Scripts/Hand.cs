@@ -20,6 +20,7 @@ public class Hand : MonoBehaviour
     public SteamVR_Input_Sources source;
     private bool touching_interactable_haptic;
     public float amplitude = 0.1f;
+    public float frequency = 20f;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -89,7 +90,11 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        m_VibrateAction.Execute(0f, 0.1f, 150f, amplitude, source);
+        if (other.gameObject.GetComponent<Interact>().m_ActiveHand != null)
+        {
+            return;
+        }
+        m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude, source);
     }
 
     public void Pickup()
