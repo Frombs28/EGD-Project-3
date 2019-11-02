@@ -7,7 +7,7 @@ public class BetterReverbZone : MonoBehaviour
 {
     public AudioMixer mixer;
     private float verbVolume = 0f;
-    public float fadeTime 1f;
+    public float fadeTime = 1f;
 
     //vars to change
     [Range(-10000,0)]
