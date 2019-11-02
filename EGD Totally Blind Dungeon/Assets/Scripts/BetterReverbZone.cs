@@ -20,9 +20,11 @@ public class BetterReverbZone : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            StopAllCoroutines();
             mixer.SetFloat("VerbRoom", room);
             mixer.SetFloat("VerbDecay", decayTime);
-            StartCoroutine("FadeIn", fadeTime);
+            mixer.GetFloat("VerbVolume", out verbVolume);
+            StartCoroutine(FadeIn(fadeTime, verbVolume));
         }
     }
 
@@ -31,28 +33,27 @@ public class BetterReverbZone : MonoBehaviour
         if (other.tag == "Player")
         {
             StopAllCoroutines();
-            StartCoroutine("FadeOut", fadeTime);
+            mixer.GetFloat("VerbVolume", out verbVolume);
+            StartCoroutine(FadeOut(fadeTime, verbVolume));
         }
     }
 
-    IEnumerator FadeIn(float aTime)
+    IEnumerator FadeIn(float aTime, float aStart)
     {
-        mixer.GetFloat("VerbVolume", out verbVolume);
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
         {
-            verbVolume = -80 + Mathf.Lerp(0, 80, t);
+            verbVolume = aStart + Mathf.Lerp(0, -aStart, t);
             mixer.SetFloat("VerbVolume", verbVolume);
             yield return null;
         }
         mixer.SetFloat("VerbVolume", 0);
     }
 
-    IEnumerator FadeOut(float aTime)
+    IEnumerator FadeOut(float aTime, float aStart)
     {
-        mixer.GetFloat("VerbVolume", out verbVolume);
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
         {
-            verbVolume = Mathf.Lerp(0, -80, t);
+            verbVolume = Mathf.Lerp(aStart, -80, t);
             mixer.SetFloat("VerbVolume", verbVolume);
             yield return null;
         }
