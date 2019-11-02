@@ -86,6 +86,10 @@ public class Hand : MonoBehaviour
         {
             return;
         }
+        if (held)
+        {
+            return;
+        }
         m_VibrateAction.Execute(0f, 0.1f, 150f, 0.5f, source);
     }
 
