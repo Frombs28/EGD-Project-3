@@ -17,7 +17,7 @@ public class BetterReverbZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Reverb")
+        if(other.tag == "Player")
         {
             mixer.SetFloat("VerbRoom", room);
             mixer.SetFloat("VerbDecay", decayTime);
@@ -27,7 +27,7 @@ public class BetterReverbZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Reverb")
+        if (other.tag == "Player")
         {
             StartCoroutine("FadeOut");
         }
