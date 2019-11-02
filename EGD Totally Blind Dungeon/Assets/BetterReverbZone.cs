@@ -29,6 +29,7 @@ public class BetterReverbZone : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            StopAllCoroutines();
             StartCoroutine("FadeOut");
         }
     }
