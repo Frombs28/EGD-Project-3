@@ -78,7 +78,10 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        m_ContactInteracts.Add(other.gameObject.GetComponent<Interact>());
+        if (other.gameObject.transform.parent != null)
+        {
+            m_ContactInteracts.Add(other.gameObject.transform.parent.gameObject.GetComponent<Interact>());
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -92,7 +95,10 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        m_ContactInteracts.Remove(other.gameObject.GetComponent<Interact>());
+        if (other.gameObject.transform.parent != null)
+        {
+            m_ContactInteracts.Remove(other.gameObject.transform.parent.GetComponent<Interact>());
+        }
     }
 
     private void OnTriggerStay(Collider other)
