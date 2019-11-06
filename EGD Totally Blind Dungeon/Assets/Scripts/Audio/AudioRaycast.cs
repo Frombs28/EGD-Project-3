@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioRaycast : MonoBehaviour
 {
+    public string lowpassVarName;
     private AudioSource aud;
     private GameObject player;
 
@@ -26,15 +27,20 @@ public class AudioRaycast : MonoBehaviour
             if (Physics.Raycast(transform.position, player.transform.position, out hit,
                 Vector3.Distance(transform.position, player.transform.position), layerMask))
             {
+                print(hit.collider.gameObject.name);
                 //print(hit.collider.gameObject.layer);
                 float dampening = hit.transform.gameObject.GetComponent<AudioMaterial>().dampening;
                 //print(dampening);
 
                 //get audio mixer and dampen by using low passes and such
-                aud.outputAudioMixerGroup.audioMixer.SetFloat("BGMLowpass", 22000 * Mathf.Pow(dampening, 2));
+                aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, 22000 * Mathf.Pow(dampening, 2));
                 /*float temp;
                 print(aud.outputAudioMixerGroup.audioMixer.GetFloat("BGMLowpass", out temp));
                 print(temp);*/
+            }
+            else
+            {
+                aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, 22000);
             }
         }
         

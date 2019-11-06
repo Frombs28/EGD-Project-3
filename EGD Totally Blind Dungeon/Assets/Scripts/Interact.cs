@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interact : MonoBehaviour
@@ -21,7 +22,7 @@ public class Interact : MonoBehaviour
     public float frequency2 = 20f;
     public int TAP_HAPTIC;
     int firstTime;
-    public int itemIndex = 0;
+    public AudioClip pickupSFX;
 
     private void Start()
     {
@@ -86,7 +87,7 @@ public class Interact : MonoBehaviour
     {
         if(m_ActiveHand == null && first_time)
         {
-            aud.clip = AudioMaster.staticMatSounds[0];
+            aud.clip = pickupSFX;
             aud.loop = true;
             aud.Play();
             first_time = false;

@@ -40,7 +40,8 @@ AudioSource:
   m_GameObject: {fileID: 2078441534}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8373684798188234158, guid: 562ab105d45ccef4ea89374a8a1ca238,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -54,7 +55,7 @@ AudioSource:
   MinDistance: 0.5
   MaxDistance: 3
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -63,22 +64,40 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 1.0159416
+      inSlope: -2.459993
+      outSlope: -2.459993
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.14634146
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.33333334
+      value: 0.5
+      inSlope: -1.5005997
+      outSlope: -1.5005997
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6666667
+      value: 0.25
+      inSlope: -0.37514994
+      outSlope: -0.37514994
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9918823
+      value: 0
+      inSlope: -0.16673319
+      outSlope: -0.16673319
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -145,7 +164,6 @@ GameObject:
   - component: {fileID: 2754597557741181940}
   - component: {fileID: 9102504958569418370}
   - component: {fileID: 1433655012}
-  - component: {fileID: 6606142647810403357}
   m_Layer: 9
   m_Name: Sword
   m_TagString: Interact
@@ -228,7 +246,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -237,40 +255,49 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 1.0119553
+      inSlope: -2.186139
+      outSlope: -2.186139
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.39295393
     - serializedVersion: 3
-      time: 0.06614378
-      value: 0.36367118
-      inSlope: -3.2961025
-      outSlope: -3.2961025
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.29743224
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.22644033
-      value: 0.09675023
-      inSlope: -0.39766443
-      outSlope: -0.39766443
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.17321648
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.125
+      inSlope: -0.15631224
+      outSlope: -0.15631224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.10003988
+      outSlope: -0.10003988
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -366,6 +393,7 @@ MonoBehaviour:
   amplitude2: 0.1
   frequency2: 20
   TAP_HAPTIC: 1
+  pickupSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
 --- !u!114 &2754597557741181940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,18 +423,6 @@ BoxCollider:
   m_Size: {x: 1.3202088, y: 0.02714448, z: 0.09500568}
   m_Center: {x: 0.3, y: 0.035, z: 0}
 --- !u!114 &1433655012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6132678884738269942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c127733b92a56e1468d361360273f6f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6606142647810403357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

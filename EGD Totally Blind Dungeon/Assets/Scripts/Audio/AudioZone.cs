@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class AudioZone : MonoBehaviour
 {
-    public AudioSource aud;
-    public AudioClip clip;
+    private AudioSource aud;
+    private AudioClip clip;
+
+    private void Start()
+    {
+        aud = GetComponent<AudioSource>();
+        clip = aud.clip;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
