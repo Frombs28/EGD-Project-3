@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemTracker : MonoBehaviour
 {
@@ -27,6 +28,31 @@ public class ItemTracker : MonoBehaviour
         if(checkpoint > 0)
         {
             LoadPlayer();
+            print("Loading...");
+        }
+        else
+        {
+            SaveSystem.SavePlayer(this.gameObject);
+            PlayerPrefs.SetInt("Checkpoint", 0);
+            print("Saving new game!");
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.SetInt("Checkpoint", 0);
+            /*
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            */
+        }
+
+        // FOR TESTING
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SavePlayer();
         }
     }
 
@@ -40,6 +66,16 @@ public class ItemTracker : MonoBehaviour
         items[1] = item.itemIndex;
     }
 
+    public void RemoveLeftHandItem()
+    {
+        items[0] = 0;
+    }
+
+    public void RemoveRightHandItem()
+    {
+        items[1] = 0;
+    }
+
     public int[] GetItems()
     {
         return items;
@@ -49,6 +85,7 @@ public class ItemTracker : MonoBehaviour
     {
         SaveSystem.SavePlayer(this.gameObject);
         PlayerPrefs.SetInt("Checkpoint", checkpoint+1);
+        print("Saving here!");
     }
 
     public void LoadPlayer()
@@ -56,17 +93,20 @@ public class ItemTracker : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         gameObject.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         items = data.items;
+        print("Loaded location: " + gameObject.transform.position);
         if(items[0] > 0)
         {
             // spawn left hand item
             GameObject newItem = Instantiate(itemIndices[items[0] - 1], leftHand.gameObject.transform.position, Quaternion.identity);
             leftHand.spawningItem(newItem.GetComponent<Interact>());
+            print("Item in left hand: " + newItem.name);
         }
         if(items[1] > 0)
         {
             // spawn right hand item
             GameObject newItem = Instantiate(itemIndices[items[1] - 1], rightHand.gameObject.transform.position, Quaternion.identity);
             rightHand.spawningItem(newItem.GetComponent<Interact>());
+            print("Item in right hand: " + newItem.name);
         }
 
     }

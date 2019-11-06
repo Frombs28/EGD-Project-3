@@ -23,6 +23,7 @@ public class Hand : MonoBehaviour
     public float frequency = 20f;
     public int handIndex = 0;    // Determines which hand this is: 0 is left, 1 is right
     public ItemTracker it;
+    private bool inCheckPoint;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -31,6 +32,7 @@ public class Hand : MonoBehaviour
         //source = gameObject.GetComponent<SteamVR_Input_Sources>();
         //m_Joint = GetComponent<FixedJoint>();
         held = false;
+        inCheckPoint = false;
     }
 
     // Start is called before the first frame update
@@ -46,6 +48,11 @@ public class Hand : MonoBehaviour
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
             print(m_Pose.inputSource + " Trigger Down");
+            if (inCheckPoint && !held)
+            {
+                it.SavePlayer();
+                return;
+            }
             if (!held)
             {
                 Pickup();
@@ -66,6 +73,11 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            inCheckPoint = true;
+            return;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -75,6 +87,11 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            inCheckPoint = false;
+            return;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -114,14 +131,6 @@ public class Hand : MonoBehaviour
         if (m_CurrentInteract.m_ActiveHand)
         {
             m_CurrentInteract.m_ActiveHand.Drop();
-        }
-
-        // See if it is a safe zone
-        if (m_CurrentInteract.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
-        {
-            // Do checkpoint things
-            m_CurrentInteract.gameObject.GetComponent<CheckpointSystem>().SaveGame();
-            return;
         }
 
         // Rotation
@@ -200,6 +209,15 @@ public class Hand : MonoBehaviour
         // Set held to false
         held = false;
 
+        // Save that this item is removed from this hand
+        if (handIndex == 0)
+        {
+            it.RemoveLeftHandItem();
+        }
+        else
+        {
+            it.RemoveRightHandItem();
+        }
 
     }
 
