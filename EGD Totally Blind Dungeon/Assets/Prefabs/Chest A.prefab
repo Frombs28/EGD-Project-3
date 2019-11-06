@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6200314199454521941}
   - component: {fileID: 667620322802737235}
   - component: {fileID: 5617797656433685483}
+  - component: {fileID: 8706073262872702783}
+  - component: {fileID: 9200334015821944714}
   m_Layer: 0
   m_Name: Chest A
   m_TagString: Untagged
@@ -67,7 +69,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 1306373573446238782, guid: 562ab105d45ccef4ea89374a8a1ca238,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1.1
   Loop: 1
@@ -190,6 +192,33 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.01, y: 1.35, z: 1}
+  m_Center: {x: 0, y: 0.67, z: 0}
+--- !u!114 &8706073262872702783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404012525543197184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd005efcc7725a48bca63297ee4a4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aud: {fileID: 8555355321541907211}
+  clip: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
+--- !u!65 &9200334015821944714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404012525543197184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25, y: 1, z: 25}
   m_Center: {x: 0, y: 0.67, z: 0}
 --- !u!1 &2363155549366562668
 GameObject:
