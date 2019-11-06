@@ -21,6 +21,7 @@ public class Interact : MonoBehaviour
     public float frequency2 = 20f;
     public int TAP_HAPTIC;
     int firstTime;
+    public int itemIndex = 0;
 
     private void Start()
     {
