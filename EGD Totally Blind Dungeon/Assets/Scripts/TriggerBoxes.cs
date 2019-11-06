@@ -14,6 +14,7 @@ public class TriggerBoxes : MonoBehaviour
         {
             //enemy.SetActive(false);
             enemy.GetComponentInChildren<FiniteStateMachine>().enabled = false;
+            enemy.GetComponent<MoveTo>().enabled = false;
         }
     }
 
@@ -31,6 +32,7 @@ public class TriggerBoxes : MonoBehaviour
             foreach (GameObject enemy in Enemies)
             {
                 enemy.GetComponentInChildren<FiniteStateMachine>().enabled = true;
+                enemy.GetComponent<MoveTo>().enabled = true;
             }
             go = true;
         }
