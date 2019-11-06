@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioRaycast : MonoBehaviour
 {
     public string lowpassVarName;
+    public float fadeTime = 0.5f;
     private AudioSource aud;
     private GameObject player;
     private Vector3 direction;
@@ -42,7 +43,7 @@ public class AudioRaycast : MonoBehaviour
                     dampening = hit.transform.gameObject.GetComponent<AudioMaterial>().dampening;
                     dampening = 22000 * Mathf.Pow(dampening, 2);
                     aud.outputAudioMixerGroup.audioMixer.GetFloat(lowpassVarName, out oldDamp);
-                    StartCoroutine(FadeTo(1f, oldDamp, dampening));
+                    StartCoroutine(FadeTo(fadeTime, oldDamp, dampening));
                 }
             }
             else
@@ -52,7 +53,7 @@ public class AudioRaycast : MonoBehaviour
                     currentObj = null;
                     StopAllCoroutines();
                     aud.outputAudioMixerGroup.audioMixer.GetFloat(lowpassVarName, out oldDamp);
-                    StartCoroutine(FadeTo(1f, oldDamp, 22000));
+                    StartCoroutine(FadeTo(fadeTime, oldDamp, 22000));
                 }
             }
         }
@@ -63,10 +64,10 @@ public class AudioRaycast : MonoBehaviour
     {
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
         {
-            dampSetVal = aStart + Mathf.Lerp(oldDamp, dampening, t);
+            dampSetVal =  Mathf.Lerp(aStart, aEnd, t);
             aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, dampSetVal);
             yield return null;
         }
-        aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, dampening);
+        aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, aEnd);
     }
 }
