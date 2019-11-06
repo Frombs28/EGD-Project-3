@@ -13,6 +13,7 @@ public class MoveTo : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.destination = player.position;
+        agent.stoppingDistance = 3.5f;
     }
 
     // Update is called once per frame
@@ -20,21 +21,22 @@ public class MoveTo : MonoBehaviour
     {
         if (IsInRange())
         {
-            //Debug.Log("Range");
+            Debug.Log("Stopped");
             //How we want it to move goes here
 
             //gameObject.GetComponent<AIController>().MoveCircular();
         }
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    // flattens the vector3
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
+        agent.destination = player.position;
 
     }
     public bool IsInRange()
     {
-        if (Mathf.Abs((player.transform.position - gameObject.transform.position).magnitude) < 4f)
+        if (Mathf.Abs((player.transform.position - gameObject.transform.position).magnitude) <= 3.5f)
         {
-            Debug.Log((player.transform.position - gameObject.transform.position).magnitude);
+            //Debug.Log((player.transform.position - gameObject.transform.position).magnitude);
 
             return true;
         }

@@ -40,7 +40,8 @@ AudioSource:
   m_GameObject: {fileID: 2078441534}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8373684798188234158, guid: 562ab105d45ccef4ea89374a8a1ca238,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -51,10 +52,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.9533482
-  MaxDistance: 500
+  MinDistance: 0.5
+  MaxDistance: 3
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -63,22 +64,40 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 1.0159416
+      inSlope: -2.459993
+      outSlope: -2.459993
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.14634146
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.33333334
+      value: 0.5
+      inSlope: -1.5005997
+      outSlope: -1.5005997
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6666667
+      value: 0.25
+      inSlope: -0.37514994
+      outSlope: -0.37514994
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9918823
+      value: 0
+      inSlope: -0.16673319
+      outSlope: -0.16673319
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -225,9 +244,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -236,22 +255,49 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 1.0119553
+      inSlope: -2.186139
+      outSlope: -2.186139
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.39295393
+    - serializedVersion: 3
+      time: 0.05095215
+      value: 0.44021606
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.34038392
+      value: 0.11050415
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.03729248
+      inSlope: -0.15631224
+      outSlope: -0.15631224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.10003988
+      outSlope: -0.10003988
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -347,6 +393,8 @@ MonoBehaviour:
   amplitude2: 0.1
   frequency2: 20
   TAP_HAPTIC: 1
+  pickupSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
+  itemIndex: 1
 --- !u!114 &2754597557741181940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,11 +442,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7151996776496230629}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword 1B
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword 1B
       objectReference: {fileID: 0}
     - target: {fileID: -5701257375759989674, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}

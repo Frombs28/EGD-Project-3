@@ -8,6 +8,7 @@ TagManager:
   - Hilt
   - Enemy Weapon
   - Enemy
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,11 @@ public class Hand : MonoBehaviour
     private bool touching_interactable_haptic;
     public float amplitude = 0.1f;
     public float frequency = 20f;
+    public int handIndex = 0;    // Determines which hand this is: 0 is left, 1 is right
+    public ItemTracker it;
+    float curSavingTime = 0;
+    float maxSavingTime = 5f;
+    bool haveSaved = false;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -34,7 +39,7 @@ public class Hand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        it = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemTracker>();
     }
 
     // Update is called once per frame
@@ -64,6 +69,11 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            curSavingTime = 0f;
+            return;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -73,6 +83,11 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            haveSaved = false;
+            return;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -82,6 +97,16 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint")&&!haveSaved)
+        {
+            curSavingTime += Time.deltaTime;
+            if(curSavingTime >= maxSavingTime)
+            {
+                it.SavePlayer();
+                haveSaved = true;
+                return;
+            }
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -147,6 +172,16 @@ public class Hand : MonoBehaviour
 
         // Set held equal to true
         held = true;
+
+        // Save that this item is in this hand
+        if(handIndex == 0)
+        {
+            it.NewLeftHandItem(m_CurrentInteract);
+        }
+        else
+        {
+            it.NewRightHandItem(m_CurrentInteract);
+        }
     }
 
     public void Drop()
@@ -180,6 +215,15 @@ public class Hand : MonoBehaviour
         // Set held to false
         held = false;
 
+        // Save that this item is removed from this hand
+        if (handIndex == 0)
+        {
+            it.RemoveLeftHandItem();
+        }
+        else
+        {
+            it.RemoveRightHandItem();
+        }
 
     }
 
@@ -198,6 +242,51 @@ public class Hand : MonoBehaviour
             }
         }
         return nearest;
+    }
+
+    public void spawningItem(Interact item)
+    {
+        // this may or may not be necessary // m_ContactInteracts.Add(item.gameObject.GetComponent<Interact>());
+        m_CurrentInteract = item;
+
+        // Null check
+        if (m_CurrentInteract == null)
+        {
+            return;
+        }
+
+        // Rotation
+        m_CurrentInteract.transform.eulerAngles = new Vector3(0, 0, 0);
+
+        // Position
+        m_CurrentInteract.transform.position = transform.position;
+
+        // Attach
+        Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        currentWrist = Instantiate(swordWrist);
+        ConfigurableJoint cj = currentWrist.GetComponent<ConfigurableJoint>();
+        cj.connectedBody = targetBody;
+        Transform targetTrans = currentWrist.GetComponent<Transform>();
+        targetTrans.SetParent(transform);
+        targetTrans.localRotation = Quaternion.Euler(90f, 360f, 90f);
+        targetTrans.localPosition = new Vector3(0.037f, 0, 0.05f);
+
+        // Set active hand
+        m_CurrentInteract.m_ActiveHand = this;
+
+        // Set held equal to true
+        held = true;
+
+        // Save that this item is in this hand
+        if (handIndex == 0)
+        {
+            it.NewLeftHandItem(m_CurrentInteract);
+        }
+        else
+        {
+            it.NewRightHandItem(m_CurrentInteract);
+        }
+
     }
 
 

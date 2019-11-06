@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6577134695563301500}
   - component: {fileID: 6577134695563301499}
   - component: {fileID: 6577134695563301498}
+  - component: {fileID: 1600512311}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Sensitivity: 0.1
-  m_MaxSpeed: 1
+  m_MaxSpeed: 2
   m_DeadZone: 0.2
   m_MovePress:
     actionPath: /actions/default/in/Down
@@ -72,6 +73,23 @@ MonoBehaviour:
   m_MoveValue:
     actionPath: /actions/default/in/TouchPadPos
     needsReinit: 0
+--- !u!114 &1600512311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577134695563301497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56f5545f2ed9cb41865691b1660ea24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndices:
+  - {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
+  rightHand: {fileID: 7510292049339216300}
+  leftHand: {fileID: 7510292049339251598}
+  sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
 --- !u!1 &7510292049339182782
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,10 +390,18 @@ MonoBehaviour:
   m_GrabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  m_VibrateAction:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
   snapPositionOffset: {x: 0, y: 0, z: 0}
   snapRotationOffset: {x: 0, y: 0, z: 0}
   swordWrist: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
+  source: 2
+  amplitude: 0.04
+  frequency: 20
+  handIndex: 1
+  it: {fileID: 1600512311}
 --- !u!135 &7510292049339216299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -513,10 +539,18 @@ MonoBehaviour:
   m_GrabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  m_VibrateAction:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
   snapPositionOffset: {x: 0, y: 0, z: 0}
   snapRotationOffset: {x: 0, y: 0, z: 0}
   swordWrist: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
+  source: 1
+  amplitude: 0.04
+  frequency: 20
+  handIndex: 0
+  it: {fileID: 1600512311}
 --- !u!135 &7510292049339251597
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -571,10 +605,10 @@ GameObject:
   - component: {fileID: 7509716293108571960}
   - component: {fileID: 7529709870880765794}
   - component: {fileID: 7576795953585768204}
-  - component: {fileID: 7510428930850745127}
+  - component: {fileID: 2106518861}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,8 +636,8 @@ Camera:
   m_GameObject: {fileID: 7510428930850745126}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -644,7 +678,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7510428930850745126}
   m_Enabled: 1
---- !u!114 &7510428930850745127
+--- !u!114 &2106518861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
