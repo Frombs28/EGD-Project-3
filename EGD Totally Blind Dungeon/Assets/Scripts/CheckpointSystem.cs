@@ -15,4 +15,9 @@ public class CheckpointSystem : MonoBehaviour
     {
         
     }
+
+    public void SaveGame()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ItemTracker>().SavePlayer();
+    }
 }
