@@ -200,6 +200,15 @@ public class Hand : MonoBehaviour
         // Set held to false
         held = false;
 
+        // Save that this item is removed from this hand
+        if (handIndex == 0)
+        {
+            it.RemoveLeftHandItem();
+        }
+        else
+        {
+            it.RemoveRightHandItem();
+        }
 
     }
 

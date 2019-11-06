@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemTracker : MonoBehaviour
 {
@@ -28,6 +29,23 @@ public class ItemTracker : MonoBehaviour
         {
             LoadPlayer();
         }
+        else
+        {
+            SaveSystem.SavePlayer(this.gameObject);
+            PlayerPrefs.SetInt("Checkpoint", 0);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.SetInt("Checkpoint", 0);
+            /*
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            */
+        }
     }
 
     public void NewLeftHandItem(Interact item)
@@ -38,6 +56,16 @@ public class ItemTracker : MonoBehaviour
     public void NewRightHandItem(Interact item)
     {
         items[1] = item.itemIndex;
+    }
+
+    public void RemoveLeftHandItem()
+    {
+        items[0] = 0;
+    }
+
+    public void RemoveRightHandItem()
+    {
+        items[1] = 0;
     }
 
     public int[] GetItems()
