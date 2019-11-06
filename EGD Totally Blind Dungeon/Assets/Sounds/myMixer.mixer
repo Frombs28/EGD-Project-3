@@ -58,6 +58,7 @@ AudioMixerGroupController:
   m_GroupID: 384024169f084c44f91784f495be6ef3
   m_Children:
   - {fileID: -8373684798188234158}
+  - {fileID: 1306373573446238782}
   m_Volume: 4fe2a51a77ec0a14bb365c0bc9910e22
   m_Pitch: 5b318b53784913f4d8d4c99fe4de13ae
   m_Send: 099b9154efbaa4a46b951cda703f9de7
@@ -158,6 +159,7 @@ AudioMixerController:
     - 37f025396abdb3246b6ec06e62859c4a
     - 384024169f084c44f91784f495be6ef3
     - da121e0bd4a2ed442a9585e78eaf7400
+    - 1e00310a5e0d28340b7e9da95616986d
     name: SFX
   - guids:
     - 2bc931cf474d9f144a8001fce47918aa
@@ -219,6 +221,39 @@ AudioMixerSnapshotController:
     e5509bd55e5dd3b4cbe2e4d33abfa749: 1
     d082d6c69e8011b4ea9e66c2281bb0e9: 0
   m_TransitionOverrides: {}
+--- !u!243 &1306373573446238782
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chest
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1e00310a5e0d28340b7e9da95616986d
+  m_Children: []
+  m_Volume: cbee0b2644ea72447afe897c9861a021
+  m_Pitch: bf9f588e70d96e54595ab45bdf6f02df
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2097733912603040013}
+  m_UserColorIndex: 5
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &2097733912603040013
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: ce1ac5f5d49d7f8408903e3d2ef5ade5
+  m_EffectName: Attenuation
+  m_MixLevel: ffacb8a4f986c6b4f8f6ac92f6936076
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &3497171320622137127
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
