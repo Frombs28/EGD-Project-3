@@ -263,8 +263,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0.39295393
     - serializedVersion: 3
-      time: 0.2
-      value: 0.5
+      time: 0.05095215
+      value: 0.44021606
       inSlope: -2.5009959
       outSlope: -2.5009959
       tangentMode: 0
@@ -272,8 +272,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.4
-      value: 0.25
+      time: 0.34038392
+      value: 0.11050415
       inSlope: -0.62524897
       outSlope: -0.62524897
       tangentMode: 0
@@ -282,7 +282,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 0.8
-      value: 0.125
+      value: 0.03729248
       inSlope: -0.15631224
       outSlope: -0.15631224
       tangentMode: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   frequency2: 20
   TAP_HAPTIC: 1
   pickupSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
+  itemIndex: 1
 --- !u!114 &2754597557741181940
 MonoBehaviour:
   m_ObjectHideFlags: 0

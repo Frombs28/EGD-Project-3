@@ -7,6 +7,11 @@ public class AudioRaycast : MonoBehaviour
     public string lowpassVarName;
     private AudioSource aud;
     private GameObject player;
+    private Vector3 direction;
+    private GameObject currentObj = null;
+    private float dampening = 0;
+    private float oldDamp = 0;
+    private float dampSetVal = 0f;
 
     //change this if we need to ignore some layers or something like that
     private int layerMask;
@@ -15,7 +20,8 @@ public class AudioRaycast : MonoBehaviour
     {
         layerMask = LayerMask.GetMask("Wall");
         aud = GetComponent<AudioSource>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("MainCamera");
+        aud.outputAudioMixerGroup.audioMixer.GetFloat(lowpassVarName, out oldDamp);
     }
 
     // Update is called once per frame
@@ -24,25 +30,43 @@ public class AudioRaycast : MonoBehaviour
         if (aud.isPlaying)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, player.transform.position, out hit,
+            direction = player.transform.position - transform.position;
+            direction = direction.normalized;
+            if (Physics.Raycast(transform.position, direction, out hit,
                 Vector3.Distance(transform.position, player.transform.position), layerMask))
             {
-                print(hit.collider.gameObject.name);
-                //print(hit.collider.gameObject.layer);
-                float dampening = hit.transform.gameObject.GetComponent<AudioMaterial>().dampening;
-                //print(dampening);
-
-                //get audio mixer and dampen by using low passes and such
-                aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, 22000 * Mathf.Pow(dampening, 2));
-                /*float temp;
-                print(aud.outputAudioMixerGroup.audioMixer.GetFloat("BGMLowpass", out temp));
-                print(temp);*/
+                if(hit.collider.gameObject != currentObj)
+                {
+                    StopAllCoroutines();
+                    currentObj = hit.collider.gameObject;
+                    dampening = hit.transform.gameObject.GetComponent<AudioMaterial>().dampening;
+                    dampening = 22000 * Mathf.Pow(dampening, 2);
+                    aud.outputAudioMixerGroup.audioMixer.GetFloat(lowpassVarName, out oldDamp);
+                    StartCoroutine(FadeTo(1f, oldDamp, dampening));
+                }
             }
             else
             {
-                aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, 22000);
+                if (currentObj != null)
+                {
+                    currentObj = null;
+                    StopAllCoroutines();
+                    aud.outputAudioMixerGroup.audioMixer.GetFloat(lowpassVarName, out oldDamp);
+                    StartCoroutine(FadeTo(1f, oldDamp, 22000));
+                }
             }
         }
         
+    }
+
+    IEnumerator FadeTo(float aTime, float aStart, float aEnd)
+    {
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+        {
+            dampSetVal = aStart + Mathf.Lerp(oldDamp, dampening, t);
+            aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, dampSetVal);
+            yield return null;
+        }
+        aud.outputAudioMixerGroup.audioMixer.SetFloat(lowpassVarName, dampening);
     }
 }

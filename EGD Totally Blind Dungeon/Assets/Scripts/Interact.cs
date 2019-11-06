@@ -23,6 +23,7 @@ public class Interact : MonoBehaviour
     public int TAP_HAPTIC;
     int firstTime;
     public AudioClip pickupSFX;
+    public int itemIndex = 0;
 
     private void Start()
     {

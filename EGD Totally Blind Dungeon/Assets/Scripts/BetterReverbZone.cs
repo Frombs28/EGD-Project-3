@@ -22,7 +22,6 @@ public class BetterReverbZone : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            print("here");
             StopAllCoroutines();
             mixer.SetFloat("VerbRoom", room);
             mixer.SetFloat("VerbDecay", decayTime);
@@ -35,7 +34,6 @@ public class BetterReverbZone : MonoBehaviour
     {       
         if (other.tag == "Player")
         {
-            print("here2");
             StopAllCoroutines();
             mixer.GetFloat("VerbVolume", out verbVolume);
             StartCoroutine(FadeOut(fadeTime, verbVolume));
