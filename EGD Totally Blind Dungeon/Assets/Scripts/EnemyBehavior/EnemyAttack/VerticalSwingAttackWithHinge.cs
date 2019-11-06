@@ -8,33 +8,37 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     public float attackSpeed = 100f;
     public float attackTime = 2f;
     public float tickTime = .2f;
+    public float downMovementSpeed = .5f;
     Vector3 originalOffset;
     Vector3 originalRotation;
     public GameObject objectWithMaterial = null;
+    public GameObject jointPrefab;
+    public GameObject swordPosition;
     Rigidbody rb;
     Rigidbody enemyrb;
-    HingeJoint joint;
+    ConfigurableJoint joint;
+    bool movingWrist = false;
     //Vector3 originalScale;
     private void Start() {
         originalOffset = weapon.transform.localPosition;
         originalRotation = weapon.transform.eulerAngles;
         rb = weapon.GetComponent<Rigidbody>();
-        joint = weapon.GetComponent<HingeJoint>();
         enemyrb = GetComponent<Rigidbody>();
         //originalScale = weapon.transform.localScale;
-        StartAttack();
+        //StartAttack();
     }
     private void Update()
     {
+        if(!movingWrist) weapon.transform.localPosition = originalOffset;
         //weapon.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
+        weapon.transform.parent = null;
         AudioSource audio = weapon.GetComponent<AudioSource>();
-        joint.axis = new Vector3(0,0,1);
         if(audio!=null)audio.Play();
         attackCompleted = false;
-        enemyrb.constraints |= RigidbodyConstraints.FreezeRotationY;
+        //enemyrb.constraints |= RigidbodyConstraints.FreezeRotationY;
         //weapon.transform.rotation = transform.rotation;
         weapon.transform.localPosition = originalOffset;
         //if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
@@ -48,12 +52,22 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     }
 
     IEnumerator SwingSword(){
-        rb.AddForce(weapon.transform.right*attackSpeed);
+        GameObject jointGO = Instantiate(jointPrefab, swordPosition.transform.position, Quaternion.identity);
+        weapon.transform.SetParent(null);
+        weapon.transform.position = swordPosition.transform.position;
+        weapon.transform.eulerAngles = originalRotation+transform.eulerAngles;
+        jointGO.transform.SetParent(transform);
+        joint = jointGO.GetComponent<ConfigurableJoint>();
+        jointGO.transform.eulerAngles = weapon.transform.eulerAngles;
+        joint.connectedBody = rb;
         float currentTime = 0.0f;
+        movingWrist = true;
+        StartCoroutine(MoveWrist(jointGO));
         while(currentTime<attackTime){
             currentTime+=tickTime;
             yield return new WaitForSeconds(tickTime);
         }
+        movingWrist = false;
         /*frameCount = 0;
         parryFrame = 45;
         parryable = false;
@@ -81,27 +95,27 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         if(objectWithMaterial!=null){
             objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }*/
-        yield return null;
         StartCoroutine("UnSwingSword");
     }
-
+    IEnumerator MoveWrist(GameObject wrist){
+        while(movingWrist){
+            wrist.transform.eulerAngles+=Vector3.right*attackSpeed*Time.deltaTime;
+            wrist.transform.position +=-Vector3.up*downMovementSpeed*Time.deltaTime;
+            //wrist.transform.position += new Vector3(0,-1*Time.deltaTime,0);
+            yield return null;
+        }
+        
+    }
     IEnumerator UnSwingSword()
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        rb.AddForce(-weapon.transform.right*attackSpeed);
-        float currentTime = 0.0f;
-        yield return null;
-        while(Mathf.DeltaAngle(weapon.transform.eulerAngles.z,originalRotation.z)>5){
-            yield return null;
-        }
-        attackCompleted = true;
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        weapon.transform.localPosition = originalOffset;
+        Destroy(joint.gameObject);
+        weapon.transform.SetParent(swordPosition.transform);
+        //weapon.transform.position = originalOffset;
         weapon.transform.eulerAngles = originalRotation;
-        enemyrb.constraints &= ~RigidbodyConstraints.FreezeRotationY;
-        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        attackCompleted = true;
+        yield return null;
     }
 
 }
