@@ -8,6 +8,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     public float attackSpeed = 100f;
     public float attackTime = 2f;
     public float tickTime = .2f;
+    public float downMovementSpeed = .5f;
     Vector3 originalOffset;
     Vector3 originalRotation;
     public GameObject objectWithMaterial = null;
@@ -99,6 +100,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     IEnumerator MoveWrist(GameObject wrist){
         while(movingWrist){
             wrist.transform.eulerAngles+=Vector3.right*attackSpeed*Time.deltaTime;
+            wrist.transform.position +=-Vector3.up*downMovementSpeed*Time.deltaTime;
             //wrist.transform.position += new Vector3(0,-1*Time.deltaTime,0);
             yield return null;
         }
