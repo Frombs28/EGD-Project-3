@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3764021360864505328}
   - component: {fileID: -6985601901200767736}
   - component: {fileID: 7434514420333175848}
-  m_Layer: 0
+  - component: {fileID: 1811062589}
+  m_Layer: 12
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +80,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.54, z: 2.51}
   m_Center: {x: 1.18, y: 1.22, z: 0.08}
+--- !u!114 &1811062589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848973042147259033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af791efb9f0ec5c46810084a3600487c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: 0
+  dampening: 0.5
 --- !u!1 &8417764813302584535
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +105,7 @@ GameObject:
   - component: {fileID: 8215181248781339267}
   - component: {fileID: 2522394584814490404}
   - component: {fileID: 4570901774058162711}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c72a61f3c0cc446ba88aba4ec341b6f6, type: 2}
+  - {fileID: 2100000, guid: c0bd73ffb34399d4d8c7a61d3c99fff0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

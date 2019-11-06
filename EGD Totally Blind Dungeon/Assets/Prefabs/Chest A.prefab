@@ -71,7 +71,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.1
+  m_Pitch: 1.25
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -81,7 +81,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -90,22 +90,49 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 1.0119553
+      inSlope: -2.8148806
+      outSlope: -2.8148806
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.29810297
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.5
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.25
+      inSlope: -0.62524897
+      outSlope: -0.62524897
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8
+      value: 0.125
+      inSlope: -0.15631224
+      outSlope: -0.15631224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.19836658
+      outSlope: -0.19836658
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.582656
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -180,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca22281d27ebf504d972fd01bbf069b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowpassVarName: ChestLowpass
 --- !u!65 &5617797656433685483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,8 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd005efcc7725a48bca63297ee4a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aud: {fileID: 8555355321541907211}
-  clip: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
 --- !u!65 &9200334015821944714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,7 +303,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c1e7b3cd07fde4e60b303b9806c0a3f5, type: 2}
+  - {fileID: 2100000, guid: aec4f62919044664ebdedf67ae2e598d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
