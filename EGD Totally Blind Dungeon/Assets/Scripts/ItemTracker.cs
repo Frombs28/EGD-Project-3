@@ -59,12 +59,12 @@ public class ItemTracker : MonoBehaviour
 
     public void NewLeftHandItem(Interact item)
     {
-        items[0] = item.itemIndex;
+        //items[0] = item.itemIndex;
     }
 
     public void NewRightHandItem(Interact item)
     {
-        items[1] = item.itemIndex;
+        //items[1] = item.itemIndex;
     }
 
     public void RemoveLeftHandItem()

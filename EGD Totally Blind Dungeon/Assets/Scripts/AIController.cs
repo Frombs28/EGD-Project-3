@@ -43,7 +43,7 @@ public class AIController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         //velocity = 5;
         if(verticalSwing == null) verticalSwing = gameObject.GetComponent<EnemyAttack>();
-        currentAttack = verticalSwing;
+        currentAttack = null;
         following = false;
         fleeing = false;
     }

@@ -18,12 +18,15 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     Rigidbody enemyrb;
     ConfigurableJoint joint;
     bool movingWrist = false;
+
+    public float currentTime;
     //Vector3 originalScale;
     private void Start() {
         originalOffset = weapon.transform.localPosition;
         originalRotation = weapon.transform.eulerAngles;
         rb = weapon.GetComponent<Rigidbody>();
         enemyrb = GetComponent<Rigidbody>();
+        currentTime = 0f;
         //originalScale = weapon.transform.localScale;
         //StartAttack();
     }
@@ -63,13 +66,14 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         float currentTime = 0.0f;
         movingWrist = true;
         StartCoroutine(MoveWrist(jointGO));
+        StartCoroutine(SwingSwordParry());
         while(currentTime<attackTime){
             currentTime+=tickTime;
             yield return new WaitForSeconds(tickTime);
         }
         movingWrist = false;
-        /*frameCount = 0;
-        parryFrame = 45;
+        frameCount = 0;
+        /*parryFrame = 45;
         parryable = false;
         attackCompleted = false;
         if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -99,7 +103,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     }
     IEnumerator MoveWrist(GameObject wrist){
         while(movingWrist){
-            wrist.transform.eulerAngles+=Vector3.right*attackSpeed*Time.deltaTime;
+            wrist.transform.localEulerAngles+=Vector3.forward*attackSpeed*-Time.deltaTime;
             wrist.transform.position +=-Vector3.up*downMovementSpeed*Time.deltaTime;
             //wrist.transform.position += new Vector3(0,-1*Time.deltaTime,0);
             yield return null;
@@ -115,7 +119,42 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         //weapon.transform.position = originalOffset;
         weapon.transform.eulerAngles = originalRotation;
         attackCompleted = true;
+        parryable = false;
+        if(objectWithMaterial!=null){
+            objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        }
         yield return null;
+    }
+
+    IEnumerator SwingSwordParry(){
+        parryFrame = 45;
+        parryable = false;
+        attackCompleted = false;
+        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        float currentAngle = angle;
+        float startTime = Time.realtimeSinceStartup;
+        while(attackTime > currentTime){
+            frameCount++;
+            currentTime += Time.deltaTime;
+            float curTime = Time.realtimeSinceStartup;
+            //Debug.Log(curTime-startTime);
+            //Debug.Log(frameCount);
+            if (frameCount >= parryFrame && !parryable)
+            {
+                parryable = true;
+                //Debug.Log("Parryable!!");
+                if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            }
+            //weapon.transform.RotateAround(transform.position, transform.right * -1, attackSpeed*direction*Time.deltaTime);
+            //currentAngle-=attackSpeed*Time.deltaTime;
+            //weapon.transform.localScale = originalScale;
+            yield return null;
+        }
+        currentTime = 0f;
+        parryable = false;
+        if(objectWithMaterial!=null){
+            objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        }
     }
 
 }
