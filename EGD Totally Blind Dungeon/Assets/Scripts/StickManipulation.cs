@@ -24,6 +24,10 @@ public class StickManipulation : MonoBehaviour
     private float footTimer = 0f;
     public AudioSource footstepSource;
     private bool playing = false;
+    private GameObject cam;
+    private int matIndex = 0;
+    private int randomRet = 0;
+    private RaycastHit hit;
 
     private void Awake()
     {
@@ -34,6 +38,7 @@ public class StickManipulation : MonoBehaviour
     {
         m_CameraRig = SteamVR_Render.Top().origin;
         m_Head = SteamVR_Render.Top().head;
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     private void Update()
@@ -84,6 +89,14 @@ public class StickManipulation : MonoBehaviour
             if (!playing)
             {
                 footTimer = 0;
+
+                Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5);
+                if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                {
+                    matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                }
+                randomRet = Random.Range(0, AudioMaster.staticFootstepSounds[matIndex].Length);
+                footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];
                 footstepSource.Play();
                 playing = true;
             }
@@ -101,7 +114,16 @@ public class StickManipulation : MonoBehaviour
             movement += orientation * (m_SpeedX * Vector3.right) * Time.deltaTime;
             if (!playing)
             {
+
                 footTimer = 0;
+
+                Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5);
+                if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                {
+                    matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                }
+                randomRet = Random.Range(0, AudioMaster.staticFootstepSounds[matIndex].Length);
+                footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];
                 footstepSource.Play();
                 playing = true;
             }

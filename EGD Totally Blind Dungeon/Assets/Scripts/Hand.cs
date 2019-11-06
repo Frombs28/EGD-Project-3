@@ -121,10 +121,18 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.GetComponent<Interact>().m_ActiveHand != null)
+        if(other.transform.parent != null)
+        {
+            if (other.transform.parent.gameObject.GetComponent<Interact>().m_ActiveHand != null)
+            {
+                return;
+            }
+        }
+        else if(other.gameObject.GetComponent<Interact>().m_ActiveHand != null)
         {
             return;
         }
+
         m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude, source);
     }
 

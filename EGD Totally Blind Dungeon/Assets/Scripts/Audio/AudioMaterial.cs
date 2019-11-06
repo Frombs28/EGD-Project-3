@@ -39,4 +39,16 @@ public class AudioMaterial : MonoBehaviour
         int ret = (x * matList.Count ) + y;
         return ret;
     }
+    
+    public int matToIndex()
+    {
+        for(int i = 0; i < matList.Count; i++)
+        {
+            if(mat == matList[i])
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

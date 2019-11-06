@@ -8,11 +8,19 @@ public class AudioMaster : MonoBehaviour
     public static AudioClip[] staticMatSounds;
     public AudioClip[] scrapeSounds;
     public static AudioClip[] staticScrapeSounds;
+    public AudioClip[] woodFootsteps;
+    public AudioClip[] metalFootsteps;
+    public AudioClip[] stoneFootsteps;
+    public static List<AudioClip[]> staticFootstepSounds;
     // Start is called before the first frame update
     void Start()
     {
         staticMatSounds = matSounds;
         staticScrapeSounds = scrapeSounds;
+        staticFootstepSounds = new List<AudioClip[]>();
+        staticFootstepSounds.Add(woodFootsteps);
+        staticFootstepSounds.Add(metalFootsteps);
+        staticFootstepSounds.Add(stoneFootsteps);
     }
 
     // Update is called once per frame
