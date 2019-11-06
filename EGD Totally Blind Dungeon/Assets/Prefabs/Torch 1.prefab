@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2593513115709729861}
   - component: {fileID: 2593513115709729862}
   - component: {fileID: 2593513115709729863}
+  - component: {fileID: 937090948}
+  - component: {fileID: 937090949}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -182,6 +184,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd005efcc7725a48bca63297ee4a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!169 &937090948
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593513115709729979}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &937090949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593513115709729979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca22281d27ebf504d972fd01bbf069b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
 --- !u!1 &5827639665154222694
 GameObject:
   m_ObjectHideFlags: 0

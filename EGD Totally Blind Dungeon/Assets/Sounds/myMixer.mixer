@@ -106,22 +106,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &-5159703355610353215
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 749490cd6e7622e4a933dc96848e0cae
-  m_EffectName: Lowpass Simple
-  m_MixLevel: 8c32ec26774ec2e4aa0989eea223ba40
-  m_Parameters:
-  - m_ParameterName: Cutoff freq
-    m_GUID: 881e54b9136cb7b44a8c53e854a276b9
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!243 &-5103697954946095934
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -274,16 +258,12 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 915b153281355f840b8429de5950b429
     name: BGMLowpass
-  - guid: 881e54b9136cb7b44a8c53e854a276b9
-    name: ChestLowpass
   - guid: 60cc41e5fab094b43a920bbda5c056d4
     name: VerbRoom
   - guid: e5509bd55e5dd3b4cbe2e4d33abfa749
     name: VerbDecay
   - guid: 87eb977536e86234784beb6c8bda60a5
     name: VerbVolume
-  - guid: 40fed477660033c42bdb1c48d0a1880d
-    name: WindLowpass
   m_AudioMixerGroupViews:
   - guids:
     - 2bc931cf474d9f144a8001fce47918aa
@@ -417,7 +397,6 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 5263311305954003392}
   - {fileID: 2097733912603040013}
-  - {fileID: -5159703355610353215}
   m_UserColorIndex: 5
   m_Mute: 0
   m_Solo: 0
@@ -466,7 +445,6 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: -2237926248448430181}
   - {fileID: -8254266463750884048}
-  - {fileID: 4096580778926528417}
   m_UserColorIndex: 5
   m_Mute: 0
   m_Solo: 0
@@ -492,22 +470,6 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &4096580778926528417
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: ea85ce6266de306479f642dd6a4eb18e
-  m_EffectName: Lowpass Simple
-  m_MixLevel: 9af9621ed6bea7644b534d0e668ff287
-  m_Parameters:
-  - m_ParameterName: Cutoff freq
-    m_GUID: 40fed477660033c42bdb1c48d0a1880d
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &5263311305954003392
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
