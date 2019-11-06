@@ -20,6 +20,11 @@ public class StickManipulation : MonoBehaviour
     private Transform m_CameraRig = null;
     private Transform m_Head = null;
 
+    public float footstepTime = 0.5f;
+    private float footTimer = 0f;
+    public AudioSource footstepSource;
+    private bool playing = false;
+
     private void Awake()
     {
         m_CharacterController = GetComponent<CharacterController>();
@@ -76,6 +81,12 @@ public class StickManipulation : MonoBehaviour
             m_SpeedY += m_MoveValue.axis.y * m_Sensitivity;
             m_SpeedY = Mathf.Clamp(m_SpeedY, -m_MaxSpeed, m_MaxSpeed);
             movement += orientation * (m_SpeedY * Vector3.forward) * Time.deltaTime;
+            if (!playing)
+            {
+                footTimer = 0;
+                footstepSource.Play();
+                playing = true;
+            }
         }
 
         else
@@ -88,11 +99,32 @@ public class StickManipulation : MonoBehaviour
             m_SpeedX += m_MoveValue.axis.x * m_Sensitivity;
             m_SpeedX = Mathf.Clamp(m_SpeedX, -m_MaxSpeed, m_MaxSpeed);
             movement += orientation * (m_SpeedX * Vector3.right) * Time.deltaTime;
+            if (!playing)
+            {
+                footTimer = 0;
+                footstepSource.Play();
+                playing = true;
+            }
         }
 
         else
         {
             m_SpeedX = 0;
+        }
+
+        if(m_SpeedX == 0 && m_SpeedY == 0)
+        {
+            playing = false;
+            footstepSource.Stop();
+        }
+
+        if (playing)
+        {
+            footTimer += Time.deltaTime;
+            if (footTimer > footstepTime)
+            {
+                playing = false;
+            }
         }
 
         // Apply
