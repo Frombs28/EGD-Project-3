@@ -23,7 +23,9 @@ public class Hand : MonoBehaviour
     public float frequency = 20f;
     public int handIndex = 0;    // Determines which hand this is: 0 is left, 1 is right
     public ItemTracker it;
-    private bool inCheckPoint;
+    float curSavingTime = 0;
+    float maxSavingTime = 5f;
+    bool haveSaved = false;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -32,7 +34,6 @@ public class Hand : MonoBehaviour
         //source = gameObject.GetComponent<SteamVR_Input_Sources>();
         //m_Joint = GetComponent<FixedJoint>();
         held = false;
-        inCheckPoint = false;
     }
 
     // Start is called before the first frame update
@@ -48,11 +49,6 @@ public class Hand : MonoBehaviour
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
             print(m_Pose.inputSource + " Trigger Down");
-            if (inCheckPoint && !held)
-            {
-                it.SavePlayer();
-                return;
-            }
             if (!held)
             {
                 Pickup();
@@ -75,7 +71,7 @@ public class Hand : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            inCheckPoint = true;
+            curSavingTime = 0f;
             return;
         }
         if (!other.gameObject.CompareTag("Interact"))
@@ -89,7 +85,7 @@ public class Hand : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            inCheckPoint = false;
+            haveSaved = false;
             return;
         }
         if (!other.gameObject.CompareTag("Interact"))
@@ -101,6 +97,16 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.CompareTag("Checkpoint")&&!haveSaved)
+        {
+            curSavingTime += Time.deltaTime;
+            if(curSavingTime >= maxSavingTime)
+            {
+                it.SavePlayer();
+                haveSaved = true;
+                return;
+            }
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
