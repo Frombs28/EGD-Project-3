@@ -27,8 +27,8 @@ public class ItemTracker : MonoBehaviour
         checkpoint = PlayerPrefs.GetInt("Checkpoint", 0);
         if(checkpoint > 0)
         {
-            LoadPlayer();
             print("Loading...");
+            LoadPlayer();
         }
         else
         {
@@ -43,6 +43,7 @@ public class ItemTracker : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerPrefs.SetInt("Checkpoint", 0);
+            print("Resetting Game!");
             /*
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
