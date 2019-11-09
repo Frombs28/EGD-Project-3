@@ -18,6 +18,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     Rigidbody enemyrb;
     ConfigurableJoint joint;
     bool movingWrist = false;
+    bool interrupted;
 
     public float currentTime;
     //Vector3 originalScale;
@@ -33,24 +34,34 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     private void Update()
     {
         if(!movingWrist) weapon.transform.localPosition = originalOffset;
+        //print(parryable);
         //weapon.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
-        weapon.transform.parent = null;
         AudioSource audio = weapon.GetComponent<AudioSource>();
         if(audio!=null)audio.Play();
         attackCompleted = false;
+        interrupted = false;
+        objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         //enemyrb.constraints |= RigidbodyConstraints.FreezeRotationY;
         //weapon.transform.rotation = transform.rotation;
         weapon.transform.localPosition = originalOffset;
         //if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
+        //weapon.GetComponent<BoxCollider>().enabled = true;
         StartCoroutine("SwingSword");
     }
     public override void InterruptAttack(){
-        StopAllCoroutines();
+        if (interrupted)
+        {
+            return;
+        }
+        interrupted = true;
         parryable = false;
+        StopAllCoroutines();
+        //weapon.GetComponent<BoxCollider>().enabled = false;
         objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+        movingWrist = false;
         StartCoroutine("UnSwingSword");
     }
 
@@ -65,40 +76,13 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         joint.connectedBody = rb;
         float currentTime = 0.0f;
         movingWrist = true;
-        StartCoroutine(MoveWrist(jointGO));
         StartCoroutine(SwingSwordParry());
+        StartCoroutine(MoveWrist(jointGO));
         while(currentTime<attackTime){
             currentTime+=tickTime;
             yield return new WaitForSeconds(tickTime);
         }
         movingWrist = false;
-        frameCount = 0;
-        /*parryFrame = 45;
-        parryable = false;
-        attackCompleted = false;
-        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        float currentAngle = angle;
-        float startTime = Time.realtimeSinceStartup;
-        while(currentAngle > 0){
-            frameCount++;
-            float curTime = Time.realtimeSinceStartup;
-            //Debug.Log(curTime-startTime);
-            //Debug.Log(frameCount);
-            if (frameCount >= parryFrame && !parryable)
-            {
-                parryable = true;
-                //Debug.Log("Parryable!!");
-                if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-            }
-            weapon.transform.RotateAround(transform.position, transform.right * -1, attackSpeed*direction*Time.deltaTime);
-            currentAngle-=attackSpeed*Time.deltaTime;
-            //weapon.transform.localScale = originalScale;
-            yield return null;
-        }
-        parryable = false;
-        if(objectWithMaterial!=null){
-            objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        }*/
         StartCoroutine("UnSwingSword");
     }
     IEnumerator MoveWrist(GameObject wrist){
@@ -112,38 +96,36 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     }
     IEnumerator UnSwingSword()
     {
+        //Debug.Log("Who called me?");
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        Destroy(joint.gameObject);
+        if(joint != null)Destroy(joint.gameObject);
         weapon.transform.SetParent(swordPosition.transform);
-        //weapon.transform.position = originalOffset;
+        weapon.transform.localPosition = originalOffset;
         weapon.transform.eulerAngles = originalRotation;
         attackCompleted = true;
-        parryable = false;
         if(objectWithMaterial!=null){
-            objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            //objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
         yield return null;
     }
 
     IEnumerator SwingSwordParry(){
-        parryFrame = 45;
+        parryFrame = 29;    // 34-35 frames; 34 - parryFrame = frames that it is parryable
+        frameCount = 0;
         parryable = false;
         attackCompleted = false;
-        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if (objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         float currentAngle = angle;
         float startTime = Time.realtimeSinceStartup;
         while(attackTime > currentTime){
             frameCount++;
-            currentTime += Time.deltaTime;
+            //currentTime += Time.deltaTime;
             float curTime = Time.realtimeSinceStartup;
-            //Debug.Log(curTime-startTime);
-            //Debug.Log(frameCount);
             if (frameCount >= parryFrame && !parryable)
             {
                 parryable = true;
-                //Debug.Log("Parryable!!");
-                if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                if (objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             }
             //weapon.transform.RotateAround(transform.position, transform.right * -1, attackSpeed*direction*Time.deltaTime);
             //currentAngle-=attackSpeed*Time.deltaTime;

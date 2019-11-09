@@ -40,10 +40,11 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy Weapon" && velocity > 3.0f)
+        //print(velocity);
+        if (other.tag == "Enemy Weapon" && velocity > 8.0f)
         {
             // Parry
-            GameObject enemy = other.gameObject.transform.parent.gameObject;
+            GameObject enemy = other.gameObject.GetComponent<EnemyWeapon>().myEnemy;
             if (enemy.GetComponent<AIController>().IsParryable())
             {
                 enemy.GetComponent<AIController>().Stun();
