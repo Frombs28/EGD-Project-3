@@ -218,7 +218,7 @@ MonoBehaviour:
   attackTime: 2
   tickTime: 0.2
   sideMovementSpeed: 0.5
-  direction: -1
+  direction: 1
   objectWithMaterial: {fileID: 229531571}
   jointPrefab: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
