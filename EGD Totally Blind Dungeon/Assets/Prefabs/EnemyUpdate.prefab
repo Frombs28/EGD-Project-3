@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &7689104053381141200
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770923997621675771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20.25
+  m_Center: {x: 0, y: 9.47, z: -10.18}
+--- !u!114 &7238016217144129996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770923997621675771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b262d842f5c87e40a6f0f780b984990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 7522696033796200907}
 --- !u!1 &4530439207073170968
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stoppingDistance: 0
 --- !u!195 &7522696033796200956
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -948,6 +976,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4530439207073170972}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 2ed2055b656964b60ac4cb05e61458f9,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2ed2055b656964b60ac4cb05e61458f9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2ed2055b656964b60ac4cb05e61458f9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2ed2055b656964b60ac4cb05e61458f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1018,11 +1061,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1402521
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 2ed2055b656964b60ac4cb05e61458f9,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy 1B
-      objectReference: {fileID: 0}
     - target: {fileID: 7454684095717443179, guid: 2ed2055b656964b60ac4cb05e61458f9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1030,6 +1068,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7df10bdf1ee554e5293cf6f2b283e46f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed2055b656964b60ac4cb05e61458f9, type: 3}
+--- !u!1 &2770923997621675771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2ed2055b656964b60ac4cb05e61458f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6148998607289139186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1166174369468028136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2ed2055b656964b60ac4cb05e61458f9,

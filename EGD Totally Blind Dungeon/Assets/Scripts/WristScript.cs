@@ -49,8 +49,8 @@ public class WristScript : MonoBehaviour
 
             if (magnitude >= swingingVal && angle <= angleVal)
             {
-                print("MAGNITUDE: " + magnitude);
-                print("ANGLE: " + angle);
+                //print("MAGNITUDE: " + magnitude);
+                //print("ANGLE: " + angle);
                 swinging = true;
                 frameForgive = 0;
             }
