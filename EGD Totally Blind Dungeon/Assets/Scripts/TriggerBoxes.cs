@@ -39,7 +39,7 @@ public class TriggerBoxes : MonoBehaviour
             go = true;
         }
     }
-
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player" && go)
@@ -54,4 +54,5 @@ public class TriggerBoxes : MonoBehaviour
             transform.position = startPos;
         }
     }
+    */
 }
