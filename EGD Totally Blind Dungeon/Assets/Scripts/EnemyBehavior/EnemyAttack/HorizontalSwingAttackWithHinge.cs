@@ -105,6 +105,7 @@ public class HorizontalSwingAttackWithHinge : EnemyAttack
         weapon.transform.SetParent(swordPosition.transform);
         weapon.transform.localPosition = originalOffset;
         weapon.transform.eulerAngles = originalRotation;
+        yield return new WaitForSeconds(3);
         attackCompleted = true;
         if(objectWithMaterial!=null){
             //objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
