@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6299396779057412246}
   - component: {fileID: 5840448816760871477}
   - component: {fileID: 3683147023482639369}
+  - component: {fileID: 5901082718600936082}
   m_Layer: 8
   m_Name: Wrist
   m_TagString: Untagged
@@ -143,3 +144,18 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5901082718600936082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8373006499206510450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd8daf4e5bf34e4f88a766dc4076c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingingVal: 0.02
+  angleVal: 15
+  FRAMES: 1

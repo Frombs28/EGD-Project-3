@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132678884738269942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9780253, y: 5.79, z: 0.040242195}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1084840149823242648}
@@ -459,6 +459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sword 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}

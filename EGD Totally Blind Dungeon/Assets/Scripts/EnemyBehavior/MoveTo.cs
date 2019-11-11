@@ -7,13 +7,15 @@ public class MoveTo : MonoBehaviour
 {
     public Transform player;
     NavMeshAgent agent;
+    public float stoppingDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.destination = player.position;
-        agent.stoppingDistance = 3.5f;
+        stoppingDistance = GetComponentInChildren<CloseTransition>().minDistance;
+        agent.stoppingDistance = stoppingDistance;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class MoveTo : MonoBehaviour
     }
     public bool IsInRange()
     {
-        if (Mathf.Abs((player.transform.position - gameObject.transform.position).magnitude) <= 3.5f)
+        if (Mathf.Abs((player.transform.position - gameObject.transform.position).magnitude) <= stoppingDistance)
         {
             //Debug.Log((player.transform.position - gameObject.transform.position).magnitude);
 
