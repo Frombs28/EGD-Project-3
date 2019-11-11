@@ -6,6 +6,7 @@ public class TriggerBoxes : MonoBehaviour
 {
     public List<GameObject> Enemies;
     bool go = false;
+    Vector3 startPos;
     
     // Start is called before the first frame update
     void Awake()
@@ -16,6 +17,7 @@ public class TriggerBoxes : MonoBehaviour
             enemy.GetComponentInChildren<FiniteStateMachine>().enabled = false;
             enemy.GetComponent<MoveTo>().enabled = false;
         }
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -35,6 +37,21 @@ public class TriggerBoxes : MonoBehaviour
                 enemy.GetComponent<MoveTo>().enabled = true;
             }
             go = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && go)
+        {
+            Debug.Log("Player left trigger: " + gameObject.name);
+            foreach (GameObject enemy in Enemies)
+            {
+                enemy.GetComponentInChildren<FiniteStateMachine>().enabled = false;
+                enemy.GetComponent<MoveTo>().enabled = false;
+            }
+            go = false;
+            transform.position = startPos;
         }
     }
 }
