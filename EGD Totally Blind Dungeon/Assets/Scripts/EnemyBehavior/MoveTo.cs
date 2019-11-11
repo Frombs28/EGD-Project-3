@@ -8,19 +8,26 @@ public class MoveTo : MonoBehaviour
     public Transform player;
     NavMeshAgent agent;
     public float stoppingDistance;
+    public Vector3 initialPos;
+    public float furthest = 15f;
+    public bool pursue = false;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = player.position;
+        agent.destination = transform.position;
         stoppingDistance = GetComponentInChildren<CloseTransition>().minDistance;
         agent.stoppingDistance = stoppingDistance;
+
+        initialPos = transform.position;
+        //furthest = 15f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        TooFar();
         if (IsInRange())
         {
             Debug.Log("Stopped");
@@ -31,7 +38,13 @@ public class MoveTo : MonoBehaviour
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
-        agent.destination = player.position;
+        if (pursue){
+            agent.destination = player.position;
+        }
+        else{
+            agent.destination = initialPos;
+        }
+        //agent.destination = player.position;
 
     }
     public bool IsInRange()
@@ -43,5 +56,10 @@ public class MoveTo : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public void TooFar(){
+        if (Vector3.Distance(initialPos, transform.position) > furthest){
+            agent.destination = initialPos;
+        }
     }
 }
