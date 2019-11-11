@@ -19,6 +19,8 @@ public class TriggerBoxes : MonoBehaviour
             //enemy.GetComponentInChildren<FiniteStateMachine>().enabled = false;
             //enemy.GetComponent<MoveTo>().enabled = false;
         }*/
+
+        startPos = enemy.initialPos;
     }
 
     // Update is called once per frame
@@ -46,20 +48,16 @@ public class TriggerBoxes : MonoBehaviour
             go = true;
         }
     }
-    /*
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player" && go)
         {
             Debug.Log("Player left trigger: " + gameObject.name);
-            foreach (GameObject enemy in Enemies)
-            {
-                enemy.GetComponentInChildren<FiniteStateMachine>().enabled = false;
-                enemy.GetComponent<MoveTo>().enabled = false;
-            }
+            enemy.GetComponent<NavMeshAgent>().destination = startPos;
+            enemy.pursue = false;
             go = false;
-            transform.position = startPos;
         }
     }
-    */
+    
 }
