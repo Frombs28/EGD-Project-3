@@ -21,12 +21,10 @@ public class OtherCamera : MonoBehaviour
     {
         Vector3 playerPos = player.transform.position;
         Vector3 lookAt = playerPos - transform.position;
-        Vector3 newPos = playerPos - lookAt.normalized * distance;
+        transform.LookAt(playerPos);
+        Vector3 newPos = transform.forward * distance;
         newPos.y = playerPos.y + height;
         transform.position += (newPos - transform.position) * Time.deltaTime * speed;
         //transform.position = newPos;
-
-        lookAt = playerPos - transform.position;
-        transform.forward = lookAt.normalized;
     }
 }
