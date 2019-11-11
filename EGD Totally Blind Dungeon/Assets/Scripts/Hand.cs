@@ -253,6 +253,7 @@ public class Hand : MonoBehaviour
             {
                 minDist = distance;
                 nearest = interactable;
+
             }
         }
         return nearest;

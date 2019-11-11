@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalSwingAttackWithHinge : EnemyAttack
+public class HorizontalSwingAttackWithHinge : EnemyAttack
 {
     public float angle = 45f;
-    public float attackSpeed = 100f;
+    public float attackSpeed = 45f;
     public float attackTime = 2f;
     public float tickTime = .2f;
-    public float downMovementSpeed = .5f;
+    public float sideMovementSpeed = .5f;
+    public float direction = 1f;
     Vector3 originalOffset;
     Vector3 originalRotation;
     public GameObject objectWithMaterial = null;
@@ -86,10 +87,11 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         StartCoroutine("UnSwingSword");
     }
     IEnumerator MoveWrist(GameObject wrist){
+        wrist.transform.localEulerAngles=new Vector3(0,0,0);
+        weapon.transform.localEulerAngles = new Vector3(0,-direction*attackSpeed/2*attackTime,0);
         while(movingWrist){
-            wrist.transform.localEulerAngles+=Vector3.forward*attackSpeed*-Time.deltaTime;
-            wrist.transform.position +=-Vector3.up*downMovementSpeed*Time.deltaTime;
-            //wrist.transform.position += new Vector3(0,-1*Time.deltaTime,0);
+            weapon.transform.localEulerAngles += new Vector3(0,direction*attackSpeed*Time.deltaTime,0);
+            wrist.transform.position +=direction*transform.right*sideMovementSpeed*Time.deltaTime;
             yield return null;
         }
         
