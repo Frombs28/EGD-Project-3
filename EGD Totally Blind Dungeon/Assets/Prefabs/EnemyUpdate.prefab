@@ -662,8 +662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetState: {fileID: 7522696035633129341}
-  maxDistance: 7
-  timer: 2
+  maxDistance: 5
+  timer: 3
 --- !u!1 &7522696035035309402
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,8 +971,8 @@ GameObject:
   - component: {fileID: 6253137903045514718}
   - component: {fileID: 8646370772602313667}
   - component: {fileID: 3149144143993753767}
-  - component: {fileID: 461013940391084912}
   - component: {fileID: 8229034174732188402}
+  - component: {fileID: 5595411531234872747}
   m_Layer: 0
   m_Name: Triggerbox
   m_TagString: Untagged
@@ -1039,19 +1039,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &461013940391084912
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7865835440194686602}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8229034174732188402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1052,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7522696033796200948}
+--- !u!136 &5595411531234872747
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865835440194686602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6148998607289139186
 PrefabInstance:
   m_ObjectHideFlags: 0

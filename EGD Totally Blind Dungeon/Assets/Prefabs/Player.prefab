@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 6577134695563301499}
   - component: {fileID: 6577134695563301498}
   - component: {fileID: 1600512311}
-  - component: {fileID: 8623241221036004}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -222,13 +221,45 @@ MonoBehaviour:
   rightHand: {fileID: 7510292049339216300}
   leftHand: {fileID: 7510292049339251598}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
---- !u!114 &8623241221036004
+--- !u!1 &7059621573542395075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1366287907045647273}
+  - component: {fileID: 1929483952369271628}
+  - component: {fileID: 4947080467475625539}
+  m_Layer: 0
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1366287907045647273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059621573542395075}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7509716293108571960}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929483952369271628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6577134695563301497}
+  m_GameObject: {fileID: 7059621573542395075}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c7f601a23d213b41a498dccd1e72892, type: 3}
@@ -236,6 +267,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   it: {fileID: 1600512311}
+--- !u!136 &4947080467475625539
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059621573542395075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7510292049339182782
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GrabAction:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
   m_VibrateAction:
     actionPath: /actions/default/out/Haptic
@@ -683,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GrabAction:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
   m_VibrateAction:
     actionPath: /actions/default/out/Haptic
@@ -751,7 +796,7 @@ GameObject:
   - component: {fileID: 7509716293108571960}
   - component: {fileID: 7529709870880765794}
   - component: {fileID: 7576795953585768204}
-  - component: {fileID: 878266088}
+  - component: {fileID: 3257785484446322213}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -771,6 +816,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 761201752}
+  - {fileID: 1366287907045647273}
   m_Father: {fileID: 7510292049338954530}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -825,7 +871,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7510428930850745126}
   m_Enabled: 1
---- !u!114 &878266088
+--- !u!114 &3257785484446322213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

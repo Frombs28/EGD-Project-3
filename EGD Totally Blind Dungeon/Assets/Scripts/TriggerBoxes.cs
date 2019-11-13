@@ -7,6 +7,7 @@ public class TriggerBoxes : MonoBehaviour
 {
     //public List<GameObject> Enemies;
     bool go = false;
+    string[] bad_arrays;
     Vector3 startPos;
     
     public MoveTo enemy;
@@ -21,6 +22,9 @@ public class TriggerBoxes : MonoBehaviour
         }*/
 
         startPos = enemy.initialPos;
+        bad_arrays = new string[2];
+        bad_arrays[0] = "Player";
+        bad_arrays[1] = "Wall";
     }
 
     // Update is called once per frame
@@ -31,24 +35,26 @@ public class TriggerBoxes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        RaycastHit hit;
-        Vector3 direction = other.transform.position - transform.position;
-        Physics.Raycast(transform.position, direction, out hit);
-        Debug.DrawRay(transform.position, direction);
-        if(other.gameObject.tag == "Player" && !go && hit.transform.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            Debug.Log("Player hit trigger: " + gameObject.name);
-            enemy.GetComponent<NavMeshAgent>().destination = other.transform.position;
-            enemy.pursue = true;
-            //foreach (GameObject enemy in Enemies)
-            //{
-                //enemy.GetComponentInChildren<FiniteStateMachine>().enabled = true;
-                //enemy.GetComponent<MoveTo>().enabled = true;
-            //}
-            go = true;
+            RaycastHit hit;
+            Vector3 direction = other.transform.position - transform.position;
+            int layerMask = LayerMask.GetMask("Wall");
+            //layerMask = ~layerMask;
+            Debug.DrawRay(transform.position, direction);
+            if (Physics.Raycast(transform.position, direction, out hit, Vector3.Distance(transform.position,other.transform.position), layerMask))
+            {
+                print("Fail - found wall");
+            }
+            else
+            {
+                Debug.Log("Player hit trigger: " + gameObject.name);
+                enemy.GetComponent<NavMeshAgent>().destination = other.transform.position;
+                enemy.pursue = true;
+            }
         }
     }
-    
+    /*
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player" && go)
@@ -59,5 +65,6 @@ public class TriggerBoxes : MonoBehaviour
             go = false;
         }
     }
+    */
     
 }

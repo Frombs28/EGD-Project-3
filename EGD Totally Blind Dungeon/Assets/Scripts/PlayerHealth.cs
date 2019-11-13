@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        it = gameObject.GetComponent<ItemTracker>();
+        //it = gameObject.GetComponent<ItemTracker>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy Weapon")
+        print("XXXXXXXXXXXXXXXXXXXX " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy Weapon")
         {
             AIController enemy = collision.gameObject.GetComponent<EnemyWeapon>().myEnemy.gameObject.GetComponent<AIController>();
             if(enemy.currentAttack != null && !enemy.currentAttack.attackCompleted)
@@ -42,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             // DEATH: PLAY DIE AUDIO
-            Death();
+            Invoke("Death",3);
         }
     }
 

@@ -27,22 +27,17 @@ public class MoveTo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TooFar();
-        if (IsInRange())
-        {
-            Debug.Log("Stopped");
-            //How we want it to move goes here
-
-            //gameObject.GetComponent<AIController>().MoveCircular();
-        }
+        //TooFar();
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
         if (pursue){
             agent.destination = player.position;
+            //print(agent.destination);
         }
         else{
             agent.destination = initialPos;
+            //print("second line " + agent.destination);
         }
         //agent.destination = player.position;
 
