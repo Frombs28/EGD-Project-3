@@ -19,6 +19,7 @@ public class ItemTracker : MonoBehaviour
     */
     /////////////////////////////////////////////////////////////////////////////////
     public GameObject sword;
+    public InteractManager im;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class ItemTracker : MonoBehaviour
             print("Saving new game!");
         }
         enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        im = FindObjectOfType<InteractManager>();
     }
 
     private void Update()
@@ -95,6 +97,7 @@ public class ItemTracker : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
         gameObject.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        im.Restart();
         items = data.items;
         print("Loaded location: " + gameObject.transform.position);
         if(items[0] > 0)

@@ -26,6 +26,7 @@ public class Hand : MonoBehaviour
     float curSavingTime = 0;
     float maxSavingTime = 5f;
     bool haveSaved = false;
+    public InteractManager interactManager;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -40,6 +41,7 @@ public class Hand : MonoBehaviour
     void Start()
     {
         it = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemTracker>();
+        interactManager = GameObject.FindObjectOfType<InteractManager>();
     }
 
     // Update is called once per frame
@@ -221,6 +223,8 @@ public class Hand : MonoBehaviour
         //-----------------------------------------------------------------------
         //m_Joint.connectedBody = null;
 
+        // Add to list of moved objects
+        interactManager.Add(m_CurrentInteract);
 
         // Clear
         m_CurrentInteract.m_ActiveHand = null;

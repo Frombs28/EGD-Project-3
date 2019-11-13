@@ -24,11 +24,13 @@ public class Interact : MonoBehaviour
     int firstTime;
     public AudioClip pickupSFX;
     public int itemIndex = 0;
+    public Vector3 originalPos;
 
     private void Start()
     {
         aud = gameObject.GetComponent<AudioSource>();
         mat = gameObject.GetComponent<AudioMaterial>();
+        originalPos = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -99,6 +101,11 @@ public class Interact : MonoBehaviour
             aud.loop = false;
             first_time = true;
         }
+    }
+
+    public void Restart()
+    {
+        transform.position = originalPos;
     }
 }
 

@@ -221,6 +221,7 @@ MonoBehaviour:
   rightHand: {fileID: 7510292049339216300}
   leftHand: {fileID: 7510292049339251598}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
+  im: {fileID: 0}
 --- !u!1 &7059621573542395075
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7059621573542395075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7509716293108571960}
@@ -267,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   it: {fileID: 1600512311}
+  leftHand: {fileID: 7510292049339251598}
+  rightHand: {fileID: 7510292049339216300}
 --- !u!136 &4947080467475625539
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -278,7 +281,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7510292049339182782
@@ -593,6 +596,7 @@ MonoBehaviour:
   frequency: 20
   handIndex: 1
   it: {fileID: 1600512311}
+  interactManager: {fileID: 0}
 --- !u!135 &7510292049339216299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -742,6 +746,7 @@ MonoBehaviour:
   frequency: 20
   handIndex: 0
   it: {fileID: 1600512311}
+  interactManager: {fileID: 0}
 --- !u!135 &7510292049339251597
 SphereCollider:
   m_ObjectHideFlags: 0

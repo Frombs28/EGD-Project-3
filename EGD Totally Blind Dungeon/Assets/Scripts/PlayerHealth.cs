@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public float health = 3;
     public ItemTracker it;
+    public Hand leftHand;
+    public Hand rightHand;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         print("XXXXXXXXXXXXXXXXXXXX " + collision.gameObject.tag);
         if (collision.gameObject.tag == "Enemy Weapon")
@@ -43,12 +45,14 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             // DEATH: PLAY DIE AUDIO
-            Invoke("Death",3);
+            Death();
         }
     }
 
     public void Death()
     {
+        leftHand.Drop();
+        rightHand.Drop();
         it.LoadPlayer();
     }
 }
