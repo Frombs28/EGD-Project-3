@@ -8,6 +8,7 @@ public class ItemTracker : MonoBehaviour
     int[] items;
     int checkpoint;
     public GameObject[] itemIndices;
+    public List<GameObject> enemies;
     public Hand rightHand;
     public Hand leftHand;
     /////////////////////////////////////////////////////////////////////////////////
@@ -36,6 +37,7 @@ public class ItemTracker : MonoBehaviour
             PlayerPrefs.SetInt("Checkpoint", 0);
             print("Saving new game!");
         }
+        enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
     }
 
     private void Update()
@@ -108,6 +110,10 @@ public class ItemTracker : MonoBehaviour
             GameObject newItem = Instantiate(itemIndices[items[1] - 1], rightHand.gameObject.transform.position, Quaternion.identity);
             rightHand.spawningItem(newItem.GetComponent<Interact>());
             print("Item in right hand: " + newItem.name);
+        }
+
+        foreach(GameObject enemy in enemies){
+            enemy.SetActive(true);
         }
 
     }
