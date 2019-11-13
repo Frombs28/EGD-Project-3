@@ -90,10 +90,12 @@ public class StickManipulation : MonoBehaviour
             {
                 footTimer = 0;
 
-                Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5);
-                if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                if (Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5))
                 {
-                    matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                    if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                    {
+                        matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                    }
                 }
                 randomRet = Random.Range(0, AudioMaster.staticFootstepSounds[matIndex].Length);
                 footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];
@@ -117,10 +119,12 @@ public class StickManipulation : MonoBehaviour
 
                 footTimer = 0;
 
-                Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5);
-                if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                if (Physics.Raycast(cam.transform.position, Vector3.down, out hit, 5))
                 {
-                    matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                    if (hit.collider.gameObject.GetComponent<AudioMaterial>() != null)
+                    {
+                        matIndex = hit.collider.gameObject.GetComponent<AudioMaterial>().matToIndex();
+                    }
                 }
                 randomRet = Random.Range(0, AudioMaster.staticFootstepSounds[matIndex].Length);
                 footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];

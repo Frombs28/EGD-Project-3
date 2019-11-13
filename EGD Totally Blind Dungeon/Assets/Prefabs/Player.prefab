@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GrabAction:
-    actionPath: /actions/default/in/GrabGrip
+    actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
   m_VibrateAction:
     actionPath: /actions/default/out/Haptic
@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GrabAction:
-    actionPath: /actions/default/in/GrabGrip
+    actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
   m_VibrateAction:
     actionPath: /actions/default/out/Haptic

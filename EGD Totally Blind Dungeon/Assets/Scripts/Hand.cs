@@ -27,6 +27,7 @@ public class Hand : MonoBehaviour
     float maxSavingTime = 5f;
     bool haveSaved = false;
     public InteractManager interactManager;
+    public bool switchHands = false;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -152,6 +153,7 @@ public class Hand : MonoBehaviour
         // Already held check; if something is held, drop it
         if (m_CurrentInteract.m_ActiveHand)
         {
+            m_CurrentInteract.m_ActiveHand.switchHands = true;
             m_CurrentInteract.m_ActiveHand.Drop();
         }
 
@@ -201,6 +203,58 @@ public class Hand : MonoBehaviour
     }
 
     public void Drop()
+    {
+        // Null check
+        if (!m_CurrentInteract)
+        {
+            return;
+        }
+
+        // Check if sword
+        if (m_CurrentInteract.itemIndex == 1 && !switchHands)
+        {
+            return;
+        }
+        switchHands = false;
+
+        // Apply velocity
+        Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+        targetBody.velocity = m_Pose.GetVelocity();
+        targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+        //targetBody.useGravity = true;
+        //targetBody.isKinematic = false;
+
+        // Detach
+        //Transform targetTrans = m_CurrentInteract.GetComponent<Transform>();
+        //targetTrans.SetParent(null);
+        Destroy(currentWrist);
+
+        //-----------------------------------------------------------------------
+        //m_Joint.connectedBody = null;
+
+        // Add to list of moved objects
+        interactManager.Add(m_CurrentInteract);
+
+        // Clear
+        m_CurrentInteract.m_ActiveHand = null;
+        m_CurrentInteract = null;
+
+        // Set held to false
+        held = false;
+
+        // Save that this item is removed from this hand
+        if (handIndex == 0)
+        {
+            it.RemoveLeftHandItem();
+        }
+        else
+        {
+            it.RemoveRightHandItem();
+        }
+
+    }
+
+    public void DropRespawn()
     {
         // Null check
         if (!m_CurrentInteract)

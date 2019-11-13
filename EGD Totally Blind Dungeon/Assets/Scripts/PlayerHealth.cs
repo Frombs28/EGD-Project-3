@@ -51,8 +51,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {
-        leftHand.Drop();
-        rightHand.Drop();
+        leftHand.DropRespawn();
+        rightHand.DropRespawn();
         it.LoadPlayer();
     }
 }
