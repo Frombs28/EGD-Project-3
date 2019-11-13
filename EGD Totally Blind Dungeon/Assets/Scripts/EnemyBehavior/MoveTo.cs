@@ -21,6 +21,7 @@ public class MoveTo : MonoBehaviour
         agent.stoppingDistance = stoppingDistance;
 
         initialPos = transform.position;
+        //player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         //furthest = 15f;
     }
 
@@ -56,5 +57,9 @@ public class MoveTo : MonoBehaviour
         if (Vector3.Distance(initialPos, transform.position) > furthest){
             agent.destination = initialPos;
         }
+    }
+    public void SetInital()
+    {
+        agent.destination = initialPos;
     }
 }
