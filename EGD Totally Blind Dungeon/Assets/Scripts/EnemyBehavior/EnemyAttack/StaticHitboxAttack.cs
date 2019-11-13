@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StaticHitboxAttack : EnemyAttack
 {
-    public BoxCollider hitbox;
+    public List<BoxCollider> hitboxes;
     public float timeToAttack = 2f;
     public float attackActiveTime = 2f;
     void Start(){
-        hitbox.enabled = false;
+       EnableHitboxes(false);
     }
     public override void StartAttack(){
         attackCompleted = false;
@@ -16,15 +16,21 @@ public class StaticHitboxAttack : EnemyAttack
     }
     public override void InterruptAttack(){
         StopAllCoroutines();
-        hitbox.enabled = false;
+        EnableHitboxes(false);
         attackCompleted = true;
     }
     IEnumerator SpawnHitbox(){
         //maybe switch below to a while loop for sound timing
         yield return new WaitForSeconds(timeToAttack);
-        hitbox.enabled = true;
+        EnableHitboxes(true);
         yield return new WaitForSeconds(attackActiveTime);
-        hitbox.enabled = false;
+        EnableHitboxes(false);
         attackCompleted = true;
+    }
+
+    void EnableHitboxes(bool enable){
+        foreach(var hitbox in hitboxes){
+            hitbox.enabled = enable;
+        }
     }
 }
