@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIndices:
   - {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
+  enemies: []
   rightHand: {fileID: 7510292049339216300}
   leftHand: {fileID: 7510292049339251598}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
@@ -233,6 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7f601a23d213b41a498dccd1e72892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  it: {fileID: 1600512311}
 --- !u!1 &7510292049339182782
 GameObject:
   m_ObjectHideFlags: 0

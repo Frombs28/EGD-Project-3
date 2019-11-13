@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
         {
             other.GetComponent<AIController>().SubtractHealth(damage);
         }
+        //else print(collision.gameObject.name);
     }
 
     private void OnTriggerEnter(Collider other)

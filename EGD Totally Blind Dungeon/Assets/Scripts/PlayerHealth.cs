@@ -34,6 +34,9 @@ public class PlayerHealth : MonoBehaviour
     public void SubtractHealth(float damage)
     {
         health -= damage;
+
+        print("I've been injured! Ugh!");
+
         // PLAY INJURED AUDIO
 
         if (health <= 0)
