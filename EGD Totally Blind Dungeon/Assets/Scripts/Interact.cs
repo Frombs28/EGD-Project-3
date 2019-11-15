@@ -105,7 +105,19 @@ public class Interact : MonoBehaviour
 
     public void Restart()
     {
-        transform.position = originalPos;
+        if(originalPos == Vector3.zero)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.position = originalPos;
+        }
+    }
+
+    public void newStartPos(Vector3 newPos)
+    {
+        originalPos = newPos;
     }
 }
 
