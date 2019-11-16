@@ -136,6 +136,7 @@ public class Hand : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Chest"))
         {
+            print("Here111111111111");
             if (held)
             {
                 chestFound = false;
