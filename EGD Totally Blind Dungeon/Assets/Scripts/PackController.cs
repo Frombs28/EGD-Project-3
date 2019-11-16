@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PackController : AIController
+public class PackController : MonoBehaviour
 {
     public GameObject [] pack;
 
-    int initialPosition;
-    
+    MoveTo move;
+
+    Vector3 initialPosition;
+
+    bool first = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        //initialPosition = gameObject.transform.position;
+        initialPosition = gameObject.transform.position;
+        move = gameObject.GetComponent<MoveTo>();
     }
 
     // Update is called once per frame
@@ -22,10 +26,19 @@ public class PackController : AIController
         int en = CheckPackNumber();
         if (en == 1)
         {
-            gameObject.GetComponent<MoveTo>().SetInital();
-            //if (Vector3.Distance()
+            if (first)
+            {
+                move.SetInital();
+                move.pursue = false;
+                first = false;
+            }
+            float dist = Vector3.Distance(transform.position, initialPosition);
+            if (dist < 2.5f)
+            {
+
+                gameObject.SetActive(false);
+            }
         }
-        //CheckPackNumber();
     }
 
     public int CheckPackNumber()
