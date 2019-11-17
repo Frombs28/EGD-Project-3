@@ -40,6 +40,11 @@ public class TriggerBoxes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (wall && !enemy.pursue)
         {
             RaycastHit hit;
