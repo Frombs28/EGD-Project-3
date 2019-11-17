@@ -56,7 +56,7 @@ public class VerticalSwingAttack : EnemyAttack
         while(currentAngle > 0){
             frameCount++;
             float curTime = Time.realtimeSinceStartup;
-            //Debug.Log(curTime-startTime);
+            Debug.Log("Seconds: " + (curTime-startTime) + " Frames: " + (frameCount));
             //Debug.Log(frameCount);
             if (frameCount >= parryFrame && !parryable)
             {
@@ -69,6 +69,7 @@ public class VerticalSwingAttack : EnemyAttack
             //weapon.transform.localScale = originalScale;
             yield return null;
         }
+        Debug.Log("XXXXXXXXXXXXX END XXXXXXXXXXXXX");
         parryable = false;
         if(objectWithMaterial!=null){
             objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
