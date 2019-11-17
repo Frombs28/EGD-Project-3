@@ -9,6 +9,7 @@ TagManager:
   - Enemy Weapon
   - Enemy
   - Checkpoint
+  - Chest
   layers:
   - Default
   - TransparentFX

@@ -28,6 +28,8 @@ public class Hand : MonoBehaviour
     bool haveSaved = false;
     public InteractManager interactManager;
     public bool switchHands = false;
+    bool chestFound = false;
+    public Chest chest = null;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -52,13 +54,24 @@ public class Hand : MonoBehaviour
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
             print(m_Pose.inputSource + " Trigger Down");
-            if (!held)
+            if (chestFound && chest!=null)
             {
-                Pickup();
+                // Open chest
+                if (!chest.isOpened())
+                {
+                    chest.Open();
+                }
             }
             else
             {
-                Drop();
+                if (!held)
+                {
+                    Pickup();
+                }
+                else
+                {
+                    Drop();
+                }
             }
         }
 
@@ -94,6 +107,11 @@ public class Hand : MonoBehaviour
             haveSaved = false;
             return;
         }
+        if (other.gameObject.CompareTag("Chest") && !held)
+        {
+            chestFound = false;
+            chest = null;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -114,6 +132,21 @@ public class Hand : MonoBehaviour
                 it.SavePlayer();
                 haveSaved = true;
                 return;
+            }
+        }
+        if (other.gameObject.CompareTag("Chest"))
+        {
+            print("Here111111111111");
+            if (held)
+            {
+                chestFound = false;
+                chest = null;
+            }
+            else if(!other.gameObject.GetComponent<Chest>().isOpened())
+            {
+                m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude, source);
+                chestFound = true;
+                chest = other.gameObject.GetComponent<Chest>();
             }
         }
         if (!other.gameObject.CompareTag("Interact"))

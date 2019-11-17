@@ -19,6 +19,10 @@ public class InteractManager : MonoBehaviour
 
     public void Add(Interact dropped)
     {
+        if(droppedInteractables.Contains(dropped)){
+            // print ("Already there")
+            return;
+        }
         droppedInteractables.Add(dropped);
     }
 
