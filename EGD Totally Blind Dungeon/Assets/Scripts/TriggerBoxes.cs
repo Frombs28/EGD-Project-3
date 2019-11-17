@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class TriggerBoxes : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class TriggerBoxes : MonoBehaviour
     bool go = false;
     string[] bad_arrays;
     Vector3 startPos;
+    private AudioSource aud;
+    public AudioClip[] screams;
     
     public MoveTo enemy;
     // Start is called before the first frame update
@@ -25,6 +28,11 @@ public class TriggerBoxes : MonoBehaviour
         bad_arrays = new string[2];
         bad_arrays[0] = "Player";
         bad_arrays[1] = "Wall";
+    }
+
+    private void Start()
+    {
+        aud = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,6 +56,10 @@ public class TriggerBoxes : MonoBehaviour
             }
             else
             {
+                int index = Random.Range(0, screams.Length);
+                aud.clip = screams[index];
+                aud.loop = false;
+                aud.Play();
                 Debug.Log("Player hit trigger: " + gameObject.name);
                 enemy.GetComponent<NavMeshAgent>().destination = other.transform.position;
                 enemy.pursue = true;
