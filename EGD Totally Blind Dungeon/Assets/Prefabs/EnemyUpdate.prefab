@@ -446,6 +446,7 @@ MonoBehaviour:
   timeToTarget: 2
   maxAngularAcceleration: 2
   active: 1
+  originPos: {x: 0, y: 0, z: 0}
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
 --- !u!114 &7522696033796200950
@@ -1232,7 +1233,7 @@ AudioSource:
   MinDistance: 3
   MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
