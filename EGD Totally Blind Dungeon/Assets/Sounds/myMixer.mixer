@@ -404,7 +404,14 @@ AudioMixerController:
     - 7ee666d7a465f6c499b3b0625d8d0ac5
     - 1ac87932e9c883f498e433a8df8d5324
     name: BGM
-  m_CurrentViewIndex: 2
+  - guids:
+    - 2bc931cf474d9f144a8001fce47918aa
+    - 37f025396abdb3246b6ec06e62859c4a
+    - 4a807c55ddf72c34c936b123b666bd74
+    - 1d411ae9b6b329349bb27771062a6153
+    - ce9da2a0102e6ba48b355149ac2093f5
+    name: Enemy
+  m_CurrentViewIndex: 3
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -463,7 +470,7 @@ AudioMixerSnapshotController:
     f635f82407c66c94cb0947549c77051b: 21
     ea63ae24b3cecf444962c709c2a4a168: -20.1
     099b9154efbaa4a46b951cda703f9de7: 0
-    0f114964d5d38e84c9e2247969a3f49f: -12.498478
+    0f114964d5d38e84c9e2247969a3f49f: -17.938717
     faf817848cd6a25418570da3e42d0535: 30
     15a920a4d60f14a4ead06e0a9a2b6542: 1.84
     2b3f1be4758abed4ebf09f1ed4e1b05c: 0.981
