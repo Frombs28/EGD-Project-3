@@ -11,6 +11,7 @@ public class ItemTracker : MonoBehaviour
     public List<GameObject> enemies;
     public Hand rightHand;
     public Hand leftHand;
+    public GameObject player;
     /////////////////////////////////////////////////////////////////////////////////
     /*
     **  0: Nothing
@@ -96,10 +97,10 @@ public class ItemTracker : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-        gameObject.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        player.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         im.Restart();
         items = data.items;
-        print("Loaded location: " + gameObject.transform.position);
+        print("Loaded location: " + player.transform.position);
         if(items[0] > 0)
         {
             // spawn left hand item
