@@ -29,6 +29,7 @@ public class AIController : MonoBehaviour
     bool following;
     bool fleeing;
     public bool active = true;
+    public Vector3 originPos = Vector3.zero;
 
     //public bool parry;
 
@@ -46,6 +47,10 @@ public class AIController : MonoBehaviour
         currentAttack = null;
         following = false;
         fleeing = false;
+        if(originPos == Vector3.zero)
+        {
+            originPos = transform.position;
+        }
     }
 
     // Update is called once per frame
