@@ -28,6 +28,7 @@ public class StickManipulation : MonoBehaviour
     private int matIndex = 0;
     private int randomRet = 0;
     private RaycastHit hit;
+    public bool canMove = true;
 
     private void Awake()
     {
@@ -49,7 +50,10 @@ public class StickManipulation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CalculateMovement();
+        if (canMove)
+        {
+            CalculateMovement();
+        }
     }
 
     private void HandleHead()

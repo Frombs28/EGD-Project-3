@@ -29,6 +29,8 @@ public class AIController : MonoBehaviour
     bool following;
     bool fleeing;
     public bool active = true;
+    public GameObject myChest;
+    public bool hasChest = false;
     public Vector3 originPos = Vector3.zero;
 
     //public bool parry;
@@ -51,6 +53,10 @@ public class AIController : MonoBehaviour
         {
             originPos = transform.position;
         }
+        if (hasChest)
+        {
+            myChest.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +78,10 @@ public class AIController : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         if(health <= 0)
         {
+            if (hasChest)
+            {
+                myChest.SetActive(true);
+            }
             gameObject.SetActive(false);
         }
         else

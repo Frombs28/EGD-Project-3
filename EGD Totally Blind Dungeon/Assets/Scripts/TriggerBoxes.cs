@@ -103,6 +103,9 @@ public class TriggerBoxes : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             wall = false;
+            Debug.Log("Player left trigger: " + gameObject.name);
+            enemy.GetComponent<NavMeshAgent>().destination = startPos;
+            enemy.pursue = false;
         }
     }
     /*

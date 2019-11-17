@@ -12,6 +12,7 @@ public class ItemTracker : MonoBehaviour
     public Hand rightHand;
     public Hand leftHand;
     public GameObject player;
+    public StickManipulation stick;
     /////////////////////////////////////////////////////////////////////////////////
     /*
     **  0: Nothing
@@ -97,6 +98,7 @@ public class ItemTracker : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+        stick.canMove = false;
         player.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         im.Restart();
         items = data.items;
@@ -124,7 +126,7 @@ public class ItemTracker : MonoBehaviour
                 enemy.transform.position = ai.originPos;
             }
         }
-
+        stick.canMove = true;
     }
 
 }

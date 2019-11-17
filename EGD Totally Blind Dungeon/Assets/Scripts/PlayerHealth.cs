@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
     public ItemTracker it;
     public Hand leftHand;
     public Hand rightHand;
+    bool invincible = false;
+    float timer;
+    public float invincibleTime = 1f;
     
     // Start is called before the first frame update
     void Start()
@@ -17,9 +20,16 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (invincible)
+        {
+            timer += Time.deltaTime;
+            if(timer >= invincibleTime)
+            {
+                invincible = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -28,9 +38,11 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.tag == "Enemy Weapon")
         {
             AIController enemy = collision.gameObject.GetComponent<EnemyWeapon>().myEnemy.gameObject.GetComponent<AIController>();
-            if(enemy.currentAttack != null && !enemy.currentAttack.attackCompleted)
+            if(enemy.currentAttack != null && !enemy.currentAttack.attackCompleted && !invincible)
             {
                 SubtractHealth(enemy.damage);
+                invincible = true;
+                timer = 0f;
             }
         }
     }
