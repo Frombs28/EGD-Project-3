@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 3;
+    public float MAX_HEALTH = 3;
     public ItemTracker it;
     public Hand leftHand;
     public Hand rightHand;
@@ -54,5 +55,6 @@ public class PlayerHealth : MonoBehaviour
         leftHand.DropRespawn();
         rightHand.DropRespawn();
         it.LoadPlayer();
+        health = MAX_HEALTH;
     }
 }

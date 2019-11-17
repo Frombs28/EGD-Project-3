@@ -117,6 +117,7 @@ public class ItemTracker : MonoBehaviour
 
         foreach(GameObject enemy in enemies){
             enemy.SetActive(true);
+            enemy.transform.position = enemy.GetComponent<AIController>().originPos;
         }
 
     }
