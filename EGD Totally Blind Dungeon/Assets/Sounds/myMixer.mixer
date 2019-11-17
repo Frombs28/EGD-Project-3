@@ -393,7 +393,7 @@ AudioMixerController:
     - 1d411ae9b6b329349bb27771062a6153
     - ce9da2a0102e6ba48b355149ac2093f5
     name: Enemy
-  m_CurrentViewIndex: 3
+  m_CurrentViewIndex: 2
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -480,7 +480,7 @@ AudioMixerSnapshotController:
     c0931adafda82384c8166cdc994056a3: 5
     2d77d8ea3777ec840b5d2d5697d7db85: 5
     9e26710b87070ed4a9fbf3b3c28a6c07: 0
-    3edd511bc0758544f8f5a090509b2e11: -17.938717
+    3edd511bc0758544f8f5a090509b2e11: -35.30951
     796d9a5b95d28f043b4d3d8859554ccd: 14707
     9a1a059bc426b144ba2ffba51548e595: 100
     f9d643fba675ebd4780d7ba6681180eb: 10
