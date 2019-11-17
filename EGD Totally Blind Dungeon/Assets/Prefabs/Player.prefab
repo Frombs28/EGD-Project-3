@@ -220,6 +220,7 @@ MonoBehaviour:
   enemies: []
   rightHand: {fileID: 7510292049339216300}
   leftHand: {fileID: 7510292049339251598}
+  player: {fileID: 6577134695563301497}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
   im: {fileID: 0}
 --- !u!1 &7059621573542395075
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  MAX_HEALTH: 3
   it: {fileID: 1600512311}
   leftHand: {fileID: 7510292049339251598}
   rightHand: {fileID: 7510292049339216300}
@@ -597,6 +599,8 @@ MonoBehaviour:
   handIndex: 1
   it: {fileID: 1600512311}
   interactManager: {fileID: 0}
+  switchHands: 0
+  chest: {fileID: 0}
 --- !u!135 &7510292049339216299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -747,6 +751,8 @@ MonoBehaviour:
   handIndex: 0
   it: {fileID: 1600512311}
   interactManager: {fileID: 0}
+  switchHands: 0
+  chest: {fileID: 0}
 --- !u!135 &7510292049339251597
 SphereCollider:
   m_ObjectHideFlags: 0
