@@ -57,6 +57,10 @@ public class StickManipulation : MonoBehaviour
         {
             CalculateMovement();
         }
+        else
+        {
+            m_CharacterController.Move(Vector3.zero);
+        }
     }
 
     private void HandleHead()
