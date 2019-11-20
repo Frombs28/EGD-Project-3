@@ -44,11 +44,8 @@ public class StickManipulation : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
-        {
-            HandleHead();
-            HandleHeight();
-        }
+        HandleHead();
+        HandleHeight();
     }
 
     private void FixedUpdate()
@@ -56,10 +53,6 @@ public class StickManipulation : MonoBehaviour
         if (canMove)
         {
             CalculateMovement();
-        }
-        else
-        {
-            m_CharacterController.Move(Vector3.zero);
         }
     }
 
