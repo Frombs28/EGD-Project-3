@@ -44,8 +44,11 @@ public class StickManipulation : MonoBehaviour
 
     private void Update()
     {
-        HandleHead();
-        HandleHeight();
+        if (canMove)
+        {
+            HandleHead();
+            HandleHeight();
+        }
     }
 
     private void FixedUpdate()
