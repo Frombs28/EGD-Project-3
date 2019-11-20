@@ -156,7 +156,7 @@ public class Hand : MonoBehaviour
                 chest = other.gameObject.GetComponent<Chest>();
             }
         }
-        if (other.gameObject.CompareTag("Pocket"))
+        if (other.gameObject.CompareTag("Pocket") && !(!other.gameObject.GetComponent<Pocket>().IsFull() && !held) && !(other.gameObject.GetComponent<Pocket>().IsFull() && held))
         {
             inPocket = true;
             curPocket = other.gameObject.GetComponent<Pocket>();

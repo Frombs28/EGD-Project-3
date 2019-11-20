@@ -163,6 +163,12 @@ public class ItemTracker : MonoBehaviour
                 enemy.transform.position = ai.originPos;
             }
         }
+        //stick.canMove = true;
+        Invoke("RegainMovement", 2f);
+    }
+
+    void RegainMovement()
+    {
         stick.canMove = true;
     }
 
