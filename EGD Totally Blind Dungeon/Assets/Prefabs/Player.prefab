@@ -224,8 +224,6 @@ MonoBehaviour:
   pocket0: {fileID: 5900877651272649010}
   pocket1: {fileID: 7672695686174181287}
   pocket2: {fileID: 2850595817035095506}
-  pocket3: {fileID: 0}
-  pocket4: {fileID: 0}
   player: {fileID: 6577134695563301497}
   stick: {fileID: 6577134695563301498}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
@@ -1026,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
@@ -1036,7 +1034,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
@@ -1123,7 +1121,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.828
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
@@ -1133,7 +1131,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.828
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
@@ -1210,7 +1208,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
@@ -1220,7 +1218,7 @@ PrefabInstance:
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}

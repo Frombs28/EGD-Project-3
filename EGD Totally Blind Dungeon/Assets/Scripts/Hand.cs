@@ -160,7 +160,8 @@ public class Hand : MonoBehaviour
         {
             inPocket = true;
             curPocket = other.gameObject.GetComponent<Pocket>();
-            m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude/2f, source);
+            m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude / 2f, source);
+            return;
         }
         if (!other.gameObject.CompareTag("Interact"))
         {
@@ -281,7 +282,7 @@ public class Hand : MonoBehaviour
         {
             return;
         }
-        else if(inPocket && curPocket != null && !curPocket.IsFull())
+        else if(inPocket && curPocket != null && !curPocket.IsFull() && !switchHands)
         {
             // Apply velocity
             Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
