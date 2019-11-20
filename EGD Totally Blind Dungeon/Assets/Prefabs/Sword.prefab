@@ -246,7 +246,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8373684798188234158, guid: 562ab105d45ccef4ea89374a8a1ca238,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -406,7 +406,7 @@ MonoBehaviour:
   amplitude2: 0.1
   frequency2: 20
   TAP_HAPTIC: 1
-  itemSFX: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
+  itemSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
   onPickup: {fileID: 8300000, guid: 15fad01b8abaaae4f98cb2bf1ae4f589, type: 3}
   itemIndex: 1
   originalPos: {x: 0, y: 0, z: 0}

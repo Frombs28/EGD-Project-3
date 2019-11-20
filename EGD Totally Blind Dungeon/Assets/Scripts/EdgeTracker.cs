@@ -13,6 +13,7 @@ public class EdgeTracker : MonoBehaviour
     public float boundY = 2.25f;
     private float currX = 0;
     private float currY = 0;
+    public float offset = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,41 +24,39 @@ public class EdgeTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playing)
-        {
-            aud.volume = Mathf.Min((player.transform.position - gameObject.transform.position).magnitude, 1f);
-        }
-        //print("Playing: " + playing);
+       print("Playing: " + playing);
     }
 
     private void FixedUpdate()
     {
-        currX = Mathf.Abs(player.transform.position.x - follow.transform.position.x);
-        currY = Mathf.Abs(player.transform.position.z - follow.transform.position.z);
+        currX = Mathf.Abs(player.transform.localPosition.x);
+        currX *= 10;
+        currX = Mathf.Round(currX) / 10;
+        currY = Mathf.Abs(player.transform.localPosition.z);
+        currY *= 10;
+        currY = Mathf.Round(currY) / 10;
         if (!playing)
         {
-            if (currX > boundX / 2)
+            if (currX > (boundX / 2))
             {
                 aud.Play();
                 playing = true;
+                return;
             }
-            else if (currY > boundY / 2)
+            else if (currY > (boundY / 2))
             {
                 aud.Play();
                 playing = true;
+                return;
             }
         }
         else
         {
-            if (currX <= boundX / 2)
+            if (currX < (boundX / 2) - offset/2 && currY < (boundY / 2) - offset / 2)
             {
                 aud.Stop();
                 playing = false;
-            }
-            else if (currY <= boundY / 2)
-            {
-                aud.Stop();
-                playing = false;
+                return;
             }
         }
     }
