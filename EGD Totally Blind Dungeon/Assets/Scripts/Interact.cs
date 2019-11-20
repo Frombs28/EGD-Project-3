@@ -25,6 +25,7 @@ public class Interact : MonoBehaviour
     public AudioClip pickupSFX;
     public int itemIndex = 0;
     public Vector3 originalPos;
+    public Pocket pocketMan = null;
 
     private void Start()
     {
@@ -88,7 +89,7 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if(m_ActiveHand == null && first_time)
+        if(m_ActiveHand == null && first_time && pocketMan == null)
         {
             aud.clip = pickupSFX;
             aud.loop = true;

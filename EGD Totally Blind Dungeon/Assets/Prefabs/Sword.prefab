@@ -409,6 +409,7 @@ MonoBehaviour:
   pickupSFX: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
   itemIndex: 1
   originalPos: {x: 0, y: 0, z: 0}
+  pocketMan: {fileID: 0}
 --- !u!114 &2754597557741181940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,19 +39,29 @@ public class Pocket : MonoBehaviour
     {
         full = true;
         curItem = item;
-        item.transform.parent = gameObject.transform;
-        item.transform.localPosition = Vector3.zero;
-        curItem.GetComponent<Rigidbody>().isKinematic = false;
+        curItem.transform.parent = gameObject.transform;
+        curItem.transform.localPosition = Vector3.zero;
+        //curItem.GetComponent<Rigidbody>().isKinematic = false;
+        foreach (Collider other in curItem.gameObject.GetComponentsInChildren<BoxCollider>())
+        {
+            other.enabled = false;
+        }
         curItem.GetComponent<Rigidbody>().useGravity = false;
         tracker.NewPocketItem(curItem,id);
+        curItem.pocketMan = gameObject.GetComponent<Pocket>();
     }
 
     public void Empty()
     {
         full = false;
         curItem.transform.parent = null;
-        curItem.GetComponent<Rigidbody>().isKinematic = true;
+        //curItem.GetComponent<Rigidbody>().isKinematic = true;
         curItem.GetComponent<Rigidbody>().useGravity = true;
+        curItem.pocketMan = null;
+        foreach (Collider other in GetComponentsInChildren<BoxCollider>())
+        {
+            other.enabled = true;
+        }
         curItem = null;
         tracker.RemovePocketItem(id);
     }
