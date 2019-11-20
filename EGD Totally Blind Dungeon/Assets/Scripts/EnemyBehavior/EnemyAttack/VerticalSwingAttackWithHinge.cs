@@ -24,6 +24,8 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     bool interrupted;
     bool swingingUp = false;
 
+    private AudioSource aud;
+
     public float currentTime;
     //Vector3 originalScale;
     private void Start() {
@@ -32,6 +34,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         rb = weapon.GetComponent<Rigidbody>();
         enemyrb = GetComponent<Rigidbody>();
         currentTime = 0f;
+        aud = weapon.GetComponent<AudioSource>();
         //originalScale = weapon.transform.localScale;
         //StartAttack();
     }
@@ -43,8 +46,6 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
     }
     public override void StartAttack(){
-        AudioSource audio = weapon.GetComponent<AudioSource>();
-        if(audio!=null)audio.Play();
         attackCompleted = false;
         interrupted = false;
         objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -80,6 +81,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         joint.connectedBody = rb;
         float currentTime = 0.0f;
         swingingUp = true;
+        if (aud != null) aud.Play();
         StartCoroutine(PreSwing(jointGO));
         while(currentTime<preSwingTime){
             currentTime+=tickTime;
