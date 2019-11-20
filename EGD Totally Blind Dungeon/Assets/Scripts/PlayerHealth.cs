@@ -17,10 +17,12 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip heartBeat;
     public AudioClip deathSFX;
     public int init_BPM = 120;
-    private int BPM = 0;
+    private float BPM = 0;
     private float BPS = 0;
     public float distoMax = 0.5f;
     private float distoLevel = 0;
+    public float heartBeatVol = -18;
+    public float heartBeatVolChange = 6;
     public AudioMixer mixer;
     
     // Start is called before the first frame update
@@ -69,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            CancelInvoke();
+            StopCoroutine("Heartbeat");
             BPM = init_BPM;
             BPS = 0;
             aud.clip = deathSFX;
@@ -77,20 +79,28 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
         else
-        {
+        {           
             distoLevel = Mathf.Lerp(distoMax, 0, health / MAX_HEALTH);
+            print("disto incrase: " + distoLevel.ToString());
             mixer.SetFloat("MasterDisto", distoLevel);
+            heartBeatVol += heartBeatVolChange;
+            mixer.SetFloat("HeartbeatVolume", heartBeatVol);
             aud.clip = heartBeat;
-            CancelInvoke();
-            BPM += 20;
+            StopCoroutine("Heartbeat");
+            BPM += 35;
             BPS = 60 / BPM;
-            InvokeRepeating("Heartbeat", 0, BPS);
+            StartCoroutine("Heartbeat");
         }
     }
 
-    public void Heartbeat()
+    IEnumerator Heartbeat()
     {
-        aud.Play();
+        while (true)
+        {
+            yield return new WaitForSeconds(BPS);
+            print("audioisplaying");
+            aud.Play();
+        }
     }
 
     public void Death()

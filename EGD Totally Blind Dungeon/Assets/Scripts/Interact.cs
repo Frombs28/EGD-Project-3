@@ -90,17 +90,18 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if(m_ActiveHand == null && pocketMan == null)
+        if(m_ActiveHand == null && pocketMan == null && first_time)
         {
             aud.clip = itemSFX;
             aud.loop = true;
             aud.Play();
             first_time = false;
         }
-        else if(m_ActiveHand != null)
+        else if(m_ActiveHand != null && !first_time)
         {
             aud.Stop();
             aud.loop = false;
+            first_time = true;
         }
     }
 

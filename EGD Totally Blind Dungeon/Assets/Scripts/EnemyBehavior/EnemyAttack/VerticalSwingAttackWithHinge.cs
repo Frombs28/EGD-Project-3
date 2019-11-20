@@ -10,7 +10,6 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     public float preSwingSpeed = 40f;
     public float preSwingMovementSpeed = .5f;
     public float attackTime = 2f;
-    public float tickTime = .2f;
     public float downMovementSpeed = .5f;
     Vector3 originalOffset;
     Vector3 originalRotation;
@@ -23,6 +22,8 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     bool movingWrist = false;
     bool interrupted;
     bool swingingUp = false;
+    public float parryTime = 0.5f;
+    private float parryableTimer = 0f;
 
     private AudioSource aud;
 
@@ -84,8 +85,8 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         if (aud != null) aud.Play();
         StartCoroutine(PreSwing(jointGO));
         while(currentTime<preSwingTime){
-            currentTime+=tickTime;
-            yield return new WaitForSeconds(tickTime);
+            currentTime+=Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
         swingingUp = false;
         movingWrist = true;
@@ -93,8 +94,8 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         StartCoroutine(SwingSwordParry());
         StartCoroutine(MoveWrist(jointGO));
         while(currentTime<attackTime){
-            currentTime+=tickTime;
-            yield return new WaitForSeconds(tickTime);
+            currentTime+= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
         movingWrist = false;
         StartCoroutine("UnSwingSword");
@@ -135,18 +136,19 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     }
 
     IEnumerator SwingSwordParry(){
-        parryFrame = 29;    // 34-35 frames; 34 - parryFrame = frames that it is parryable
-        frameCount = 0;
+        //frameCount = 0;
         parryable = false;
         attackCompleted = false;
         if (objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         float currentAngle = angle;
         float startTime = Time.realtimeSinceStartup;
+        parryableTimer = currentTime;
         while(attackTime > currentTime){
-            frameCount++;
+            //frameCount++;
             //currentTime += Time.deltaTime;
-            float curTime = Time.realtimeSinceStartup;
-            if (frameCount >= parryFrame && !parryable)
+            //float curTime = Time.realtimeSinceStartup;
+            parryableTimer += Time.deltaTime;
+            if (parryableTimer >= parryTime && !parryable)
             {
                 parryable = true;
                 if (objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
