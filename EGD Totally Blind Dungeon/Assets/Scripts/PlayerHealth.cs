@@ -12,10 +12,20 @@ public class PlayerHealth : MonoBehaviour
     bool invincible = false;
     float timer;
     public float invincibleTime = 1f;
+    private AudioSource aud;
+    public AudioClip heartBeat;
+    public AudioClip deathSFX;
+    public int init_BPM = 120;
+    private int BPM = 0;
+    private float BPS = 0;
     
     // Start is called before the first frame update
     void Start()
     {
+        aud = GetComponent<AudioSource>();
+        aud.clip = heartBeat;
+        BPM = init_BPM;
+        BPS = 60/BPM;
         //it = gameObject.GetComponent<ItemTracker>();
     }
 
@@ -53,13 +63,28 @@ public class PlayerHealth : MonoBehaviour
 
         print("I've been injured! Ugh!");
 
-        // PLAY INJURED AUDIO
-
         if (health <= 0)
         {
-            // DEATH: PLAY DIE AUDIO
+            CancelInvoke();
+            BPM = init_BPM;
+            BPS = 0;
+            aud.clip = deathSFX;
+            aud.Play();
             Death();
         }
+        else
+        {
+            aud.clip = heartBeat;
+            CancelInvoke();
+            BPM += 20;
+            BPS = 60 / BPM;
+            InvokeRepeating("Heartbeat", 0, BPS);
+        }
+    }
+
+    public void Heartbeat()
+    {
+        aud.Play();
     }
 
     public void Death()

@@ -38,7 +38,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: -4046455412802845078}
   - {fileID: 3497171320622137127}
-  m_UserColorIndex: 5
+  m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -175,6 +175,7 @@ AudioMixerGroupController:
   m_GroupID: 384024169f084c44f91784f495be6ef3
   m_Children:
   - {fileID: -8373684798188234158}
+  - {fileID: 6576711515669382033}
   - {fileID: 1306373573446238782}
   - {fileID: 3600453965114004310}
   - {fileID: -8467809818453309490}
@@ -411,6 +412,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 7c18bdb5bab46cf4c9c6c78e5a47afb6
+    name: HeartbeatVolume
   - guid: 60cc41e5fab094b43a920bbda5c056d4
     name: VerbRoom
   - guid: e5509bd55e5dd3b4cbe2e4d33abfa749
@@ -435,6 +438,7 @@ AudioMixerController:
     - 9255b32c27576d24dbb7448d6468ab00
     - 789c52c40f2fa7647b54e9c7fac5e93a
     - f67f33f3e4d7f7f4d92e4f3718015225
+    - bc580b33c1c6a81419f957f9ca388f9f
     name: SFX
   - guids:
     - 2bc931cf474d9f144a8001fce47918aa
@@ -452,7 +456,7 @@ AudioMixerController:
     - 88578bce35abe244f9107d0f460a3b81
     - b5fd60bed47b3a4429ff17796641be1d
     name: Enemy
-  m_CurrentViewIndex: 3
+  m_CurrentViewIndex: 1
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -519,6 +523,7 @@ AudioMixerSnapshotController:
     2b3f1be4758abed4ebf09f1ed4e1b05c: 0.981
     842c55356c6dcdd448bcfdc99f9ff203: 1000
     87eb977536e86234784beb6c8bda60a5: -10000
+    7c18bdb5bab46cf4c9c6c78e5a47afb6: -16
     e5509bd55e5dd3b4cbe2e4d33abfa749: 1.7
     60cc41e5fab094b43a920bbda5c056d4: -1598
     511aa226ea68b3c49b0ca5932798b4e8: -20
@@ -844,6 +849,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &5528310737829223753
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1f416ed5920bcd441a490f7c57496e69
+  m_EffectName: Attenuation
+  m_MixLevel: 584e41871a3c00948b55f6673b6c6093
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &6063858720781395639
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -867,6 +886,25 @@ AudioMixerGroupController:
   - {fileID: -5337760577211354627}
   - {fileID: 8823186679618812742}
   m_UserColorIndex: 3
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &6576711515669382033
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Heartbeat
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: bc580b33c1c6a81419f957f9ca388f9f
+  m_Children: []
+  m_Volume: 7c18bdb5bab46cf4c9c6c78e5a47afb6
+  m_Pitch: d51b24594e9b16c4f989eea5c90e9c72
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5528310737829223753}
+  m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
