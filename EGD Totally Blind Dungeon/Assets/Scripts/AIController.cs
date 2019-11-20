@@ -104,7 +104,7 @@ public class AIController : MonoBehaviour
             {
                 myChest.SetActive(true);
             }
-            gameObject.SetActive(false);
+            Invoke("DeleteSelf", deathClip.length + 0.05f);
         }
         else
         {
@@ -123,6 +123,11 @@ public class AIController : MonoBehaviour
     public void Stun()
     {
         verticalSwing.InterruptAttack();
+    }
+
+    public void DeleteSelf()
+    {
+        gameObject.SetActive(false);
     }
 
     public void MoveCircular()
