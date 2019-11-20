@@ -33,7 +33,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         enemyrb = GetComponent<Rigidbody>();
         currentTime = 0f;
         //originalScale = weapon.transform.localScale;
-        StartAttack();
+        //StartAttack();
     }
     private void Update()
     {
@@ -53,7 +53,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         weapon.transform.localPosition = originalOffset;
         //if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
         //weapon.GetComponent<BoxCollider>().enabled = true;
-        //StartCoroutine("SwingSword");
+        StartCoroutine("SwingSword");
     }
     public override void InterruptAttack(){
         if (interrupted)
