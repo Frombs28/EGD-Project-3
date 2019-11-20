@@ -253,6 +253,13 @@ public class Hand : MonoBehaviour
         {
             it.NewRightHandItem(m_CurrentInteract);
         }
+
+        if(!switchHands)
+        {
+            m_CurrentInteract.scrapeyScrape.clip = m_CurrentInteract.pickupSFX;
+            m_CurrentInteract.scrapeyScrape.loop = false;
+            m_CurrentInteract.scrapeyScrape.Play();
+        }
     }
 
     public void Drop()
