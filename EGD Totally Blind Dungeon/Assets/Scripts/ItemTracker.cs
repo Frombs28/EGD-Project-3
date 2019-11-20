@@ -14,8 +14,6 @@ public class ItemTracker : MonoBehaviour
     public Pocket pocket0;
     public Pocket pocket1;
     public Pocket pocket2;
-    public Pocket pocket3;
-    public Pocket pocket4;
     public GameObject player;
     public StickManipulation stick;
     /////////////////////////////////////////////////////////////////////////////////
@@ -30,14 +28,12 @@ public class ItemTracker : MonoBehaviour
 
     private void Start()
     {
-        items = new int[7];
+        items = new int[5];
         items[0] = 0;
         items[1] = 0;
         items[2] = 0;
         items[3] = 0;
         items[4] = 0;
-        items[5] = 0;
-        items[6] = 0;
         checkpoint = PlayerPrefs.GetInt("Checkpoint", 0);
         if(checkpoint > 0)
         {
@@ -146,31 +142,17 @@ public class ItemTracker : MonoBehaviour
         }
         if (items[3] > 0)
         {
-            // spawn top left pocket item
+            // spawn left pocket item
             GameObject newItem = Instantiate(itemIndices[items[3] - 1], pocket1.gameObject.transform.position, Quaternion.identity);
             pocket1.Fill(newItem.GetComponent<Interact>());
             print("Item in top left pocket: " + newItem.name);
         }
         if (items[4] > 0)
         {
-            // spawn top right pocket item
+            // spawn right pocket item
             GameObject newItem = Instantiate(itemIndices[items[4] - 1], pocket2.gameObject.transform.position, Quaternion.identity);
             pocket2.Fill(newItem.GetComponent<Interact>());
             print("Item in top right pocket: " + newItem.name);
-        }
-        if (items[5] > 0)
-        {
-            // spawn bottom right pocket item
-            GameObject newItem = Instantiate(itemIndices[items[5] - 1], pocket3.gameObject.transform.position, Quaternion.identity);
-            pocket3.Fill(newItem.GetComponent<Interact>());
-            print("Item in bottom left pocket: " + newItem.name);
-        }
-        if (items[6] > 0)
-        {
-            // spawn back pocket item
-            GameObject newItem = Instantiate(itemIndices[items[6] - 1], pocket4.gameObject.transform.position, Quaternion.identity);
-            pocket4.Fill(newItem.GetComponent<Interact>());
-            print("Item in bottom right pocket: " + newItem.name);
         }
 
         foreach (GameObject enemy in enemies){
