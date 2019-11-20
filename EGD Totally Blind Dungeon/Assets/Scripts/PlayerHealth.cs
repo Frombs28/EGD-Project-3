@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -18,10 +19,14 @@ public class PlayerHealth : MonoBehaviour
     public int init_BPM = 120;
     private int BPM = 0;
     private float BPS = 0;
+    public float distoMax = 0.5f;
+    private float distoLevel = 0;
+    public AudioMixer mixer;
     
     // Start is called before the first frame update
     void Start()
     {
+        mixer = GetComponent<AudioMixer>();
         aud = GetComponent<AudioSource>();
         aud.clip = heartBeat;
         BPM = init_BPM;
@@ -74,6 +79,8 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            distoLevel = Mathf.Lerp(distoMax, 0, health / MAX_HEALTH);
+            mixer.SetFloat("MasterDisto", distoLevel);
             aud.clip = heartBeat;
             CancelInvoke();
             BPM += 20;
