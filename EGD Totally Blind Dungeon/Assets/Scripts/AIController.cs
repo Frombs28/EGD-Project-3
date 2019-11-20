@@ -47,14 +47,6 @@ public class AIController : MonoBehaviour
 
     public EnemyAttack currentAttack;
 
-    //audio
-    public AudioSource footstepSource;
-    public AudioClip[] footstepSounds;
-    private bool playing = false;
-    private float footTimer = 0;
-    private int footIndex = 0;
-    public float footstepTime = 0.5f;
-
     // Start is called before the first frame update
     void Start()
     {

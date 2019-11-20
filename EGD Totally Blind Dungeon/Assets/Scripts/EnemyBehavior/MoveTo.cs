@@ -14,6 +14,14 @@ public class MoveTo : MonoBehaviour
     public bool pursue = false;
 
 
+    //audio
+    public AudioSource footstepSource;
+    public AudioClip[] footstepSounds;
+    private bool playing = false;
+    private float footTimer = 0;
+    private int randomRet = 0;
+    public float footstepTime = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +50,28 @@ public class MoveTo : MonoBehaviour
             agent.destination = initialPos;
             //print("second line " + agent.destination);
         }
+        if(agent.velocity.magnitude > 0.1)
+        {
+            if (!playing)
+            {
+                footTimer = 0;
+
+                randomRet = Random.Range(0, footstepSounds.Length);
+                footstepSource.clip = footstepSounds[randomRet];
+                footstepSource.Play();
+                playing = true;
+            }
+        }
+        if (playing)
+        {
+            footTimer += Time.deltaTime;
+            if (footTimer > footstepTime)
+            {
+                playing = false;
+            }
+        }
         //agent.destination = player.position;
+
     }
     public bool IsInRange()
     {
