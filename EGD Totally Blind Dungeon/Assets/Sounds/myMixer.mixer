@@ -414,6 +414,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 7c18bdb5bab46cf4c9c6c78e5a47afb6
     name: HeartbeatVolume
+  - guid: 245642649330fc3418783213975bf0fc
+    name: MasterDisto
   - guid: 60cc41e5fab094b43a920bbda5c056d4
     name: VerbRoom
   - guid: e5509bd55e5dd3b4cbe2e4d33abfa749
@@ -474,8 +476,9 @@ AudioMixerGroupController:
   m_Pitch: ba7d8ad2a198b8848af0d71e1959be88
   m_Send: 00000000000000000000000000000000
   m_Effects:
-  - {fileID: -5392189552824195652}
   - {fileID: 24400004}
+  - {fileID: 7789933033949552654}
+  - {fileID: -5392189552824195652}
   m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
@@ -517,6 +520,7 @@ AudioMixerSnapshotController:
     f635f82407c66c94cb0947549c77051b: 21
     ea63ae24b3cecf444962c709c2a4a168: -20.1
     099b9154efbaa4a46b951cda703f9de7: 0
+    245642649330fc3418783213975bf0fc: 0
     0f114964d5d38e84c9e2247969a3f49f: -17.938723
     faf817848cd6a25418570da3e42d0535: 30
     15a920a4d60f14a4ead06e0a9a2b6542: 1.84
@@ -1022,6 +1026,22 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &7789933033949552654
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bdc2085f210ed2f42bae37d9b48793e7
+  m_EffectName: Distortion
+  m_MixLevel: 23feea3b7d0366c41afcb0fb09522c53
+  m_Parameters:
+  - m_ParameterName: Level
+    m_GUID: 245642649330fc3418783213975bf0fc
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &8144898862407884163
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
