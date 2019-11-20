@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -734,6 +734,9 @@ MonoBehaviour:
   attackCompleted: 0
   angle: 45
   attackSpeed: 100
+  preSwingTime: 0.6
+  preSwingSpeed: 40
+  preSwingMovementSpeed: 0.5
   attackTime: 1
   tickTime: 0.2
   downMovementSpeed: 0.5
