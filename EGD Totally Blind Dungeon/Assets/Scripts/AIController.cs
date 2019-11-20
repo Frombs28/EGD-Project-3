@@ -104,7 +104,7 @@ public class AIController : MonoBehaviour
             {
                 myChest.SetActive(true);
             }
-            Invoke("DeleteSelf", 1f);
+            Invoke("DeleteSelf", deathClip.length + 0.05f);
         }
         else
         {
