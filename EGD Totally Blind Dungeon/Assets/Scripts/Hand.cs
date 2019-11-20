@@ -30,6 +30,8 @@ public class Hand : MonoBehaviour
     public bool switchHands = false;
     bool chestFound = false;
     public Chest chest = null;
+    bool inPocket = false;
+    Pocket curPocket = null;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -112,6 +114,11 @@ public class Hand : MonoBehaviour
             chestFound = false;
             chest = null;
         }
+        if(other.gameObject.CompareTag("Pocket"))
+        {
+            inPocket = false;
+            curPocket = null;
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -149,6 +156,12 @@ public class Hand : MonoBehaviour
                 chest = other.gameObject.GetComponent<Chest>();
             }
         }
+        if (other.gameObject.CompareTag("Pocket"))
+        {
+            inPocket = true;
+            curPocket = other.gameObject.GetComponent<Pocket>();
+            m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude/2f, source);
+        }
         if (!other.gameObject.CompareTag("Interact"))
         {
             return;
@@ -176,6 +189,13 @@ public class Hand : MonoBehaviour
     {
         // Get nearest
         m_CurrentInteract = GetNearestInteract();
+
+        // If pocket, m_CurrentInteract is whatever is in the pocket
+        if (inPocket && curPocket != null && curPocket.IsFull())
+        {
+            m_CurrentInteract = curPocket.curItem;
+            curPocket.Empty();
+        }
 
         // Null check
         if (m_CurrentInteract == null)
@@ -244,16 +264,35 @@ public class Hand : MonoBehaviour
         }
 
         // Check if sword
-        if (m_CurrentInteract.itemIndex == 1 && !switchHands)
+        if (m_CurrentInteract.itemIndex == 1 && !switchHands && !inPocket)
         {
             return;
         }
         switchHands = false;
 
-        // Apply velocity
-        Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
-        targetBody.velocity = m_Pose.GetVelocity();
-        targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+        if(inPocket && curPocket != null && curPocket.IsFull())
+        {
+            return;
+        }
+        else if(inPocket && curPocket != null && !curPocket.IsFull())
+        {
+            // Apply velocity
+            Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+            targetBody.velocity = Vector3.zero;
+            targetBody.angularVelocity = Vector3.zero;
+            curPocket.Fill(m_CurrentInteract);
+        }
+        else
+        {
+            // Apply velocity
+            Rigidbody targetBody = m_CurrentInteract.GetComponent<Rigidbody>();
+            targetBody.velocity = m_Pose.GetVelocity();
+            targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+            // Add to list of moved objects
+            interactManager.Add(m_CurrentInteract);
+        }
+
+        
         //targetBody.useGravity = true;
         //targetBody.isKinematic = false;
 
@@ -264,9 +303,6 @@ public class Hand : MonoBehaviour
 
         //-----------------------------------------------------------------------
         //m_Joint.connectedBody = null;
-
-        // Add to list of moved objects
-        interactManager.Add(m_CurrentInteract);
 
         // Clear
         m_CurrentInteract.m_ActiveHand = null;

@@ -6,6 +6,9 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
 {
     public float angle = 45f;
     public float attackSpeed = 100f;
+    public float preSwingTime = .6f;
+    public float preSwingSpeed = 40f;
+    public float preSwingMovementSpeed = .5f;
     public float attackTime = 2f;
     public float tickTime = .2f;
     public float downMovementSpeed = .5f;
@@ -19,6 +22,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     ConfigurableJoint joint;
     bool movingWrist = false;
     bool interrupted;
+    bool swingingUp = false;
 
     public float currentTime;
     //Vector3 originalScale;
@@ -29,11 +33,11 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         enemyrb = GetComponent<Rigidbody>();
         currentTime = 0f;
         //originalScale = weapon.transform.localScale;
-        //StartAttack();
+        StartAttack();
     }
     private void Update()
     {
-        if(!movingWrist) weapon.transform.localPosition = originalOffset;
+        if(!movingWrist&&!swingingUp) weapon.transform.localPosition = originalOffset;
         //print(parryable);
         //weapon.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //Debug.Log(weapon.GetComponent<AudioSource>().isPlaying);
@@ -49,7 +53,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         weapon.transform.localPosition = originalOffset;
         //if(!startInFront) weapon.transform.RotateAround(transform.position, transform.right, angle*direction*-1);
         //weapon.GetComponent<BoxCollider>().enabled = true;
-        StartCoroutine("SwingSword");
+        //StartCoroutine("SwingSword");
     }
     public override void InterruptAttack(){
         if (interrupted)
@@ -75,7 +79,15 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         jointGO.transform.eulerAngles = weapon.transform.eulerAngles;
         joint.connectedBody = rb;
         float currentTime = 0.0f;
+        swingingUp = true;
+        StartCoroutine(PreSwing(jointGO));
+        while(currentTime<preSwingTime){
+            currentTime+=tickTime;
+            yield return new WaitForSeconds(tickTime);
+        }
+        swingingUp = false;
         movingWrist = true;
+        currentTime = 0.0f;
         StartCoroutine(SwingSwordParry());
         StartCoroutine(MoveWrist(jointGO));
         while(currentTime<attackTime){
@@ -84,6 +96,15 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         }
         movingWrist = false;
         StartCoroutine("UnSwingSword");
+    }
+    IEnumerator PreSwing(GameObject wrist){
+      while(swingingUp){
+          Debug.Log("swinging up!!");
+           wrist.transform.localEulerAngles+=Vector3.forward*preSwingSpeed*Time.deltaTime;
+            wrist.transform.position +=Vector3.up*preSwingMovementSpeed*Time.deltaTime;
+            //wrist.transform.position += new Vector3(0,-1*Time.deltaTime,0);
+            yield return null;
+        }  
     }
     IEnumerator MoveWrist(GameObject wrist){
         while(movingWrist){
