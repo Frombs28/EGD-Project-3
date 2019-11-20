@@ -189,6 +189,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-4060111682592471396
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 16a826410f5c4254aa5afedfbfbd0361
+  m_EffectName: Attenuation
+  m_MixLevel: baafed69085efe2468cd59ed31278071
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4046455412802845078
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -436,6 +450,7 @@ AudioMixerController:
     - ce9da2a0102e6ba48b355149ac2093f5
     - 00632d11b7a804449b7e61b28d55d553
     - 88578bce35abe244f9107d0f460a3b81
+    - b5fd60bed47b3a4429ff17796641be1d
     name: Enemy
   m_CurrentViewIndex: 3
   m_TargetSnapshot: {fileID: 24500006}
@@ -507,6 +522,7 @@ AudioMixerSnapshotController:
     e5509bd55e5dd3b4cbe2e4d33abfa749: 1.7
     60cc41e5fab094b43a920bbda5c056d4: -1598
     511aa226ea68b3c49b0ca5932798b4e8: -20
+    d8658f268eeab564fb2d63d480fadc9b: -11.944499
     1c97bb5635ef22448b314a295c392e2c: 10
     d082d6c69e8011b4ea9e66c2281bb0e9: 0
     690538375a3977a4cafa611947d8de9e: -8.841784
@@ -587,6 +603,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &1683380740693595565
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hurt
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b5fd60bed47b3a4429ff17796641be1d
+  m_Children: []
+  m_Volume: d8658f268eeab564fb2d63d480fadc9b
+  m_Pitch: 23ccc06fcda69db43b5424ccd4aa5ab6
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -4060111682592471396}
+  m_UserColorIndex: 3
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &2097733912603040013
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -823,6 +858,7 @@ AudioMixerGroupController:
   - {fileID: 4117294086178957156}
   - {fileID: 6609756332697146759}
   - {fileID: 7689608148905984765}
+  - {fileID: 1683380740693595565}
   m_Volume: a3c5a29204c1f924ba79e4b79d2e181a
   m_Pitch: 70f1f4d6193ae2242ac0e75bc0fb0fe9
   m_Send: 00000000000000000000000000000000
