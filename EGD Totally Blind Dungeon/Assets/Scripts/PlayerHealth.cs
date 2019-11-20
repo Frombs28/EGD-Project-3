@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private float BPS = 0;
     public float distoMax = 0.5f;
     private float distoLevel = 0;
+    private float heartBeatinit = -18;
     public float heartBeatVol = -18;
     public float heartBeatVolChange = 6;
     public AudioMixer mixer;
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        heartBeatinit = heartBeatVol;
         aud = GetComponent<AudioSource>();
         aud.clip = heartBeat;
         BPM = init_BPM;
@@ -75,6 +77,9 @@ public class PlayerHealth : MonoBehaviour
             BPM = init_BPM;
             BPS = 0;
             aud.clip = deathSFX;
+            distoLevel = 0;
+            mixer.SetFloat("MasterDisto", distoLevel);
+            mixer.SetFloat("HeartbeatVolume", heartBeatinit);
             aud.Play();
             Death();
         }
