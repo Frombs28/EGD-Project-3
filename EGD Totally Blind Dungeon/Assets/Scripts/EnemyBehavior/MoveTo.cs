@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class MoveTo : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class MoveTo : MonoBehaviour
     public Vector3 initialPos;
     public float furthest = 15f;
     public bool pursue = false;
+    public AudioSource footstepSource;
+    public AudioClip[] footstepSounds;
+    private bool playing = false;
+    private float footTimer = 0;
+    private int randomRet = 0;
+    public float footstepTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +39,15 @@ public class MoveTo : MonoBehaviour
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
+        if (!playing)
+        {
+            footTimer = 0;
+
+            randomRet = Random.Range(0, footstepSounds.Length);
+            footstepSource.clip = footstepSounds[randomRet];
+            footstepSource.Play();
+            playing = true;
+        }
         if (pursue){
             agent.destination = player.position;
             //print(agent.destination);
@@ -41,6 +57,14 @@ public class MoveTo : MonoBehaviour
             //print("second line " + agent.destination);
         }
         //agent.destination = player.position;
+        if (playing)
+        {
+            footTimer += Time.deltaTime;
+            if (footTimer > footstepTime)
+            {
+                playing = false;
+            }
+        }
 
     }
     public bool IsInRange()

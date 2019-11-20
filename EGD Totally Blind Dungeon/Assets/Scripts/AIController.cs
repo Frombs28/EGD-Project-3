@@ -33,6 +33,14 @@ public class AIController : MonoBehaviour
     public bool hasChest = false;
     public Vector3 originPos = Vector3.zero;
 
+    //audio
+    private AudioSource breathSound;
+    public AudioClip hurtBreath;
+    public AudioSource hurtSoundSource;
+    public AudioClip[] hurtClips;
+    public AudioClip deathClip;
+    private int randomRet = 0;
+
     //public bool parry;
 
     public EnemyAttack verticalSwing = null;
@@ -42,6 +50,7 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        breathSound = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("MainCamera");
         rb = gameObject.GetComponent<Rigidbody>();
         //velocity = 5;
@@ -76,8 +85,16 @@ public class AIController : MonoBehaviour
         health -= sub;
         Debug.Log("Hit!");
         GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if(health == 1)
+        {
+            breathSound.Stop();
+            breathSound.clip = hurtBreath;
+            breathSound.Play();
+        }
         if(health <= 0)
         {
+            hurtSoundSource.clip = deathClip;
+            hurtSoundSource.Play();
             if (hasChest)
             {
                 myChest.SetActive(true);
@@ -86,6 +103,9 @@ public class AIController : MonoBehaviour
         }
         else
         {
+            randomRet = Random.Range(0, hurtClips.Length);
+            hurtSoundSource.clip = hurtClips[randomRet];
+            hurtSoundSource.Play();
             Invoke("ColorChangeBack", 0.5f);
         }
     }
