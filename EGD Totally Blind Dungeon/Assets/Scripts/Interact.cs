@@ -22,7 +22,8 @@ public class Interact : MonoBehaviour
     public float frequency2 = 20f;
     public int TAP_HAPTIC;
     int firstTime;
-    public AudioClip pickupSFX;
+    public AudioClip itemSFX;
+    public AudioClip onPickup;
     public int itemIndex = 0;
     public Vector3 originalPos;
     public Pocket pocketMan = null;
@@ -91,7 +92,7 @@ public class Interact : MonoBehaviour
     {
         if(m_ActiveHand == null && first_time && pocketMan == null)
         {
-            aud.clip = pickupSFX;
+            aud.clip = itemSFX;
             aud.loop = true;
             aud.Play();
             first_time = false;

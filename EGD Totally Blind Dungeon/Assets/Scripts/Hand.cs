@@ -256,7 +256,7 @@ public class Hand : MonoBehaviour
 
         if(!switchHands)
         {
-            m_CurrentInteract.scrapeyScrape.clip = m_CurrentInteract.pickupSFX;
+            m_CurrentInteract.scrapeyScrape.clip = m_CurrentInteract.onPickup;
             m_CurrentInteract.scrapeyScrape.loop = false;
             m_CurrentInteract.scrapeyScrape.Play();
         }
