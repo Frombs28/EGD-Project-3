@@ -174,8 +174,9 @@ AudioSource:
   m_GameObject: {fileID: 7522696033557029256}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 760c336a7ed656a428182e647f863d0b, type: 3}
+  OutputAudioMixerGroup: {fileID: 6609756332697146759, guid: 562ab105d45ccef4ea89374a8a1ca238,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: c2daf8a50a9107a45a590525ba73cf7d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -446,6 +447,8 @@ MonoBehaviour:
   timeToTarget: 2
   maxAngularAcceleration: 2
   active: 1
+  myChest: {fileID: 0}
+  hasChest: 0
   originPos: {x: 0, y: 0, z: 0}
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
