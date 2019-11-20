@@ -227,7 +227,7 @@ MonoBehaviour:
   pocket3: {fileID: 6693583968171980352}
   pocket4: {fileID: 5758272742350308204}
   player: {fileID: 6577134695563301497}
-  stick: {fileID: 0}
+  stick: {fileID: 6577134695563301498}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
   im: {fileID: 0}
 --- !u!1 &7059621573542395075

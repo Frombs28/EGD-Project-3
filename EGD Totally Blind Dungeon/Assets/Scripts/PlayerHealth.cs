@@ -26,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mixer = GetComponent<AudioMixer>();
         aud = GetComponent<AudioSource>();
         aud.clip = heartBeat;
         BPM = init_BPM;
