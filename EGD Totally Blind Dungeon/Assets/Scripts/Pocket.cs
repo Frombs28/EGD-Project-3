@@ -11,10 +11,8 @@ public class Pocket : MonoBehaviour
     /*
       Each pocket has an id number:
       0 = Back
-      1 = Top left
-      2 = Top right
-      3 = Bottom left
-      4 = Bottom right
+      1 = left
+      2 = right
     */
 
     // Start is called before the first frame update
@@ -42,10 +40,8 @@ public class Pocket : MonoBehaviour
         curItem.transform.parent = gameObject.transform;
         curItem.transform.localPosition = Vector3.zero;
         //curItem.GetComponent<Rigidbody>().isKinematic = false;
-        foreach (Collider other in curItem.gameObject.GetComponentsInChildren<BoxCollider>())
-        {
-            other.enabled = false;
-        }
+        curItem.gameObject.layer = LayerMask.NameToLayer("DummyLayer");
+        curItem.gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("DummyLayer");
         curItem.GetComponent<Rigidbody>().useGravity = false;
         tracker.NewPocketItem(curItem,id);
         curItem.pocketMan = gameObject.GetComponent<Pocket>();
@@ -58,10 +54,8 @@ public class Pocket : MonoBehaviour
         //curItem.GetComponent<Rigidbody>().isKinematic = true;
         curItem.GetComponent<Rigidbody>().useGravity = true;
         curItem.pocketMan = null;
-        foreach (Collider other in GetComponentsInChildren<BoxCollider>())
-        {
-            other.enabled = true;
-        }
+        curItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
+        curItem.gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("GrabLayer");
         curItem = null;
         tracker.RemovePocketItem(id);
     }
