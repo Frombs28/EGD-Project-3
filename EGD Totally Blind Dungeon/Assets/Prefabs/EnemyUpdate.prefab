@@ -706,7 +706,7 @@ MonoBehaviour:
   maxAngularAcceleration: 2
   active: 1
   myChest: {fileID: 0}
-  hasChest: 0
+  hasChest: 1
   originPos: {x: 0, y: 0, z: 0}
   hurtBreath: {fileID: 8300000, guid: 4c75b4c55693a144eaa10243ab9bb697, type: 3}
   hurtSoundSource: {fileID: 427592176}
@@ -715,12 +715,6 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 823d64a9726fdb44ead7f9e3ea0e3ece, type: 3}
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
-  footstepSource: {fileID: 221171209}
-  footstepSounds:
-  - {fileID: 8300000, guid: 0304372860e27e4469dfc2d07ce5442c, type: 3}
-  - {fileID: 8300000, guid: 1b7e9117e6916d44a9f447bd32335e4b, type: 3}
-  - {fileID: 8300000, guid: f0a01c611c500cb489912d1bca3d4520, type: 3}
-  footstepTime: 0.5
 --- !u!114 &7522696033796200950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,6 +778,12 @@ MonoBehaviour:
   initialPos: {x: 0, y: 0, z: 0}
   furthest: 15
   pursue: 0
+  footstepSource: {fileID: 221171209}
+  footstepSounds:
+  - {fileID: 8300000, guid: 0304372860e27e4469dfc2d07ce5442c, type: 3}
+  - {fileID: 8300000, guid: 1b7e9117e6916d44a9f447bd32335e4b, type: 3}
+  - {fileID: 8300000, guid: f0a01c611c500cb489912d1bca3d4520, type: 3}
+  footstepTime: 0.5
 --- !u!195 &7522696033796200956
 NavMeshAgent:
   m_ObjectHideFlags: 0

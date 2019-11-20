@@ -76,14 +76,7 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playing)
-        {
-            footTimer += Time.deltaTime;
-            if (footTimer > footstepTime)
-            {
-                playing = false;
-            }
-        }
+
     }
 
     void ColorChangeBack()
@@ -134,15 +127,6 @@ public class AIController : MonoBehaviour
 
     public void MoveCircular()
     {
-        if (!playing)
-        {
-            footTimer = 0;
-
-            footIndex = Random.Range(0, footstepSounds.Length);
-            footstepSource.clip = footstepSounds[footIndex];
-            footstepSource.Play();
-            playing = true;
-        }
         //Vector3 yeah = transform.position + new Vector3(Mathf.Sin(transform.rotation.x), 0, Mathf.Cos(gameObject.transform.rotation.z));
         timeCounter += Time.deltaTime;
 
@@ -173,15 +157,6 @@ public class AIController : MonoBehaviour
 
     public void MoveTowardPlayer()
     {
-        if (!playing)
-        {
-            footTimer = 0;
-
-            footIndex = Random.Range(0, footstepSounds.Length);
-            footstepSource.clip = footstepSounds[footIndex];
-            footstepSource.Play();
-            playing = true;
-        }
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
         direction = new Vector3(direction.x, 0f, direction.z);
@@ -199,15 +174,6 @@ public class AIController : MonoBehaviour
 
     public void MoveAwayFromPlayer()
     {
-        if (!playing)
-        {
-            footTimer = 0;
-
-            footIndex = Random.Range(0, footstepSounds.Length);
-            footstepSource.clip = footstepSounds[footIndex];
-            footstepSource.Play();
-            playing = true;
-        }
         //Debug.Log("Away");
         //transform.LookAt(player.transform);
         Vector3 direction = player.transform.position - gameObject.transform.position;
