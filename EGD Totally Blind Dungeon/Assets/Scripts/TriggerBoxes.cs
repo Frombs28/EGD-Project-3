@@ -14,6 +14,7 @@ public class TriggerBoxes : MonoBehaviour
     public AudioClip[] screams;
     private bool wall = false;
     private GameObject player;
+    int currentFrame = 0;
     
     public MoveTo enemy;
     // Start is called before the first frame update
@@ -45,6 +46,12 @@ public class TriggerBoxes : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (currentFrame < 10)
+        {
+            currentFrame++;
+            return;
+        }
+        currentFrame = 0;
         if (wall && !enemy.pursue)
         {
             RaycastHit hit;
@@ -54,7 +61,7 @@ public class TriggerBoxes : MonoBehaviour
             Debug.DrawRay(transform.position, direction);
             if (Physics.Raycast(transform.position, direction, out hit, Vector3.Distance(transform.position, player.transform.position), layerMask))
             {
-                print("Fail - found wall");
+                //print("Fail - found wall");
             }
             else
             {
@@ -62,7 +69,7 @@ public class TriggerBoxes : MonoBehaviour
                 aud.clip = screams[index];
                 aud.loop = false;
                 aud.Play();
-                Debug.Log("Player hit trigger: " + gameObject.name);
+                //Debug.Log("Player hit trigger: " + gameObject.name);
                 enemy.GetComponent<NavMeshAgent>().destination = player.transform.position;
                 enemy.pursue = true;
                 wall = false;
@@ -82,7 +89,7 @@ public class TriggerBoxes : MonoBehaviour
             Debug.DrawRay(transform.position, direction);
             if (Physics.Raycast(transform.position, direction, out hit, Vector3.Distance(transform.position,other.transform.position), layerMask))
             {
-                print("Fail - found wall");
+                //print("Fail - found wall");
                 wall = true;
             }
             else
@@ -91,7 +98,7 @@ public class TriggerBoxes : MonoBehaviour
                 aud.clip = screams[index];
                 aud.loop = false;
                 aud.Play();
-                Debug.Log("Player hit trigger: " + gameObject.name);
+                //Debug.Log("Player hit trigger: " + gameObject.name);
                 enemy.GetComponent<NavMeshAgent>().destination = other.transform.position;
                 enemy.pursue = true;
             }

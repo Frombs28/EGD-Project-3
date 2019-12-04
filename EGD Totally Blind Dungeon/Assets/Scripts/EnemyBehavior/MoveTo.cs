@@ -12,6 +12,7 @@ public class MoveTo : MonoBehaviour
     public Vector3 initialPos;
     public float furthest = 15f;
     public bool pursue = false;
+    public bool stay = true;
 
 
     //audio
@@ -44,10 +45,12 @@ public class MoveTo : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
         if (pursue){
             agent.destination = player.position;
+            stay = true;
             //print(agent.destination);
         }
-        else{
+        else if (stay){
             agent.destination = initialPos;
+            stay = false;
             //print("second line " + agent.destination);
         }
         if(agent.velocity.magnitude > 0.1)
