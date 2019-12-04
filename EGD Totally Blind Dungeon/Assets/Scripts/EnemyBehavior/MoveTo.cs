@@ -59,10 +59,13 @@ public class MoveTo : MonoBehaviour
             {
                 footTimer = 0;
 
-                randomRet = Random.Range(0, footstepSounds.Length);
-                footstepSource.clip = footstepSounds[randomRet];
-                footstepSource.Play();
-                playing = true;
+                if (footstepSounds.Length > 0)
+                {
+                    randomRet = Random.Range(0, footstepSounds.Length);
+                    footstepSource.clip = footstepSounds[randomRet];
+                    footstepSource.Play();
+                    playing = true;
+                }
             }
         }
         if (playing)
