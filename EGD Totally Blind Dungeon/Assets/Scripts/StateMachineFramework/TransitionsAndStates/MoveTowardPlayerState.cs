@@ -12,7 +12,7 @@ public class MoveTowardPlayerState : State
     }
 
     public override void DoAction(AIController ai){
-        Debug.Log("going toward player!!");
+        //Debug.Log("going toward player!!");
         //ai.MoveTowardPlayer();
     }
 }

@@ -1023,6 +1023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pocket1
       objectReference: {fileID: 0}
+    - target: {fileID: 4256492215695511851, guid: dca054525d66ef346b033448ab533cad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1206,6 +1211,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pocket2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256492215695511851, guid: dca054525d66ef346b033448ab533cad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2365668093117788644, guid: dca054525d66ef346b033448ab533cad,
         type: 3}
