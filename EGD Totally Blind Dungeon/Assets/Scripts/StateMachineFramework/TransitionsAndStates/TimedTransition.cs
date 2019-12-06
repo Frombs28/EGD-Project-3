@@ -19,7 +19,6 @@ public class TimedTransition : Transition
      }
      public override bool IsTriggered(AIController ai){
          timeToSwitch-=Time.deltaTime;
-         Debug.Log(timeToSwitch);
          if(timeToSwitch<=0){
              timeToSwitch = originalTime;
              return true;
