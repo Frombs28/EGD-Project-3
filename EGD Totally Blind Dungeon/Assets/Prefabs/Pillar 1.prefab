@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2576544155356873277}
   - component: {fileID: 3238934467201186551}
+  - component: {fileID: 7061603661886666589}
   m_Layer: 0
   m_Name: Pillar 1
   m_TagString: Untagged
@@ -46,6 +47,20 @@ CapsuleCollider:
   m_Height: 40
   m_Direction: 1
   m_Center: {x: 0, y: 15, z: 0}
+--- !u!114 &7061603661886666589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556803577395097646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af791efb9f0ec5c46810084a3600487c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: 2
+  dampening: 0
 --- !u!1 &6884638991281104746
 GameObject:
   m_ObjectHideFlags: 0
