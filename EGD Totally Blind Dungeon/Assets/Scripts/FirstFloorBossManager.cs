@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstFloorBossManager : MonoBehaviour
+public class FirstFloorBossManager : SimpleObserver
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void OnNotify(NotificationType notice, string message, float value){
+        if(notice == NotificationType.SpawnedItem){
+            //do do something
+        }
     }
 }

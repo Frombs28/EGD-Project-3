@@ -3563,11 +3563,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e7fdbb5647bbb4fb751f2b730fe869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 911757779}
   stoppingDistance: 0
   initialPos: {x: 0, y: 0, z: 0}
   furthest: 15
   pursue: 0
+  stay: 1
   footstepSource: {fileID: 2257413860039071013}
   footstepSounds:
   - {fileID: 8300000, guid: 0304372860e27e4469dfc2d07ce5442c, type: 3}
@@ -3638,7 +3639,7 @@ MonoBehaviour:
   angular: 500000
   rb: {fileID: 0}
   behavior: 0
-  player: {fileID: 0}
+  player: {fileID: 911757775}
   angle: 10
   timeCounter: 0
   startFrame: 0
@@ -3650,7 +3651,7 @@ MonoBehaviour:
   maxAngularAcceleration: 2
   active: 1
   myChest: {fileID: 0}
-  hasChest: 1
+  hasChest: 0
   originPos: {x: 0, y: 0, z: 0}
   hurtBreath: {fileID: 8300000, guid: 4c75b4c55693a144eaa10243ab9bb697, type: 3}
   hurtSoundSource: {fileID: 2257413860245787356}
