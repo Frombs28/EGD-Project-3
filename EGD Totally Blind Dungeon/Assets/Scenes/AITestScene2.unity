@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &111090565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,6 +183,10 @@ MonoBehaviour:
   initialPos: {x: 0, y: 0, z: 0}
   furthest: 15
   pursue: 0
+  stay: 1
+  footstepSource: {fileID: 0}
+  footstepSounds: []
+  footstepTime: 0.5
 --- !u!54 &111090567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -250,6 +254,13 @@ MonoBehaviour:
   timeToTarget: 2
   maxAngularAcceleration: 2
   active: 1
+  myChest: {fileID: 0}
+  hasChest: 0
+  originPos: {x: 0, y: 0, z: 0}
+  hurtBreath: {fileID: 0}
+  hurtSoundSource: {fileID: 0}
+  hurtClips: []
+  deathClip: {fileID: 0}
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
 --- !u!65 &111090570
@@ -459,6 +470,10 @@ MonoBehaviour:
   initialPos: {x: 0, y: 0, z: 0}
   furthest: 15
   pursue: 0
+  stay: 1
+  footstepSource: {fileID: 0}
+  footstepSounds: []
+  footstepTime: 0.5
 --- !u!54 &337485089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -494,13 +509,16 @@ MonoBehaviour:
   attackCompleted: 0
   angle: 45
   attackSpeed: 100
+  preSwingTime: 0.6
+  preSwingSpeed: 40
+  preSwingMovementSpeed: 0.5
   attackTime: 1
-  tickTime: 0.2
   downMovementSpeed: 0.5
   objectWithMaterial: {fileID: 2083239022}
   jointPrefab: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
   swordPosition: {fileID: 1680084246}
+  parryTime: 0.5
   currentTime: 0
 --- !u!114 &337485091
 MonoBehaviour:
@@ -531,6 +549,13 @@ MonoBehaviour:
   timeToTarget: 2
   maxAngularAcceleration: 2
   active: 1
+  myChest: {fileID: 0}
+  hasChest: 0
+  originPos: {x: 0, y: 0, z: 0}
+  hurtBreath: {fileID: 0}
+  hurtSoundSource: {fileID: 0}
+  hurtClips: []
+  deathClip: {fileID: 0}
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
 --- !u!65 &337485092
@@ -973,6 +998,7 @@ GameObject:
   - component: {fileID: 624256957}
   - component: {fileID: 624256956}
   - component: {fileID: 624256955}
+  - component: {fileID: 624256959}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -1046,12 +1072,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624256954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: 1.53, z: 0.62}
+  m_LocalPosition: {x: 3.95, y: 1.53, z: 1.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624256959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624256954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1e06735574bda4ca57ed6255af01f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1217605580}
 --- !u!1 &1039298597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,13 +1433,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217605578}
-  m_LocalRotation: {x: 0.072688684, y: 0.786035, z: -0.07400997, w: 0.609416}
-  m_LocalPosition: {x: -8.26, y: 5.13, z: -0.83}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.23, y: 1.45, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 168.174, y: -75.427, z: -178.591}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232105639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434363700}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 38.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1636470363}
@@ -1708,6 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b262d842f5c87e40a6f0f780b984990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screams: []
   enemy: {fileID: 111090566}
 --- !u!65 &1485692120
 BoxCollider:
