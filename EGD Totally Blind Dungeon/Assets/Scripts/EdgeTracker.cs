@@ -24,7 +24,7 @@ public class EdgeTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       print("Playing: " + playing);
+       //print("Playing: " + playing);
     }
 
     private void FixedUpdate()
