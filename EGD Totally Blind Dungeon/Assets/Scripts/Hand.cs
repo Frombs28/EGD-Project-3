@@ -32,6 +32,9 @@ public class Hand : MonoBehaviour
     public Chest chest = null;
     bool inPocket = false;
     Pocket curPocket = null;
+    bool healingFound = false;
+    public Healer heal;
+    public PlayerHealth health;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -47,6 +50,7 @@ public class Hand : MonoBehaviour
     {
         it = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemTracker>();
         interactManager = GameObject.FindObjectOfType<InteractManager>();
+        health = FindObjectOfType<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -63,6 +67,10 @@ public class Hand : MonoBehaviour
                 {
                     chest.Open();
                 }
+            }
+            else if (healingFound && heal.NumCharges() > 0 && health.health < health.MAX_HEALTH)
+            {
+                heal.Heal();
             }
             else
             {
@@ -107,7 +115,11 @@ public class Hand : MonoBehaviour
         if (other.gameObject.CompareTag("Checkpoint"))
         {
             haveSaved = false;
-            return;
+            //return;
+        }
+        if (other.gameObject.CompareTag("Heal"))
+        {
+            healingFound = false;
         }
         if (other.gameObject.CompareTag("Chest") && !held)
         {
@@ -143,7 +155,6 @@ public class Hand : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Chest"))
         {
-            print("Here111111111111");
             if (held)
             {
                 chestFound = false;
@@ -160,6 +171,12 @@ public class Hand : MonoBehaviour
         {
             inPocket = true;
             curPocket = other.gameObject.GetComponent<Pocket>();
+            m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude / 2f, source);
+            return;
+        }
+        if (other.gameObject.CompareTag("Heal") && heal.NumCharges() > 0 && health.health < health.MAX_HEALTH && !held)
+        {
+            healingFound = true;
             m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude / 2f, source);
             return;
         }

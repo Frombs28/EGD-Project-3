@@ -29,6 +29,7 @@ public class StickManipulation : MonoBehaviour
     private int randomRet = 0;
     private RaycastHit hit;
     public bool canMove = true;
+    public bool moving;
 
     private void Awake()
     {
@@ -105,6 +106,7 @@ public class StickManipulation : MonoBehaviour
                 footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];
                 footstepSource.Play();
                 playing = true;
+                moving = true;
             }
         }
 
@@ -134,6 +136,7 @@ public class StickManipulation : MonoBehaviour
                 footstepSource.clip = AudioMaster.staticFootstepSounds[matIndex][randomRet];
                 footstepSource.Play();
                 playing = true;
+                moving = true;
             }
         }
 
@@ -145,6 +148,7 @@ public class StickManipulation : MonoBehaviour
         if(m_SpeedX == 0 && m_SpeedY == 0)
         {
             playing = false;
+            moving = false;
             footstepSource.Stop();
         }
 

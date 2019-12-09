@@ -138,9 +138,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5085692417701353625}
   - component: {fileID: 2800889458847361018}
-  m_Layer: 16
+  - component: {fileID: 4711096533132295674}
+  m_Layer: 0
   m_Name: Healer
-  m_TagString: Untagged
+  m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,8 +154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2359722842398174668}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.012, y: -0.11, z: -0.186}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 7509716293108571960}
   m_RootOrder: 2
@@ -172,6 +173,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.76, y: 0.3, z: 0.16}
   m_Center: {x: 0, y: -0.33, z: 0.33}
+--- !u!114 &4711096533132295674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359722842398174668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6adf5c5ba723d4bbcec603e2befff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6577134695563301497
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +283,7 @@ MonoBehaviour:
   pocket2: {fileID: 2850595817035095506}
   player: {fileID: 6577134695563301497}
   stick: {fileID: 6577134695563301498}
+  hellSpawn: {fileID: 0}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
   im: {fileID: 0}
 --- !u!1 &7059621573542395075
@@ -756,6 +770,7 @@ MonoBehaviour:
   interactManager: {fileID: 0}
   switchHands: 0
   chest: {fileID: 0}
+  heal: {fileID: 4711096533132295674}
 --- !u!135 &7510292049339216299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -908,6 +923,7 @@ MonoBehaviour:
   interactManager: {fileID: 0}
   switchHands: 0
   chest: {fileID: 0}
+  heal: {fileID: 4711096533132295674}
 --- !u!135 &7510292049339251597
 SphereCollider:
   m_ObjectHideFlags: 0

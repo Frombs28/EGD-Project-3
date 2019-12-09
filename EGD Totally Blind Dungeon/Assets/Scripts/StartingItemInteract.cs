@@ -5,20 +5,30 @@ using UnityEngine;
 public class StartingItemInteract : MonoBehaviour
 {
     Rigidbody rb;
-
+    Interact item;
+    TutorialManager manager;
+    bool found = false;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
+        Invoke("StopGravity", 2f);
+        item = GetComponent<Interact>();
+        manager = FindObjectOfType<TutorialManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.GetComponent<Interact>().m_ActiveHand != null)
+        if(item.m_ActiveHand != null && !found)
         {
-            rb.useGravity = true;
+            found = true;
+            manager.Step4();
         }
+    }
+
+    void StopGravity()
+    {
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
     }
 }

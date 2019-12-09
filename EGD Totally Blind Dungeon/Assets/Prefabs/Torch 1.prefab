@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd005efcc7725a48bca63297ee4a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeTime: 0.5
 --- !u!169 &937090948
 AudioLowPassFilter:
   m_ObjectHideFlags: 0
