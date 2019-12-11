@@ -50,7 +50,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     public override void StartAttack(){
         attackCompleted = false;
         interrupted = false;
-        objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        if(objectWithMaterial!=null) objectWithMaterial.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         //enemyrb.constraints |= RigidbodyConstraints.FreezeRotationY;
         //weapon.transform.rotation = transform.rotation;
         weapon.transform.localPosition = originalOffset;

@@ -14,7 +14,7 @@ public class FirstFloorBossManager : SimpleObserver
     /// </summary>
     void Start()
     {
-        initialPosition = transform.position;
+        initialPosition = transform.parent.position;
         AIController main = transform.parent.GetComponent<AIController>();
         activeBosses = new List<AIController>();
         activeBosses.Add(main);
@@ -25,6 +25,10 @@ public class FirstFloorBossManager : SimpleObserver
     }
     private void Update() {
         UpdateSharedHealth();
+        if(Input.GetKeyDown(KeyCode.W)){
+            Debug.Log("trying 2 reset");
+            ResetBoss();
+        }
     }
     public override void OnNotify(NotificationType notice, string message, GameObject go){
         if(notice == NotificationType.SpawnedItem){
@@ -62,12 +66,12 @@ public class FirstFloorBossManager : SimpleObserver
     }
 
     public void ResetBoss(){
+        StopFSM();
         if(activeBosses[0].currentAttack!=null){
             activeBosses[0].currentAttack.InterruptAttack();
         }
         finiteStateMachine.ResetFSM();
-        StopFSM();
-        activeBosses[0].transform.position = initialPosition;
+        transform.parent.position = initialPosition;
         if(activeBosses.Count>1){
             AIController oldDup = activeBosses[1];
             activeBosses.Remove(activeBosses[1]);
