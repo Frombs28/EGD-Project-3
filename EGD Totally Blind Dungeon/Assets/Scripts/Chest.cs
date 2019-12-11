@@ -38,6 +38,8 @@ public class Chest : MonoBehaviour
         }
         close.enabled = false;
         open.enabled = true;
+        aud.loop = false;
+        aud.Play();
         GameObject newItem = Instantiate(item, spawnPoint.position, Quaternion.identity);
         newItem.GetComponent<Interact>().newStartPos(Vector3.zero);
     }

@@ -71,11 +71,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1306373573446238782, guid: 562ab105d45ccef4ea89374a8a1ca238,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 273e17a593e51432faf32eca40a2166b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1.25
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -467,6 +467,7 @@ MonoBehaviour:
   open: {fileID: 263529614737738610}
   spawnPoint: {fileID: 7849231487124663663}
   aud: {fileID: 8555355321541907211}
+  tutorial: 0
 --- !u!65 &7862515437059617705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -487,11 +488,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3728996540452796435}
     m_Modifications:
-    - target: {fileID: -2942645444021431959, guid: 640f794ca7dec664ca2a38915c3307dd,
+    - target: {fileID: -927199367670048503, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aec4f62919044664ebdedf67ae2e598d, type: 2}
+      propertyPath: m_Name
+      value: Chest A2
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -547,11 +548,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 640f794ca7dec664ca2a38915c3307dd,
+    - target: {fileID: -2942645444021431959, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
-      propertyPath: m_Name
-      value: Chest A2
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aec4f62919044664ebdedf67ae2e598d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640f794ca7dec664ca2a38915c3307dd, type: 3}
 --- !u!4 &1295652993446375681 stripped
