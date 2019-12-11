@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
     public float heartBeatVol = -18;
     public float heartBeatVolChange = 6;
     public AudioMixer mixer;
+    bool firstTime = true;
+    TutorialManager tutMan;
     
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         aud.clip = heartBeat;
         BPM = init_BPM;
         BPS = 60/BPM;
+        tutMan = FindObjectOfType<TutorialManager>();
         //it = gameObject.GetComponent<ItemTracker>();
     }
 
@@ -52,7 +55,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        print("XXXXXXXXXXXXXXXXXXXX " + collision.gameObject.tag);
         if (collision.gameObject.tag == "Enemy Weapon")
         {
             AIController enemy = collision.gameObject.GetComponent<EnemyWeapon>().myEnemy.gameObject.GetComponent<AIController>();
@@ -69,8 +71,6 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
 
-        print("I've been injured! Ugh!");
-
         if (health <= 0)
         {
             StopCoroutine("Heartbeat");
@@ -79,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
             aud.clip = deathSFX;
             distoLevel = 0;
             mixer.SetFloat("MasterDisto", distoLevel);
+            heartBeatVol = heartBeatinit;
             mixer.SetFloat("HeartbeatVolume", heartBeatinit);
             aud.Play();
             Death();
@@ -98,6 +99,25 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void AddHealth()
+    {
+        StopCoroutine("Heartbeat");
+        health = MAX_HEALTH;
+        BPM = init_BPM;
+        BPS = 0;
+        distoLevel = 0;
+        mixer.SetFloat("MasterDisto", distoLevel);
+        heartBeatVol = heartBeatinit;
+        mixer.SetFloat("HeartbeatVolume", heartBeatinit);
+        if (firstTime)
+        {
+            firstTime = false;
+            tutMan.Step8();
+        }
+        //aud.clip = healing sfx plz;
+        //aud.Play();
+    }
+
     IEnumerator Heartbeat()
     {
         while (true)
@@ -112,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
     {
         leftHand.DropRespawn();
         rightHand.DropRespawn();
-        it.LoadPlayer();
+        it.PreLoad();
         health = MAX_HEALTH;
     }
 }

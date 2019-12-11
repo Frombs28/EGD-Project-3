@@ -71,7 +71,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1306373573446238782, guid: 562ab105d45ccef4ea89374a8a1ca238,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 52c8e78dcac117f48959bfbd625fc858, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1.25
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd005efcc7725a48bca63297ee4a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeTime: 0.5
 --- !u!65 &9200334015821944714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -426,8 +427,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2453135172013906023}
-  - component: {fileID: 2232598775484487756}
   - component: {fileID: 5290917718700635201}
+  - component: {fileID: 7862515437059617705}
   m_Layer: 9
   m_Name: Handle
   m_TagString: Chest
@@ -449,19 +450,6 @@ Transform:
   m_Father: {fileID: 3728996540452796435}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2232598775484487756
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3339819226575808458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17
-  m_Center: {x: 0, y: 0.46, z: -0.28}
 --- !u!114 &5290917718700635201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +466,20 @@ MonoBehaviour:
   close: {fileID: 6805384107008226462}
   open: {fileID: 263529614737738610}
   spawnPoint: {fileID: 7849231487124663663}
-  aud: {fileID: 0}
+  aud: {fileID: 8555355321541907211}
+--- !u!65 &7862515437059617705
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339819226575808458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.31, y: 1.27, z: 0.52}
+  m_Center: {x: 0, y: 0.59, z: -0.27}
 --- !u!1001 &6089325497145317915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,11 +487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3728996540452796435}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 640f794ca7dec664ca2a38915c3307dd,
+    - target: {fileID: -2942645444021431959, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
-      propertyPath: m_Name
-      value: Chest A2
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aec4f62919044664ebdedf67ae2e598d, type: 2}
     - target: {fileID: -4216859302048453862, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,11 +547,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2942645444021431959, guid: 640f794ca7dec664ca2a38915c3307dd,
+    - target: {fileID: -927199367670048503, guid: 640f794ca7dec664ca2a38915c3307dd,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aec4f62919044664ebdedf67ae2e598d, type: 2}
+      propertyPath: m_Name
+      value: Chest A2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640f794ca7dec664ca2a38915c3307dd, type: 3}
 --- !u!4 &1295652993446375681 stripped
