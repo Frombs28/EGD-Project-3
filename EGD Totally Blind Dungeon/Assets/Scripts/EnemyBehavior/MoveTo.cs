@@ -40,9 +40,9 @@ public class MoveTo : MonoBehaviour
     void Update()
     {
         //TooFar();
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
+        //Vector3 direction = (player.transform.position - transform.position).normalized;
+        //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 4);
         if (pursue){
             agent.destination = player.position;
             stay = true;
