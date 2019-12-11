@@ -670,7 +670,7 @@ MonoBehaviour:
   TAP_HAPTIC: 1
   itemSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
   onPickup: {fileID: 8300000, guid: 15fad01b8abaaae4f98cb2bf1ae4f589, type: 3}
-  itemIndex: 1
+  itemIndex: 5
   originalPos: {x: 0, y: 0, z: 0}
   pocketMan: {fileID: 0}
 --- !u!114 &6810581456549297075
@@ -1640,6 +1640,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2017259752893059234}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044095401226468608, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1693,26 +1713,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword 1B
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044095401226468608, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5701257375759989674, guid: 00e59520fb54b49f6a157817b08b2862,
@@ -1746,6 +1746,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 522313120331852237}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044095401226468608, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1799,26 +1819,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword 1B
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044095401226468608, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5701257375759989674, guid: 00e59520fb54b49f6a157817b08b2862,

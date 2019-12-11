@@ -342,7 +342,7 @@ MonoBehaviour:
   TAP_HAPTIC: 1
   itemSFX: {fileID: 8300000, guid: f29a0d7a86f364b68b854789f89205b5, type: 3}
   onPickup: {fileID: 8300000, guid: 15fad01b8abaaae4f98cb2bf1ae4f589, type: 3}
-  itemIndex: 1
+  itemIndex: 2
   originalPos: {x: 0, y: 0, z: 0}
   pocketMan: {fileID: 0}
 --- !u!114 &6582244762809194290
