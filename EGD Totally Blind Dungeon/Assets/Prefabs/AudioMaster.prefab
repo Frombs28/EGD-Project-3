@@ -47,19 +47,33 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca0f976ff76b04644a1332f3be4f344b, type: 3}
   - {fileID: 8300000, guid: 192c916a06d2430469b7aea71fb84ba5, type: 3}
   - {fileID: 8300000, guid: 19a1056a4656e314392ee6bcf50bc8cf, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
   - {fileID: 8300000, guid: 192c916a06d2430469b7aea71fb84ba5, type: 3}
   - {fileID: 8300000, guid: e487d241e02adf9418964c3bc1f52038, type: 3}
   - {fileID: 8300000, guid: 29a682096eed6d145b43eaf4033a11d3, type: 3}
+  - {fileID: 8300000, guid: 2f3361f05e0514480825eee58e012600, type: 3}
   - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
   - {fileID: 8300000, guid: 29a682096eed6d145b43eaf4033a11d3, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
+  - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
   - {fileID: 8300000, guid: 8e22b1328b4db0945bbe49c4dfc3cf0c, type: 3}
   scrapeSounds:
   - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
   - {fileID: 8300000, guid: da50e5a6acfab074f818ad68fbf53afe, type: 3}
   - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
   - {fileID: 8300000, guid: da50e5a6acfab074f818ad68fbf53afe, type: 3}
   - {fileID: 8300000, guid: 57a75d4e618572a44b0f160c1e537c56, type: 3}
   - {fileID: 8300000, guid: 9c254b73c860faa4b8fb26abac49ba87, type: 3}
+  - {fileID: 8300000, guid: 8bc596fde77974d83aa9f79bafded926, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
+  - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
   - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
   - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
   - {fileID: 8300000, guid: 3ee1fc95c2ea4134fa1e8af41ac81b01, type: 3}
@@ -78,3 +92,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 47e6127399c129648bd7a81d44cf49dd, type: 3}
   - {fileID: 8300000, guid: a587971fff7798c43be3ae7611a9af30, type: 3}
   - {fileID: 8300000, guid: 3b9323a96444a81429b126a70a27e3b6, type: 3}
+  grassFootsteps:
+  - {fileID: 8300000, guid: c20146b1eddfd4fe0aa71eaac158d110, type: 3}
+  - {fileID: 8300000, guid: 9f2857b73ff5341b8bd04e04e69792d2, type: 3}
+  - {fileID: 8300000, guid: 94862704d1647428a8fddf0f45e0b137, type: 3}
+  - {fileID: 8300000, guid: 65597dc2009834889b94e3d354cd4ae5, type: 3}
