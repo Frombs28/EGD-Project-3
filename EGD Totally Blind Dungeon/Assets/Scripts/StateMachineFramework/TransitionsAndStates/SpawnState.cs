@@ -9,6 +9,7 @@ public class SpawnState : State
     public override void DoAction(AIController ai){}
     public override void DoEntryAction(AIController ai)
     {
+        Debug.Log("Gonna go spawn a boy xd");
         GameObject spawned = Instantiate(spawnPrefab, spawnLocation, Quaternion.identity);
         NotifyObservers(NotificationType.SpawnedItem, "", spawned);
     }

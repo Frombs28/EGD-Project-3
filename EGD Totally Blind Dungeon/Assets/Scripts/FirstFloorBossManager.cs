@@ -5,12 +5,14 @@ using UnityEngine;
 public class FirstFloorBossManager : SimpleObserver
 {
     List<AIController> activeBosses;
+    Vector3 initialPosition;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
     void Start()
     {
+        initialPosition = transform.position;
         AIController main = transform.parent.GetComponent<AIController>();
         activeBosses = new List<AIController>();
         activeBosses.Add(main);
