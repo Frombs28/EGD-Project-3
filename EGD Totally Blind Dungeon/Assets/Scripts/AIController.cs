@@ -43,6 +43,7 @@ public class AIController : MonoBehaviour
     public AudioClip deathClip;
     private int randomRet = 0;
     public bool tutorial = false;
+    float MAX_HEALTH;
 
     //public bool parry;
 
@@ -69,6 +70,12 @@ public class AIController : MonoBehaviour
         {
             myChest.SetActive(false);
         }
+        MAX_HEALTH = health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return MAX_HEALTH;
     }
 
     // Update is called once per frame

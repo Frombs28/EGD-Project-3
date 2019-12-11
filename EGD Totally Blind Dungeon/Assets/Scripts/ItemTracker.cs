@@ -126,6 +126,7 @@ public class ItemTracker : MonoBehaviour
         PlayerPrefs.SetInt("Checkpoint", checkpoint+1);
         heal.Recharge();
         print("Saving here!");
+        RespawnEnemies();
     }
 
     public void PreLoad()
@@ -180,15 +181,7 @@ public class ItemTracker : MonoBehaviour
             pocket2.Fill(newItem.GetComponent<Interact>());
             print("Item in top right pocket: " + newItem.name);
         }
-
-        foreach (GameObject enemy in enemies){
-            enemy.SetActive(true);
-            AIController ai = enemy.GetComponent<AIController>();
-            if(ai != null)
-            {
-                enemy.transform.position = ai.originPos;
-            }
-        }
+        RespawnEnemies();
         //stick.canMove = true;
         Invoke("RegainMovement", 2f);
     }
@@ -196,6 +189,20 @@ public class ItemTracker : MonoBehaviour
     void RegainMovement()
     {
         stick.canMove = true;
+    }
+
+    void RespawnEnemies()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.SetActive(true);
+            AIController ai = enemy.GetComponent<AIController>();
+            if (ai != null)
+            {
+                enemy.transform.position = ai.originPos;
+                ai.health = ai.GetMaxHealth();
+            }
+        }
     }
 
 }
