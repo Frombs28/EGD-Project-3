@@ -11,6 +11,7 @@ public class AudioMaster : MonoBehaviour
     public AudioClip[] woodFootsteps;
     public AudioClip[] metalFootsteps;
     public AudioClip[] stoneFootsteps;
+    public AudioClip[] grassFootsteps;
     public static List<AudioClip[]> staticFootstepSounds;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class AudioMaster : MonoBehaviour
         staticFootstepSounds.Add(woodFootsteps);
         staticFootstepSounds.Add(metalFootsteps);
         staticFootstepSounds.Add(stoneFootsteps);
+        staticFootstepSounds.Add(grassFootsteps);
     }
 
     // Update is called once per frame

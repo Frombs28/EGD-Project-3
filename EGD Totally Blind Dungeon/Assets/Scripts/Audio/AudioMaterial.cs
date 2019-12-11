@@ -8,13 +8,15 @@ public class AudioMaterial : MonoBehaviour
     {
         {AudioMat.Wood },
         {AudioMat.Metal },
-        {AudioMat.Stone }
+        {AudioMat.Stone },
+        {AudioMat.Grass }
     };
     public enum AudioMat // your custom enumeration
     {
         Wood,
         Metal,
-        Stone
+        Stone,
+        Grass
     };
     public AudioMat mat = AudioMat.Wood;
 
