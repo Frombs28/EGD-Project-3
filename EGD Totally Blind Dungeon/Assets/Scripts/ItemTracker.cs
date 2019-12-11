@@ -16,6 +16,9 @@ public class ItemTracker : MonoBehaviour
     public Pocket pocket2;
     public GameObject player;
     public StickManipulation stick;
+    public Transform hellSpawn;
+    Vector3 spawnPos;
+    Healer heal;
     /////////////////////////////////////////////////////////////////////////////////
     /*
     **  0: Nothing
@@ -48,6 +51,8 @@ public class ItemTracker : MonoBehaviour
         }
         enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         im = FindObjectOfType<InteractManager>();
+        spawnPos = new Vector3(hellSpawn.position.x, hellSpawn.position.y, hellSpawn.position.z);
+        heal = FindObjectOfType<Healer>();
     }
 
     private void Update()
@@ -108,7 +113,15 @@ public class ItemTracker : MonoBehaviour
     {
         SaveSystem.SavePlayer(this.gameObject);
         PlayerPrefs.SetInt("Checkpoint", checkpoint+1);
+        heal.Recharge();
         print("Saving here!");
+    }
+
+    public void PreLoad()
+    {
+        player.transform.position = spawnPos;
+        stick.canMove = false;
+        Invoke("RegainMovement", 2f);
     }
 
     public void LoadPlayer()
@@ -119,6 +132,7 @@ public class ItemTracker : MonoBehaviour
         im.Restart();
         items = data.items;
         print("Loaded location: " + player.transform.position);
+        heal.Recharge();
         if(items[0] > 0)
         {
             // spawn left hand item

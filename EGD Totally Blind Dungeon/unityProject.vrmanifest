@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.egdtotallyblinddungeon.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\Users\\Jon Castro\\Documents\\EGD-Project-3\\EGD Totally Blind Dungeon\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\frombs\\Documents\\2019-2020\\Fall\\EGD\\Project3Git\\EGD Totally Blind Dungeon\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "EGD Totally Blind Dungeon [Testing]"

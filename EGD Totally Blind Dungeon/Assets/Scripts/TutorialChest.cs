@@ -2,44 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class TutorialChest : MonoBehaviour
 {
-    public GameObject item;
     bool opened = false;
     public MeshRenderer close;
     public MeshRenderer open;
     public Transform spawnPoint;
     public AudioSource aud;
-    public bool tutorial = false;
-    
+    Healer heal;
+    TutorialManager tutMan;
+
     // Start is called before the first frame update
     void Start()
     {
         open.enabled = false;
         close.enabled = true;
+        heal = FindObjectOfType<Healer>();
+        tutMan = FindObjectOfType<TutorialManager>();
         //aud = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Open()
     {
-        if (tutorial)
-        {
-            TutorialChest tutChest = GetComponent<TutorialChest>();
-            tutChest.Open();
-            return;
-        }
         opened = true;
         close.enabled = false;
         open.enabled = true;
-        GameObject newItem = Instantiate(item, spawnPoint.position, Quaternion.identity);
-        newItem.GetComponent<Interact>().newStartPos(Vector3.zero);
         aud.Stop();
+        heal.Amulet();
+        tutMan.Step7();
     }
 
     public bool isOpened()
@@ -56,3 +52,4 @@ public class Chest : MonoBehaviour
         aud.Play();
     }
 }
+
