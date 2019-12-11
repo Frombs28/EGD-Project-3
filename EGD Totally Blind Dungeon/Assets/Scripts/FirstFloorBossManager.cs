@@ -52,4 +52,7 @@ public class FirstFloorBossManager : SimpleObserver
         /* if(duplicatePosition!=null) activeBosses[1].transform.position = duplicatePosition.position;
         else activeBosses[1].transform.position = Vector3.zero;*/
     }
+    public void StartFSM(){
+        finiteStateMachine.running = true;
+    }
 }
