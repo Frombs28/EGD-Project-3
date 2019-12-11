@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: 2
-  dampening: 0.15
+  dampening: 1
 --- !u!65 &92009979
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16930,7 +16930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: 0
-  dampening: 0.15
+  dampening: 1
 --- !u!65 &943910856
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19887,7 +19887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: 2
-  dampening: 0.15
+  dampening: 1
 --- !u!65 &1051343728
 BoxCollider:
   m_ObjectHideFlags: 0
