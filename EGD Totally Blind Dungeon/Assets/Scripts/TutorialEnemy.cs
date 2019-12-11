@@ -9,7 +9,7 @@ public class TutorialEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = FindObjectOfType<TutorialManager>();
     }
 
     // Update is called once per frame

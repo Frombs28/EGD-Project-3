@@ -11,9 +11,11 @@ public class StartingItemInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Invoke("StopGravity", 2f);
         item = GetComponent<Interact>();
         manager = FindObjectOfType<TutorialManager>();
+        gameObject.transform.Rotate(0, 0, -90f);
     }
 
     // Update is called once per frame

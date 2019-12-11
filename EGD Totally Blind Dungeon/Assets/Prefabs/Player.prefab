@@ -261,6 +261,7 @@ MonoBehaviour:
   footstepTime: 0.5
   footstepSource: {fileID: 761201753}
   canMove: 1
+  moving: 0
 --- !u!114 &1600512311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   player: {fileID: 6577134695563301497}
   stick: {fileID: 6577134695563301498}
   hellSpawn: {fileID: 0}
+  heal: {fileID: 4711096533132295674}
   sword: {fileID: 6132678884738269942, guid: 98334b9a2cb23794194844a0ca846e0f, type: 3}
   im: {fileID: 0}
 --- !u!1 &7059621573542395075
@@ -771,6 +773,8 @@ MonoBehaviour:
   switchHands: 0
   chest: {fileID: 0}
   heal: {fileID: 4711096533132295674}
+  health: {fileID: 0}
+  curCrystal: {fileID: 0}
 --- !u!135 &7510292049339216299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -924,6 +928,8 @@ MonoBehaviour:
   switchHands: 0
   chest: {fileID: 0}
   heal: {fileID: 4711096533132295674}
+  health: {fileID: 0}
+  curCrystal: {fileID: 0}
 --- !u!135 &7510292049339251597
 SphereCollider:
   m_ObjectHideFlags: 0

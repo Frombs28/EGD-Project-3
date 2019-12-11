@@ -142,6 +142,10 @@ public class AIController : MonoBehaviour
             {
                 hurtSoundSource.clip = deathClip;
                 hurtSoundSource.Play();
+                if (tutorial)
+                {
+                    gameObject.GetComponent<TutorialEnemy>().Death();
+                }
                 if (hasChest)
                 {
                     myChest.SetActive(true);
