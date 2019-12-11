@@ -88,7 +88,7 @@ public class TutorialManager : MonoBehaviour
     public void Step10()
     {
         // You killed him Dialogue
-        // Hey hear that?
+        // Go to the Shrine Dialogue
     }
 
     public void Step11()

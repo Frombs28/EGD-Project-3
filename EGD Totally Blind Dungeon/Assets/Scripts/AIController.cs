@@ -40,6 +40,7 @@ public class AIController : MonoBehaviour
     public AudioClip[] hurtClips;
     public AudioClip deathClip;
     private int randomRet = 0;
+    public bool tutorial = false;
 
     //public bool parry;
 
@@ -100,6 +101,10 @@ public class AIController : MonoBehaviour
         {
             hurtSoundSource.clip = deathClip;
             hurtSoundSource.Play();
+            if (tutorial)
+            {
+                gameObject.GetComponent<TutorialEnemy>().Death();
+            }
             if (hasChest)
             {
                 myChest.SetActive(true);

@@ -446,7 +446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132678884738269942}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c127733b92a56e1468d361360273f6f2, type: 3}
   m_Name: 
@@ -458,6 +458,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7151996776496230629}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword 1B
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -512,21 +527,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Name
-      value: Sword 1B
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 00e59520fb54b49f6a157817b08b2862,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: -5701257375759989674, guid: 00e59520fb54b49f6a157817b08b2862,
         type: 3}
