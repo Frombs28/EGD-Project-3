@@ -21,7 +21,7 @@ public class FirstFloorBossManager : SimpleObserver
         if(duplicatePosition!=null) GetComponentInChildren<SpawnState>().spawnLocation = duplicatePosition.position;
         else GetComponentInChildren<SpawnState>().spawnLocation = Vector3.zero;
         finiteStateMachine = GetComponentInChildren<FiniteStateMachine>();
-        finiteStateMachine.running = false;
+        StopFSM();
     }
     private void Update() {
         UpdateSharedHealth();
@@ -30,6 +30,7 @@ public class FirstFloorBossManager : SimpleObserver
         if(notice == NotificationType.SpawnedItem){
             Debug.Log("The chasey fella should be spawned");
             activeBosses.Add(go.GetComponent<AIController>());
+            activeBosses[activeBosses.Count-1].health = activeBosses[0].health;
         }
 
     }
@@ -54,5 +55,9 @@ public class FirstFloorBossManager : SimpleObserver
     }
     public void StartFSM(){
         finiteStateMachine.running = true;
+    }
+
+    public void StopFSM(){
+        finiteStateMachine.running = false;
     }
 }

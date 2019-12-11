@@ -34,7 +34,7 @@ Transform:
   m_LocalPosition: {x: 1.042, y: -0.033, z: 0.306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1892440463884738236}
+  - {fileID: 4788681801472011980}
   m_Father: {fileID: 197985261195259071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68995a498fc392f498bc52624294d013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 6
   damage: 1
   velocity: 500
   angular: 500000
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   states: []
   ai: {fileID: 197985260929547403}
   initialState: {fileID: 31606099376843178}
+  running: 1
 --- !u!1 &2508179342753362788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetState: {fileID: 2508179343708159375}
-  healthSwitch: 2
+  healthSwitch: 3
 --- !u!1 &2508179343100773139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1620,7 @@ MonoBehaviour:
   observers: []
   transitions:
   - {fileID: 2508179342170858507}
+  - {fileID: 2508179342898728628}
 --- !u!1 &2508179343585040153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1812,37 @@ MonoBehaviour:
   spawnPrefab: {fileID: 2486393550368722309, guid: a7dfad773b21ea34c97004e597968550,
     type: 3}
   spawnLocation: {x: 0, y: 0, z: 0}
+--- !u!1 &3480546759512330653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1892440463884738236}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1892440463884738236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480546759512330653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4788681801472011980}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3535223589584444307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +1936,38 @@ MonoBehaviour:
   observers: []
   transitions:
   - {fileID: 8953269219673229091}
+--- !u!1 &5875540891087133753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4788681801472011980}
+  m_Layer: 0
+  m_Name: Final Boss Sword A (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4788681801472011980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875540891087133753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1620426175045736935}
+  - {fileID: 1892440463884738236}
+  m_Father: {fileID: 197985260765857013}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6054461674617250660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2060,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.45, y: 2.09, z: 1.56}
   m_Center: {x: 0, y: 0.92, z: 1.27}
+--- !u!1 &6667570515281956480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8953718650942342362, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620426175045736935}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1620426175045736935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 6861788588979615142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667570515281956480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4788681801472011980}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7699640940870429842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,11 +2467,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 197985260765857013}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
-        type: 3}
-      propertyPath: m_Name
-      value: Final Boss Sword A
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2431,6 +2522,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Final Boss Sword A
+      objectReference: {fileID: 0}
     - target: {fileID: -4214098461441970125, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2438,15 +2534,3 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 989a672bcd96c3549a2412200ba6344f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aea4cb5cac3154e43b69718a6ad3c2d6, type: 3}
---- !u!1 &6667570515281956480 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -8953718650942342362, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6861788588979615142}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1892440463884738236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: aea4cb5cac3154e43b69718a6ad3c2d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6861788588979615142}
-  m_PrefabAsset: {fileID: 0}
