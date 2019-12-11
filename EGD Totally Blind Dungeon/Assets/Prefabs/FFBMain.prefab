@@ -406,7 +406,7 @@ MonoBehaviour:
   preSwingMovementSpeed: 0.2
   attackTime: 0.5
   downMovementSpeed: 0.5
-  objectWithMaterial: {fileID: 0}
+  objectWithMaterial: {fileID: 3360796020686896263}
   jointPrefab: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
   swordPosition: {fileID: 197985261195259070}
@@ -2485,6 +2485,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7013e4fd97aff49298e86a4303b27a25, type: 3}
+--- !u!1 &3360796020686896263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8953718650942342362, guid: 7013e4fd97aff49298e86a4303b27a25,
+    type: 3}
+  m_PrefabInstance: {fileID: 3251021136667608993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7523059429806550203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7013e4fd97aff49298e86a4303b27a25,
