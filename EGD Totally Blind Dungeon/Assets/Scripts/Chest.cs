@@ -28,18 +28,18 @@ public class Chest : MonoBehaviour
 
     public void Open()
     {
+        opened = true;
+        aud.Stop();
         if (tutorial)
         {
             TutorialChest tutChest = GetComponent<TutorialChest>();
             tutChest.Open();
             return;
         }
-        opened = true;
         close.enabled = false;
         open.enabled = true;
         GameObject newItem = Instantiate(item, spawnPoint.position, Quaternion.identity);
         newItem.GetComponent<Interact>().newStartPos(Vector3.zero);
-        aud.Stop();
     }
 
     public bool isOpened()

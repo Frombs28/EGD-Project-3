@@ -11,6 +11,7 @@ public class TutorialManager : MonoBehaviour
     public StickManipulation controller;
     bool walked = false;
     public PlayerHealth health;
+    public List<AudioClip> clips;
     // Start is called before the first frame update
     void Start()
     {

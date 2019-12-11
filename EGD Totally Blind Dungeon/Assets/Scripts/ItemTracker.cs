@@ -19,7 +19,7 @@ public class ItemTracker : MonoBehaviour
     public StickManipulation stick;
     public Transform hellSpawn;
     Vector3 spawnPos;
-    Healer heal;
+    public Healer heal;
     /////////////////////////////////////////////////////////////////////////////////
     /*
     **  0: Nothing
@@ -54,7 +54,6 @@ public class ItemTracker : MonoBehaviour
         enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         im = FindObjectOfType<InteractManager>();
         spawnPos = new Vector3(hellSpawn.position.x, hellSpawn.position.y, hellSpawn.position.z);
-        heal = FindObjectOfType<Healer>();
     }
 
     private void Update()
