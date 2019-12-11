@@ -24,6 +24,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     bool swingingUp = false;
     public float parryTime = 0.5f;
     private float parryableTimer = 0f;
+    public AIController ai;
 
     private AudioSource aud;
 
@@ -83,6 +84,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
         float currentTime = 0.0f;
         swingingUp = true;
         if (aud != null) aud.Play();
+        ai.hitBoi = false;
         StartCoroutine(PreSwing(jointGO));
         while(currentTime<preSwingTime){
             currentTime+=Time.deltaTime;

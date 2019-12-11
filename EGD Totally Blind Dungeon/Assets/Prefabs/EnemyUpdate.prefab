@@ -778,6 +778,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7a35fad63af93b94caf74f442161e384, type: 3}
   deathClip: {fileID: 8300000, guid: 823d64a9726fdb44ead7f9e3ea0e3ece, type: 3}
   tutorial: 0
+  hitBoi: 0
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
 --- !u!114 &7522696033796200950
@@ -810,6 +811,7 @@ MonoBehaviour:
   swordPosition: {fileID: 7522696035673573826}
   interrupted: 0
   parryTime: 1
+  ai: {fileID: 7522696033796200951}
   currentTime: 0
 --- !u!54 &7522696033796200949
 Rigidbody:

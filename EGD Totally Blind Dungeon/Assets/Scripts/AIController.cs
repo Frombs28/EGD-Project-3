@@ -44,6 +44,7 @@ public class AIController : MonoBehaviour
     private int randomRet = 0;
     public bool tutorial = false;
     float MAX_HEALTH;
+    public bool hitBoi = false;
 
     //public bool parry;
 
@@ -100,8 +101,9 @@ public class AIController : MonoBehaviour
         if (isArmored)
         {
             //Debug.Log("Armored");
-            if (GetComponent<VerticalSwingAttackWithHinge>().interrupted == true && GetComponent<VerticalSwingAttackWithHinge>().attackCompleted == false)
+            if (GetComponent<VerticalSwingAttackWithHinge>().interrupted == true && GetComponent<VerticalSwingAttackWithHinge>().attackCompleted == false && !hitBoi)
             {
+                hitBoi = true;
                 health -= sub;
                 Debug.Log("Hit!");
                 GetComponent<Renderer>().material.SetColor("_Color", Color.red);
