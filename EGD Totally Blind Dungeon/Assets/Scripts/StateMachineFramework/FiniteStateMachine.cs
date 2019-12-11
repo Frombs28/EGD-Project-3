@@ -49,4 +49,8 @@ public class FiniteStateMachine : MonoBehaviour
         currentState.DoAction(ai);
 
     }
+
+    public void ResetFSM(){
+        currentState = initialState;
+    }
 }

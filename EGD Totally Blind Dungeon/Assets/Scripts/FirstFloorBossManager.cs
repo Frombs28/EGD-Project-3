@@ -60,4 +60,19 @@ public class FirstFloorBossManager : SimpleObserver
     public void StopFSM(){
         finiteStateMachine.running = false;
     }
+
+    public void ResetBoss(){
+        if(activeBosses[0].currentAttack!=null){
+            activeBosses[0].currentAttack.InterruptAttack();
+        }
+        finiteStateMachine.ResetFSM();
+        StopFSM();
+        activeBosses[0].transform.position = initialPosition;
+        if(activeBosses.Count>1){
+            AIController oldDup = activeBosses[1];
+            activeBosses.Remove(activeBosses[1]);
+            oldDup.DeleteSelf();
+            Destroy(oldDup);
+        }
+    }
 }
