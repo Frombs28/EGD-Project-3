@@ -16,7 +16,7 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         aud = GetComponent<AudioSource>();
-        if(PlayerPrefs.GetInt("Checkpoint", 0) > 0)
+        if(PlayerPrefs.GetInt("Checkpoint", 0) == 0)
         {
             Begin();
         }

@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d589e38be8dbc4d804c2170fa011c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 924518163942550023}
 --- !u!1 &924518163781297760
@@ -644,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e6641c456e36c44bcca6d8b38c5b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 924518164842440749}
 --- !u!1 &924518164182852751
@@ -690,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab5233b5ff2b1641b017825ee1ec9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 924518163807552291}
   ea: {fileID: 924518165223203133}
@@ -860,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05684c2735dd3e48999b7db766ef6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 924518164304483634}
 --- !u!1 &924518165223203121
@@ -985,6 +989,7 @@ MonoBehaviour:
   timeCounter: 0
   startFrame: 0
   endFrame: 0
+  isArmored: 0
   targetRadiusA: 2
   slowRadiusA: 2
   maxRotation: 2
@@ -994,10 +999,11 @@ MonoBehaviour:
   myChest: {fileID: 0}
   hasChest: 0
   originPos: {x: 0, y: 0, z: 0}
-  hurtBreath: {fileID: 0}
-  hurtSoundSource: {fileID: 0}
-  hurtClips: []
-  deathClip: {fileID: 0}
+  hurtBreath: {fileID: 8300000, guid: 4c75b4c55693a144eaa10243ab9bb697, type: 3}
+  hurtSoundSource: {fileID: 3123933109615496756}
+  hurtClips:
+  - {fileID: 8300000, guid: 7a35fad63af93b94caf74f442161e384, type: 3}
+  deathClip: {fileID: 8300000, guid: 823d64a9726fdb44ead7f9e3ea0e3ece, type: 3}
   tutorial: 0
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
