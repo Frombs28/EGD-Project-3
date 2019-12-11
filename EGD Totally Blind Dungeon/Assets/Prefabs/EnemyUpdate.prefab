@@ -770,7 +770,7 @@ MonoBehaviour:
   maxAngularAcceleration: 2
   active: 1
   myChest: {fileID: 0}
-  hasChest: 1
+  hasChest: 0
   originPos: {x: 0, y: 0, z: 0}
   hurtBreath: {fileID: 8300000, guid: 4c75b4c55693a144eaa10243ab9bb697, type: 3}
   hurtSoundSource: {fileID: 427592176}
