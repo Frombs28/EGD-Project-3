@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 public class MoveTo : MonoBehaviour
 {
-    public Transform player;
+    public Transform player = null;
     NavMeshAgent agent;
     public float stoppingDistance;
     public Vector3 initialPos;
@@ -32,7 +32,7 @@ public class MoveTo : MonoBehaviour
         agent.stoppingDistance = stoppingDistance;
 
         initialPos = transform.position;
-        //player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        if(player == null) player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         //furthest = 15f;
     }
 
