@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioMixer mixer;
     bool firstTime = true;
     TutorialManager tutMan;
+    public FirstFloorBossManager ffbm;
     
     // Start is called before the first frame update
     void Start()
@@ -132,6 +133,7 @@ public class PlayerHealth : MonoBehaviour
     {
         leftHand.DropRespawn();
         rightHand.DropRespawn();
+        ffbm.ResetBoss();
         it.PreLoad();
         health = MAX_HEALTH;
     }
