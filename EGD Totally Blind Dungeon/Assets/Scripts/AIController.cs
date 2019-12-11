@@ -157,6 +157,7 @@ public class AIController : MonoBehaviour
                 {
                     myChest.SetActive(true);
                 }
+                if(verticalSwing!=null) verticalSwing.InterruptAttack();
                 Invoke("DeleteSelf", deathClip.length + 0.05f);
             }
             else
