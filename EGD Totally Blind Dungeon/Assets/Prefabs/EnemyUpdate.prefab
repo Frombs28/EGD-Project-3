@@ -762,6 +762,7 @@ MonoBehaviour:
   timeCounter: 0
   startFrame: 0
   endFrame: 0
+  isArmored: 0
   targetRadiusA: 2
   slowRadiusA: 2
   maxRotation: 2
@@ -776,6 +777,7 @@ MonoBehaviour:
   hurtClips:
   - {fileID: 8300000, guid: 7a35fad63af93b94caf74f442161e384, type: 3}
   deathClip: {fileID: 8300000, guid: 823d64a9726fdb44ead7f9e3ea0e3ece, type: 3}
+  tutorial: 0
   verticalSwing: {fileID: 0}
   currentAttack: {fileID: 0}
 --- !u!114 &7522696033796200950
@@ -806,6 +808,7 @@ MonoBehaviour:
   jointPrefab: {fileID: 8373006499206510450, guid: eb3fc6c18bb5b4a458f7cd110a1d8c34,
     type: 3}
   swordPosition: {fileID: 7522696035673573826}
+  interrupted: 0
   parryTime: 1
   currentTime: 0
 --- !u!54 &7522696033796200949
@@ -841,6 +844,7 @@ MonoBehaviour:
   initialPos: {x: 0, y: 0, z: 0}
   furthest: 15
   pursue: 0
+  stay: 1
   footstepSource: {fileID: 221171209}
   footstepSounds:
   - {fileID: 8300000, guid: 0304372860e27e4469dfc2d07ce5442c, type: 3}
@@ -1091,6 +1095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab5233b5ff2b1641b017825ee1ec9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 7522696033893535026}
   ea: {fileID: 7522696033796200950}
@@ -1359,6 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d589e38be8dbc4d804c2170fa011c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 7522696035029506240}
   - {fileID: 177981101}
@@ -1406,6 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05684c2735dd3e48999b7db766ef6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers: []
   transitions:
   - {fileID: 7522696035088186567}
 --- !u!1 &7522696035673573826
@@ -1732,7 +1739,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7df10bdf1ee554e5293cf6f2b283e46f, type: 2}
+      objectReference: {fileID: 2100000, guid: 4bb4a1bf14b4b5342bc9b7991daa2e40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed2055b656964b60ac4cb05e61458f9, type: 3}
 --- !u!4 &1166174369468028136 stripped
