@@ -1,3 +1,4 @@
 ﻿public enum NotificationType{
-    SpawnedItem
+    SpawnedItem,
+    WasAttacked
 }

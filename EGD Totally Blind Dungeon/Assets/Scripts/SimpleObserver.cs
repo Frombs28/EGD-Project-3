@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SimpleObserver : MonoBehaviour
 {
-    public abstract void OnNotify(NotificationType notice, string message, float value);
+    public abstract void OnNotify(NotificationType notice, string message, GameObject go);
 }

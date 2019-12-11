@@ -10,9 +10,9 @@ public abstract class State : MonoBehaviour
     public abstract void DoEntryAction(AIController ai);
     public abstract void DoExitAction(AIController ai);
 
-    public virtual void NotifyObservers(NotificationType notice, string message, float value){
+    public virtual void NotifyObservers(NotificationType notice, string message, GameObject go){
         foreach(SimpleObserver obs in observers){
-            obs.OnNotify(notice, message, value);
+            obs.OnNotify(notice, message, go);
         }
     }
 

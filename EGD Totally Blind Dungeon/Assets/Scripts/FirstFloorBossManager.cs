@@ -4,9 +4,38 @@ using UnityEngine;
 
 public class FirstFloorBossManager : SimpleObserver
 {
-    public override void OnNotify(NotificationType notice, string message, float value){
+    List<AIController> activeBosses;
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        AIController main = transform.parent.GetComponent<AIController>();
+        activeBosses = new List<AIController>();
+        activeBosses.Add(main);
+    }
+    private void Update() {
+        UpdateSharedHealth();
+    }
+    public override void OnNotify(NotificationType notice, string message, GameObject go){
         if(notice == NotificationType.SpawnedItem){
-            //do do something
+            Debug.Log("The chasey fella should be spawned");
+            activeBosses.Add(go.GetComponent<AIController>());
+        }
+
+    }
+
+    void UpdateSharedHealth(){
+        float minHealth = activeBosses[0].health;
+        //optimize l8r by having the health only update when hit
+        foreach(var controller in activeBosses){
+            if(controller.health<minHealth){
+                minHealth = controller.health;
+            }
+        }
+        foreach(var controller in activeBosses){
+            controller.health = minHealth;
         }
     }
 }
