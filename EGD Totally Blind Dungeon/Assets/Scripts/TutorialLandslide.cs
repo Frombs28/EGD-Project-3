@@ -7,12 +7,11 @@ public class TutorialLandslide : MonoBehaviour
     TutorialManager manager;
     bool done = false;
     public GameObject chest;
-    AudioSource aud;
+    public AudioSource aud;
     // Start is called before the first frame update
     void Start()
     {
         manager = FindObjectOfType<TutorialManager>();
-        aud = GetComponent<AudioSource>();
         chest.SetActive(false);
     }
 
