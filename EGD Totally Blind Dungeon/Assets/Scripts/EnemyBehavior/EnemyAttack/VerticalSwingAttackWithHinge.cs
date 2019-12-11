@@ -20,7 +20,7 @@ public class VerticalSwingAttackWithHinge : EnemyAttack
     Rigidbody enemyrb;
     ConfigurableJoint joint;
     bool movingWrist = false;
-    bool interrupted;
+    public bool interrupted;
     bool swingingUp = false;
     public float parryTime = 0.5f;
     private float parryableTimer = 0f;
