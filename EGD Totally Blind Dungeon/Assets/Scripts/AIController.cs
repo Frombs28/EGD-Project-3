@@ -161,7 +161,7 @@ public class AIController : MonoBehaviour
             }
             else
             {
-                randomRet = Random.Range(0, hurtClips.Length);
+                randomRet = Random.Range(0, hurtClips.Length-1);
                 hurtSoundSource.clip = hurtClips[randomRet];
                 hurtSoundSource.Play();
                 Invoke("ColorChangeBack", 0.5f);
