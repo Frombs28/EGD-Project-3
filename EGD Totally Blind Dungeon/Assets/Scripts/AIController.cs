@@ -21,6 +21,8 @@ public class AIController : MonoBehaviour
     public int startFrame;
     public int endFrame;
 
+    public bool isArmored;
+
     public float targetRadiusA = 2f;
     public float slowRadiusA = 2f;
     public float maxRotation = 2f;
@@ -88,35 +90,71 @@ public class AIController : MonoBehaviour
 
     public void SubtractHealth(float sub)
     {
-        health -= sub;
-        Debug.Log("Hit!");
-        GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        if(health == 1)
+        if (isArmored)
         {
-            breathSound.Stop();
-            breathSound.clip = hurtBreath;
-            breathSound.Play();
-        }
-        if(health <= 0)
-        {
-            hurtSoundSource.clip = deathClip;
-            hurtSoundSource.Play();
-            if (tutorial)
+            //Debug.Log("Armored");
+            if (GetComponent<VerticalSwingAttackWithHinge>().interrupted == true && GetComponent<VerticalSwingAttackWithHinge>().attackCompleted == false)
             {
-                gameObject.GetComponent<TutorialEnemy>().Death();
+                health -= sub;
+                Debug.Log("Hit!");
+                GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+                if (health == 1)
+                {
+                    breathSound.Stop();
+                    breathSound.clip = hurtBreath;
+                    breathSound.Play();
+                }
+                if (health <= 0)
+                {
+                    hurtSoundSource.clip = deathClip;
+                    hurtSoundSource.Play();
+                    if (tutorial)
+                    {
+                        gameObject.GetComponent<TutorialEnemy>().Death();
+                    }
+                    if (hasChest)
+                    {
+                        myChest.SetActive(true);
+                    }
+                    Invoke("DeleteSelf", deathClip.length + 0.05f);
+                }
+                else
+                {
+                    randomRet = Random.Range(0, hurtClips.Length);
+                    hurtSoundSource.clip = hurtClips[randomRet];
+                    hurtSoundSource.Play();
+                    Invoke("ColorChangeBack", 0.5f);
+                }
             }
-            if (hasChest)
-            {
-                myChest.SetActive(true);
-            }
-            Invoke("DeleteSelf", deathClip.length + 0.05f);
         }
         else
         {
-            randomRet = Random.Range(0, hurtClips.Length);
-            hurtSoundSource.clip = hurtClips[randomRet];
-            hurtSoundSource.Play();
-            Invoke("ColorChangeBack", 0.5f);
+            health -= sub;
+            Debug.Log("Hit!");
+            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            if (health == 1)
+            {
+                breathSound.Stop();
+                breathSound.clip = hurtBreath;
+                breathSound.Play();
+            }
+            if (health <= 0)
+            {
+                hurtSoundSource.clip = deathClip;
+                hurtSoundSource.Play();
+                if (hasChest)
+                {
+                    myChest.SetActive(true);
+                }
+                Invoke("DeleteSelf", deathClip.length + 0.05f);
+            }
+            else
+            {
+                randomRet = Random.Range(0, hurtClips.Length);
+                hurtSoundSource.clip = hurtClips[randomRet];
+                hurtSoundSource.Play();
+                Invoke("ColorChangeBack", 0.5f);
+            }
         }
     }
 
