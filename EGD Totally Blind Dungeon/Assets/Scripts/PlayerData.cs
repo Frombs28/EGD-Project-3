@@ -7,6 +7,7 @@ public class PlayerData
 {
     public float[] position;
     public int[] items;
+    public int crystals;
 
     public PlayerData(GameObject player)
     {
@@ -15,5 +16,6 @@ public class PlayerData
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
         items = player.GetComponent<ItemTracker>().GetItems();
+        crystals = player.GetComponent<ItemTracker>().NumCrystals();
     }
 }

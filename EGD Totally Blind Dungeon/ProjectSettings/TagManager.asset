@@ -12,6 +12,7 @@ TagManager:
   - Chest
   - Pocket
   - Heal
+  - Crystal
   layers:
   - Default
   - TransparentFX

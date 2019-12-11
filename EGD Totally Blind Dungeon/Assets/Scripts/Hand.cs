@@ -35,6 +35,8 @@ public class Hand : MonoBehaviour
     bool healingFound = false;
     public Healer heal;
     public PlayerHealth health;
+    bool crystalFound = false;
+    public GameObject curCrystal = null;
     //public SteamVR_Action_Vibration vibrate = null;
 
     private void Awake()
@@ -71,6 +73,12 @@ public class Hand : MonoBehaviour
             else if (healingFound && heal.NumCharges() > 0 && health.health < health.MAX_HEALTH)
             {
                 heal.Heal();
+            }
+            else if (crystalFound && curCrystal != null)
+            {
+                it.GetCrystal();
+                curCrystal.gameObject.SetActive(false);
+                curCrystal = null;
             }
             else
             {
@@ -117,6 +125,11 @@ public class Hand : MonoBehaviour
             haveSaved = false;
             //return;
         }
+        if (other.gameObject.CompareTag("Crystal"))
+        {
+            crystalFound = false;
+            curCrystal = null;
+        }
         if (other.gameObject.CompareTag("Heal"))
         {
             healingFound = false;
@@ -152,6 +165,13 @@ public class Hand : MonoBehaviour
                 haveSaved = true;
                 return;
             }
+        }
+        if (other.gameObject.CompareTag("Crystal") && !held)
+        {
+            m_VibrateAction.Execute(0f, 0.1f, frequency, amplitude, source);
+            crystalFound = true;
+            curCrystal = other.gameObject;
+            return;
         }
         if (other.gameObject.CompareTag("Chest"))
         {

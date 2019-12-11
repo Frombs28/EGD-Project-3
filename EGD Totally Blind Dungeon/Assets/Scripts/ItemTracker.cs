@@ -7,6 +7,7 @@ public class ItemTracker : MonoBehaviour
 {
     int[] items;
     int checkpoint;
+    int crystals;
     public GameObject[] itemIndices;
     public List<GameObject> enemies;
     public Hand rightHand;
@@ -37,6 +38,7 @@ public class ItemTracker : MonoBehaviour
         items[2] = 0;
         items[3] = 0;
         items[4] = 0;
+        crystals = 0;
         checkpoint = PlayerPrefs.GetInt("Checkpoint", 0);
         if(checkpoint > 0)
         {
@@ -109,6 +111,16 @@ public class ItemTracker : MonoBehaviour
         return items;
     }
 
+    public int NumCrystals()
+    {
+        return crystals;
+    }
+
+    public void GetCrystal()
+    {
+        crystals++;
+    }
+
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this.gameObject);
@@ -131,6 +143,7 @@ public class ItemTracker : MonoBehaviour
         player.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         im.Restart();
         items = data.items;
+        crystals = data.crystals;
         print("Loaded location: " + player.transform.position);
         heal.Recharge();
         if(items[0] > 0)
