@@ -10,6 +10,8 @@ public class FiniteStateMachine : MonoBehaviour
 
     public State initialState = null;
 
+    public bool running = true;
+
     State currentState;
     void Start()
     {
@@ -19,6 +21,10 @@ public class FiniteStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!running){
+            return;
+        }
+
         Transition triggeredTransition = null;
 
         foreach(Transition transition in currentState.GetTransitions()){

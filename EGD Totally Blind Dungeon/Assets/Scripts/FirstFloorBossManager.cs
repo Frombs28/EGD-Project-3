@@ -7,6 +7,7 @@ public class FirstFloorBossManager : SimpleObserver
     List<AIController> activeBosses;
     Vector3 initialPosition;
     public Transform duplicatePosition = null;
+    FiniteStateMachine finiteStateMachine;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -19,6 +20,8 @@ public class FirstFloorBossManager : SimpleObserver
         activeBosses.Add(main);
         if(duplicatePosition!=null) GetComponentInChildren<SpawnState>().spawnLocation = duplicatePosition.position;
         else GetComponentInChildren<SpawnState>().spawnLocation = Vector3.zero;
+        finiteStateMachine = GetComponentInChildren<FiniteStateMachine>();
+        finiteStateMachine.running = false;
     }
     private void Update() {
         UpdateSharedHealth();
