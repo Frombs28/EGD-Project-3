@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     public StickManipulation controller;
     bool walked = false;
     public PlayerHealth health;
+    public Hand left_hand;
     public List<AudioClip> clips;
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,7 @@ public class TutorialManager : MonoBehaviour
         aud.clip = clips[1];
         aud.Play();
         Invoke("EnableWalking", clips[1].length + 1f);
+        Invoke("BeginVibrations", 21f);
     }
 
     public void Step3()
@@ -171,5 +174,10 @@ public class TutorialManager : MonoBehaviour
     void EnableWalking()
     {
         controller.canMove = true;
+    }
+
+    void BeginVibrations()
+    {
+        left_hand.m_VibrateAction.Execute(0f, 12f, left_hand.frequency, left_hand.amplitude, left_hand.source);
     }
 }
